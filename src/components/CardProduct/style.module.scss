@@ -1,0 +1,66 @@
+@import '../../assets/style/utils/typography.module.scss';
+@import '../../assets/style/utils/colors.module.scss';
+
+.card-wrapper {
+  border: 1px solid $black;
+  border-radius: 5px;
+  align-self: flex-start;
+  min-height: 380px;
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  &:hover {
+    border-radius: 5% 5% 0% 0%;
+    box-shadow: 0px -5px 5px $secondary;
+    border-bottom: none;
+  }
+}
+
+.card-product__title {
+  @include textStyle(center, none, $secondary 1px 0 10px);
+}
+
+.card-product__description{
+  @include textStyle(center, none, none);
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s linear, opacity 0.1s linear;
+  overflow: hidden;
+  top: 400px;
+  position: absolute;
+  z-index: 3;
+
+  .card-wrapper:hover & {
+    max-height: 500px;
+    opacity: 1;
+    width: 200px;
+    padding: 6px;
+    background-color: #fff;
+    transition: max-height 0.3s linear, opacity 0.3s linear;
+    top: 392px;
+    border: 1px solid $black;
+    border-top: none;
+    box-shadow: 0px 5px 5px $secondary;
+    border-radius: 0% 0% 5% 5%;
+    position: absolute;
+    z-index: 3;
+  }
+
+}
+
+.card-product__img {
+  flex: 1 1 auto;
+}
+
+.card-product__price {
+  @include textStyle(center, none, none);
+  border-radius: 5px;
+  font-style: italic;
+  border: 1px solid $secondary-dark;
+  color: $secondary-dark;
+}
+
+

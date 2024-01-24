@@ -1,0 +1,53 @@
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+.card_wrapper_skeleton {
+  min-height: 380px;
+  border: 1px solid hsl(200, 20%, 80%);
+  border-radius: 5px;
+}
+
+.title_skeleton_element{
+  height: 20px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+
+.image_skeleton {
+  height: 137px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  flex: 1 1 auto;
+}
+
+.price_skeleton {
+width: 58px;
+height: 28px;
+border-radius: 4px;
+}
+
+.button_skeleton {
+height: 28px;
+width: 30px;
+border-radius: 4px;
+}
+
+.pagination_skeleton {
+  width: 30px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+

@@ -1,0 +1,51 @@
+@mixin flexContainer($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: wrap;
+}
+
+$display: block, inline-block, flex, inline-flex, none;
+$justify: flex-start, flex-end, space-between, center;
+$flex-directions: row, row-reverse, column, column-reverse;
+$align-items: center, flex-start, flex-end;
+$align-content: center, start, end, flex-end, flex-start;
+$flex-wrap: wrap, nowrap;
+$flex: auto, 1, 2;
+
+@each $dis in $display {
+  .d-#{$dis} {
+    display: $dis;
+  }
+}
+
+@each $jus in $justify {
+  .just-content-#{$jus} {
+    justify-content: $jus;
+  }
+}
+
+@each $direction in $flex-directions {
+  .flex-direction-#{$direction} {
+    flex-direction: $direction;
+  }
+}
+
+@each $align in $align-items {
+  .align-items-#{$align} {
+    align-items: $align;
+  }
+}
+
+@each $wrap in $flex-wrap {
+  .flex-wrap-#{$wrap} {
+    flex-wrap: $wrap;
+  }
+}
+
+@each $val in $flex {
+  .flex-#{$val} {
+    flex: $val;
+  }
+}

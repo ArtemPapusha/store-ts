@@ -1,0 +1,53 @@
+$primary: rgb(20, 69, 248);
+$primary-light: rgb(147, 163, 251);
+$primary-dark: rgb(0, 40, 139);
+$secondary: rgb(128, 119, 119);
+$secondary-light: rgb(197, 197, 197);
+$secondary-dark: rgb(110, 109, 109);
+$danger: rgb(255, 0, 0);
+$danger-ligth: rgb(255, 124, 124);
+$danger-dark: rgb(162, 5, 5);
+$warning: rgb(255, 166, 0);
+$warning-light: rgb(251, 196, 95);
+$warning-dark: rgb(177, 115, 0);
+$info: rgb(17, 222, 222);
+$info-light: rgb(172, 253, 253);
+$info-dark: rgb(17, 189, 189);
+$white: #FFFFFF;
+$black: rgb(0, 0, 0);
+$success: #2e7d32;
+
+$colors: (
+  "primary": $primary,
+  "primary-light": $primary-light,
+  "primary-dark": $primary-dark,
+  "secondary": $secondary,
+  "secondary-light": $secondary-light,
+  "secondary-dark": $secondary-dark,
+  "danger": $danger,
+  "danger-light": $danger-ligth,
+  "danger-dark": $danger-dark,
+  "warning": $warning,
+  "warning-light": $warning-light,
+  "warning-dark": $warning-dark,
+  "info": $info,
+  "info-light": $info-light,
+  "info-dark": $info-dark,
+  "white": $white,
+  "black": $black
+);
+
+@each $color-name, $color-value in $colors {
+  .text-#{$color-name} {
+    color: $color-value;
+  }
+
+  .bgc-#{$color-name} {
+    background-color: $color-value;
+  }
+
+  .br-#{$color-name} {
+    border: 1px solid $color-value;
+  }
+}
+

@@ -1,0 +1,66 @@
+$roboto-font-path: "../fonts";
+
+@font-face {
+  font-family: 'IcoMoon-Free';
+  src: url("#{$roboto-font-path}/IcoMoon-Free.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  src: url("#{$roboto-font-path}/Roboto-Black.ttf") format("ttf");
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+}
+
+@font-face {
+  src: url("#{$roboto-font-path}/Roboto-Bold.ttf") format("ttf");
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+@font-face {
+  src: url("#{$roboto-font-path}/Roboto-Regular.ttf") format("ttf");
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+@font-face {
+  src: url("#{$roboto-font-path}/Roboto-ThinItalic.ttf") format("ttf");
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+
+@font-face {
+  src: url("#{$roboto-font-path}/Roboto-Thin.ttf") format("ttf");
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+
+@font-face {
+  src: url("#{$roboto-font-path}/Roboto-Medium.ttf") format("ttf");
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+@font-face {
+  src: url("#{$roboto-font-path}/Roboto-Light.ttf") format("ttf");
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+$weights: 100, 300, 400, 500, 700, 900;
+
+@each $weight in $weights {
+  .fw--#{$weight} {
+    font-weight: $weight;
+  }
+}
+
+$font-sizes: 12, 14, 16, 18, 24, 26;
+
+@each $font-size in $font-sizes {
+  .fs-#{$font-size} {
+    font-size: $font-size;
+  }
+}

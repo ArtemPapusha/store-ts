@@ -1,0 +1,126 @@
+@import '../../assets/style/utils/colors.module.scss';
+
+.button {
+  cursor: pointer;
+  min-width: 35px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: $black;
+  font-size: 16px;
+  padding: 8px;
+
+  &:hover {
+    color: $secondary;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    background-color: $secondary;
+    color: $black;
+    transform: translateY(0);
+    box-shadow: $secondary 1px 0 10px;
+  }
+
+  &-text {
+    outline: 0;
+    border: 0;
+    background-color: $white;
+  
+    &:hover {
+      background-color: $secondary-light;
+    }
+    &:focus {
+      border: 0;
+    }
+  }
+
+  &-text-circle {
+    outline: 0;
+    border: 0;
+    background-color: $white;
+    border-radius: 100%;
+  
+    &:hover {
+      background-color: $secondary-light;
+    }
+    &:focus {
+      border: 0;
+    }
+  }
+
+  &-contained {
+    color: $black;
+    outline: 0;
+    border: 0;
+  
+    &:focus {
+      border: 0;
+    }
+  }
+
+  &-contained-circle {
+    color: $black;
+    outline: 0;
+    border: 0;
+    border-radius: 100%;
+  
+    &:focus {
+      border: 0;
+    }
+  }
+
+  &-outlined {
+    outline: 0;
+    background-color: $white;
+  }
+
+  &-outlined-circle {
+    outline: 0;
+    background-color: $white;
+    border-radius: 100%;
+  }
+
+  &-small {
+    font-size: 10px;
+    padding: 5px;
+    }
+
+  &-large {
+    font-size: 22px;
+    padding: 11px;
+  }
+
+  &-disabled {
+    color: $secondary-light;
+    border: 1px solid $secondary-light;
+    background-color: $white;
+    cursor: none;
+    box-shadow: none;
+  
+    &:hover,
+    &:active,
+    &:focus{
+      color: $secondary-light;
+      border: 1px solid $secondary-light;
+      background-color: $white;
+      cursor: not-allowed;;
+      box-shadow: none;
+      transform: none;
+    }
+  
+    .icon{
+      color: $secondary-light
+    }
+  }
+  
+}
+
+
+
+
+
+
+
+
+

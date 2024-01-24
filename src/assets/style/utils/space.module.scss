@@ -1,0 +1,62 @@
+$step: 2px;
+
+$spaces: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30;
+
+@each $space in $spaces {
+  .mt-#{$space} {
+    margin-top: $step * $space;
+  }
+
+  .mb-#{$space} {
+    margin-bottom: $step * $space;
+  }
+
+  .ml-#{$space} {
+    margin-left: $step * $space;
+  }
+
+  .mr-#{$space} {
+    margin-right: $step * $space;
+  }
+
+  .my-#{$space} {
+    margin-top: $step * $space;
+    margin-bottom: $step * $space;
+  }
+
+  .mx-#{$space} {
+    margin-right: $step * $space;
+    margin-left: $step * $space;
+  }
+
+  .pt-#{$space} {
+    padding-top: $step * $space;
+  }
+
+  .pb-#{$space} {
+    padding-bottom: $step * $space;
+  }
+
+  .pl-#{$space} {
+    padding-left: $step * $space;
+  }
+
+  .pr-#{$space} {
+    padding-right: $step * $space;
+  }
+
+  .py-#{$space} {
+    padding-top: $step * $space;
+    padding-bottom: $step * $space;
+  }
+
+  .px-#{$space} {
+    padding-right: $step * $space;
+    padding-left: $step * $space;
+  }
+
+  .gap-#{$space} {
+    gap: $step * $space;
+  }
+}
+

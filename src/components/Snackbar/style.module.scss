@@ -1,0 +1,155 @@
+.snackbar__container {
+  z-index: 1400;
+  position: fixed;
+
+  &--bottom-left {
+    bottom: 24px;
+    left: 24px;
+    right: auto;
+  }
+
+  &--bottom-center {
+    bottom: 24px;
+    left: 34%;
+    right: auto;
+  }
+
+  &--bottom-right {
+    bottom: 24px;
+    right: 24px;
+    left: auto;
+  }
+
+  &--top-right {
+    top: 24px;
+    right: 24px;
+    left: auto;
+  }
+
+  &--top-center {
+    top: 24px;
+    left: 34%;
+    right: auto;
+  }
+
+  &--top-left {
+    top: 24px;
+    left: 24px;
+    right: auto;
+  }
+}
+
+.snackbar {
+  min-width: 250px;
+  padding: 6px 16px;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
+
+  &--default {
+    background-color: $secondary-dark;
+  }
+
+  &--error {
+    background-color: $danger-dark;
+  }
+
+  &--warning {
+    background-color: $warning;
+  }
+
+  &--info {
+    background-color: $info;
+  }
+
+  &--success {
+    background-color: $success;
+  }
+
+  &--up {
+    animation: slideInUp 4s ease;
+  }
+
+  &--right {
+    animation: slideInRight 4s ease;
+  }
+
+  &--down {
+    animation: slideInDown 4s ease;
+  }
+
+  &--left {
+    animation: slideInLeft 4s ease;
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    transform: translateY(100%);
+  }
+  30% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateX(-2000px);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(2000px);
+  }
+  30% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2000px);
+  }
+}
+
+@keyframes slideInDown {
+  0% {
+    transform: translateY(-2000px);
+  }
+  30% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateX(-2000px);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-2000px);
+  }
+  30% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2000px);
+  }
+}
