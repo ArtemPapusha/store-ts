@@ -2,6 +2,7 @@ import Icon from '@elements/Icon';
 import Skeleton from '@elements/Skeleton';
 
 import style from './style.module.scss'
+import styleSkeleton from "../../elements/Skeleton/style.module.scss"
 import flex from "@style/utils/flex.module.scss"
 import space from "@style/utils/space.module.scss"
 import colors from "@style/utils/colors.module.scss"
@@ -41,7 +42,7 @@ class Pagination implements PaginationInterface{
     active,
     variant = 'text',
     color = 'black',
-    textColor = 'black',
+    textColor = '',
     size = ''
   }: PaginationConstructor) {
     this.elementsAmount = elementsAmount;
@@ -83,12 +84,12 @@ class Pagination implements PaginationInterface{
 
   protected setDisabled = () => {
     if (this.$paginationContainer) {
-      const $paginationItems = this.$paginationContainer.querySelectorAll('.pagination_item');
+      const $paginationItems = this.$paginationContainer.querySelectorAll(`.${style['pagination_item']}`);
 
       if ($paginationItems.length > 0) {
         $paginationItems.forEach(($paginationItem) => {
           $paginationItem.setAttribute('disabled', 'disabled');
-          $paginationItem.classList.add('pagination_item--disabled');
+          $paginationItem.classList.add(style['pagination_item--disabled'])
         });
       }
     }
@@ -209,14 +210,11 @@ class Pagination implements PaginationInterface{
       colors[`br-${this.color}`],
       colors[`text-${this.textColor}`],
     ].join(' ');
-    
-    // `pagination_item pagination_item--${this.variant} bgc-${this.color} br-${this.color} text-${this.textColor} pagination_item--${this.size}`;
 
     const $iconPagination = new Icon({
       iconName: icon,
       size: 14,
       color: this.textColor,
-      className: ''
     })
 
     if ($iconPagination.icon) {
@@ -231,7 +229,7 @@ class Pagination implements PaginationInterface{
   }
 
   public removePaginationSkeleton = () =>{
-    const $skeletonPagination = document.querySelector('.pagination_container_skelton')
+    const $skeletonPagination = document.querySelector(`.${styleSkeleton.pagination_container_skelton}`)
     if ($skeletonPagination) {
       $skeletonPagination.remove()
     }
@@ -248,9 +246,7 @@ class Pagination implements PaginationInterface{
       flex[`align-items-center`],
       space[`gap-1`],
     ].join(' ');
-    
-    // `pagination_container d-flex just-content-center align-items-center gap-1`;
-   
+
     this.preBuildingPagination().forEach(item =>{
       const $item = document.createElement('li');
 
@@ -292,18 +288,18 @@ class Pagination implements PaginationInterface{
         $item.appendChild($paginationItem);
       }
 
-      const $paginationItem = $item.querySelector('.pagination_item')
+      const $paginationItem = $item.querySelector(`.${style['pagination_item']}`)
       if (item.type === 'page' && item.isActive) {
         if ($paginationItem) {
           $paginationItem.setAttribute('active', 'active')
-          $paginationItem.classList.add('pagination_item--active')
+          $paginationItem.classList.add(style['pagination_item--active']);
         }
       }
 
       if (item.type !== 'page' && item.isDisabled) {
         if ($paginationItem) {
           $paginationItem.setAttribute('disabled', 'disabled');
-          $paginationItem.classList.add('pagination_item--disabled')
+          $paginationItem.classList.add(style['pagination_item--disabled'])
         }
       }
 

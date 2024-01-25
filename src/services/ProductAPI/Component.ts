@@ -4,7 +4,7 @@ import {
   PRODUCT_ID_ROUTER,
   API_HOST,
   API_METHOD_GET,
-} from '../../assets/constants/api';
+} from '@constants/api';
 
 import {
   type ProductStateInstantsType,
@@ -39,8 +39,8 @@ class ProductAPI {
       const response = await fetch(`${API_HOST}${url}?_page=${page}`, { method });
 
       const { data, items }: ProductsResponse = await response.json();
-      updateProduct(data)
       updatePagination(page, items)
+      updateProduct(data)
     } catch (error) {
     
       console.log('getProducts => error', error);

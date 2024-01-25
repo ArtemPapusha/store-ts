@@ -9,10 +9,10 @@ export interface Product {
 
 export interface ProductStateInterface  {
   state: ProductStateType,
-  toggleLoaderProduct: (loading: boolean) => void,
-  updateProduct: (product: Product[]) => void,
-  updatePagination: (active?: number | null, amount?: number | null) => void,
-  setInitProduct: () => void,
+  toggleLoaderProduct: (loading: boolean) => this,
+  updateProduct: (product: Product[]) => Promise<this>,
+  updatePagination: (active?: number | null, amount?: number | null) => this,
+  setInitProduct: () => this,
 }
 
 export interface ProductStateType {

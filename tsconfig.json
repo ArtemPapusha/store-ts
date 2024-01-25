@@ -31,8 +31,8 @@
       "@components": ["./components"],
       "@components/*": ["./components/*"],
 
-      "@constants": ["./constants"],
-      "@constants/*": ["./constants/*"],
+      "@constants": ["./assets/constants"],
+      "@constants/*": ["./assets/constants/*"],
 
       "@elements": ["./elements"],
       "@elements/*": ["./elements/*"],

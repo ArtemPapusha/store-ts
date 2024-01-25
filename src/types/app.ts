@@ -1,7 +1,7 @@
 export type Color = 'primary' | 'primary-light' | 'primary-dark' | 'secondary' |
                     'secondary-light' | 'secondary-dark' | 'danger' | 'danger-light' |
                     'danger-dark' | 'warning' | 'warning-light' | 'warning-dark' | 'info' |
-                    'info-light' | 'info-dark' | 'black' | 'white'
+                    'info-light' | 'info-dark' | 'black' | 'white' | ''
 
 export type IconName = 'home' | 'home2' | 'home3' | 'office' | 'newspaper' | 'pencil' | 'pencil2' |
                    'quill' | 'pen' | 'blog' | 'eyedropper' | 'droplet' | 'paint-format' | 'image' |
@@ -58,5 +58,5 @@ export type IconName = 'home' | 'home2' | 'home3' | 'office' | 'newspaper' | 'pe
                    'skype' | 'reddit' | 'hackernews' | 'wikipedia' | 'linkedin' | 'linkedin2' | 'lastfm' | 'lastfm2' | 'delicious' |
                    'stumbleupon' | 'stumbleupon2' | 'stackoverflow' | 'pinterest' | 'pinterest2' | 'xing' | 'xing2' | 'flattr' | 'foursquare' |
                    'yelp' | 'paypal' | 'chrome' | 'firefox' | 'IE' | 'edge' | 'safari' | 'opera' | 'file-pdf' | 'file-openoffice' | 'file-word' |
-                   'file-excel' | 'libreoffice' | 'html-five' | 'html-five2' | 'css3' | 'git' | 'codepen' | 'svg' | 'IcoMoon' | null
+                   'file-excel' | 'libreoffice' | 'html-five' | 'html-five2' | 'css3' | 'git' | 'codepen' | 'svg' | 'IcoMoon' | '' | null
 

@@ -117,8 +117,6 @@ class CardProduct implements CardProductInterface {
       space[`mx-3`],
     ].join(' ');
     
-    // `card-wrapper d-flex flex-direction-column just-content-flex-start align-items-center flex-wrap-wrap card-wrapper--${this.name} wd-20 py-3 px-3 gap-10 my-3 mx-3`;
-
     $cardWrapper.appendChild(this.buildTitle());
     $cardWrapper.appendChild(this.buildImage());
 
@@ -133,8 +131,6 @@ class CardProduct implements CardProductInterface {
       space[`gap-10`],
     ].join(' ');
     
-    // 'card-product__footer d-flex flex-direction-row just-content-space-between align-items-center gap-10';
-
     $footerCardProduct.appendChild(this.buildPrice());
 
     if (this.buttonFavorite && this.buttonFavorite.buttonElement) {
@@ -158,8 +154,6 @@ class CardProduct implements CardProductInterface {
       style['card-product__title'],
       style[`card-product__title--${this.name}`],
     ].join(' ');
-    
-    // `card-product__title card-product__title--${this.name}`;
 
     if (this.title && this.title.textElement) {
       $title.appendChild(this.title.textElement);
@@ -171,8 +165,6 @@ class CardProduct implements CardProductInterface {
   protected buildImage = () => {
     const $imgWrapper = document.createElement('div');
     $imgWrapper.className = style['card-product__img'];
- 
-    // `card-product__img`;
 
     const $image = document.createElement('img');
 
@@ -180,8 +172,6 @@ class CardProduct implements CardProductInterface {
       style['card-product__img'],
       style[`card-product__img--${this.name}`],
     ].join(' ');
-    
-    // `card-product__img card-product__img--${this.name}`;
 
     $image.setAttribute('src', `${this.image}`);
     $image.setAttribute('alt', `${this.name}`);
@@ -197,9 +187,7 @@ class CardProduct implements CardProductInterface {
       style['card-product__description'],
       style[`card-product__description--${this.name}`],
     ].join(' ');
-    
-    // `card-product__description card-product__description--${this.name}`;
-  
+
     if (this.description && this.description.textElement) {
       $description.appendChild(this.description.textElement);
     }
@@ -213,9 +201,9 @@ class CardProduct implements CardProductInterface {
     $price.className = [
       style['card-product__price'],
       style[`card-product__price--${this.name}`],
+      space['py-2'],
+      space['px-2'],
     ].join(' ');
-    
-    // `card-product__price card-product__price--${this.name} py-2 px-2`;
 
     if (this.price && this.price.textElement) {
       $price.appendChild(this.price.textElement);

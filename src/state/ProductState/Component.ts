@@ -26,33 +26,33 @@ class ProductState extends Observer implements ProductStateInterface{
     },
   }
 
-  protected stateInit: ProductStateType = ProductState.INIT_STATE;
+  protected productState: ProductStateType = ProductState.INIT_STATE;
 
   constructor() {
     super(ProductState.INIT_STATE)
   }
 
   public get state() {
-    return this.stateInit;
+    return this.productState;
   }
 
   public toggleLoaderProduct = (loading: boolean): this => {
-    this.stateInit.isLoadingProduct = loading;
+    this.state.isLoadingProduct = loading;
     this.notificationObservers(ProductState.EVENT_TYPE_PRODUCT_LOADING);
     return this;
   }
 
   public updateProduct = async (products: Product[]): Promise<this> => {
-    this.stateInit.product = products;
+    this.state.product = products;
     console.log('products =>', products);
     this.notificationObservers(ProductState.EVENT_TYPE_UPDATE_PRODUCT);
     return this;
   }
 
   public updatePagination = (active: null | number = null, elementsAmount: null | number = null): this => {
-    this.stateInit.pagination = {
-      active: active ?? this.stateInit.pagination?.active,
-      elementsAmount: elementsAmount ?? this.stateInit.pagination?.elementsAmount,
+    this.state.pagination = {
+      active: active ?? this.state.pagination?.active,
+      elementsAmount: elementsAmount ?? this.state.pagination?.elementsAmount,
     };
     console.log('updatePagination => active =>', active);
     console.log('updatePagination => elementsAmount =>', elementsAmount);
@@ -61,8 +61,8 @@ class ProductState extends Observer implements ProductStateInterface{
   }
 
   public setInitProduct = (): this => {
-    if (!this.stateInit.isInitProduct) {
-      this.stateInit.isInitProduct = true;
+    if (!this.state.isInitProduct) {
+      this.state.isInitProduct = true;
       this.notificationObservers(ProductState.EVENT_TYPE_UPDATE_INIT)
     }
     return this;

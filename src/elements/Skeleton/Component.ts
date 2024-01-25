@@ -130,7 +130,6 @@ class Skeleton implements SkeletonInterface {
       const $skeletonPagiantionWrapper = document.createElement('ul');
       $skeletonPagiantionWrapper.className = [
         style.pagination_container_skelton,
-        style.pagination_container,
         flex[`d-flex`],
         flex[`just-content-center`],
         flex[`align-items-center`],
