@@ -7,7 +7,10 @@ import flex from "@style/utils/flex.module.scss"
 import space from "@style/utils/space.module.scss"
 import colors from "@style/utils/colors.module.scss"
 
-import { type Color, type IconName} from "@type/app"
+import {
+  type Color,
+  type IconName
+} from "@type/app"
 
 import {
   type PaginationInterface,
@@ -85,7 +88,7 @@ class Pagination implements PaginationInterface{
   protected setDisabled = () => {
     if (this.$paginationContainer) {
       const $paginationItems = this.$paginationContainer.querySelectorAll(`.${style['pagination_item']}`);
-
+      
       if ($paginationItems.length > 0) {
         $paginationItems.forEach(($paginationItem) => {
           $paginationItem.setAttribute('disabled', 'disabled');
@@ -238,7 +241,7 @@ class Pagination implements PaginationInterface{
   protected buildPagination = () => {
     const $paginationContainer = this.$paginationContainer || document.createElement('ul');
     $paginationContainer.innerHTML = '';
-    
+
     $paginationContainer.className = [
       style['pagination_container'],
       flex[`d-flex`],

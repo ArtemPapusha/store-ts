@@ -3,11 +3,11 @@ import { type Color, type IconName} from "@type/app"
 import style from "./style.module.scss"
 import colors from "@style/utils/colors.module.scss"
 import fonts from "@style/utils/fonts.module.scss"
+import space from "@style/utils/space.module.scss"
 
 import {
   type IconInterface,
   type IconConstructor,
-
 } from "./type"
 
 class Icon implements IconInterface {
@@ -45,11 +45,9 @@ class Icon implements IconInterface {
       colors[`text-${this.color}`],
       fonts[`fs-${this.size}`],
     ].join(' ');
-    
-    // `icon icon-${this.iconName} text-${this.color} fs-${this.size}`;
 
     if (this.className?.length) {
-      $icon.className = `${this.className}`
+      $icon.className = space[`${this.className}`]
     }
 
     this.$iconElement = $icon;

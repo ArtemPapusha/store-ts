@@ -79,8 +79,6 @@ class Snackbar implements SnackbarInterface{
         flex[`flex-direction-column`],
         space[`gap-3`],
       ].join(' ');
-      
-      // `snackbar__container d-flex flex-direction-column just-content-flex-start align-items-center snackbar__container--${this.position} gap-3`;
 
       document.body.appendChild($snackbarsContainer);
       Snackbar.$snackbarsContainer = $snackbarsContainer;
@@ -95,8 +93,6 @@ class Snackbar implements SnackbarInterface{
       flex[`just-content-flex-start`],
       flex[`align-items-center`],
     ].join(' ');
-    
-    // `snackbar d-flex just-content-flex-start align-items-center snackbar--${this.variant} snackbar--${this.transition}`;
 
     if (this.startIcon.icon) {
       $snackbarBody.appendChild(this.startIcon.icon);

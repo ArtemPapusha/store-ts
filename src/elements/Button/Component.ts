@@ -42,11 +42,8 @@ class Button implements ButtonInterface {
     }
 
     this.variant = variant;
-
     this.buttonSize = buttonSize;
-
     this.color = color;
-
     this.disabled = disabled;
 
     if(startIcon) {
@@ -100,7 +97,7 @@ class Button implements ButtonInterface {
 
     if (this.disabled) {
       $button.setAttribute('disabled', 'disabled');
-      $button.classList.add('button-disabled');
+      $button.classList.add(style['button-disabled']);
     }
 
     this.$buttonElement = $button;

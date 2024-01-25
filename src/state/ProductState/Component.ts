@@ -44,7 +44,6 @@ class ProductState extends Observer implements ProductStateInterface{
 
   public updateProduct = async (products: Product[]): Promise<this> => {
     this.state.product = products;
-    console.log('products =>', products);
     this.notificationObservers(ProductState.EVENT_TYPE_UPDATE_PRODUCT);
     return this;
   }
@@ -54,8 +53,6 @@ class ProductState extends Observer implements ProductStateInterface{
       active: active ?? this.state.pagination?.active,
       elementsAmount: elementsAmount ?? this.state.pagination?.elementsAmount,
     };
-    console.log('updatePagination => active =>', active);
-    console.log('updatePagination => elementsAmount =>', elementsAmount);
     this.notificationObservers(ProductState.EVENT_TYPE_UPDATE_PAGINATION);
     return this;
   }

@@ -4,22 +4,21 @@ import ProductState from "@state/ProductState";
 
 import flex from "@style/utils/flex.module.scss"
 
-import { type ListProductsImplements } from "./type";
+import { $divApp } from '@constants/div.app';
 
-import {
-  type ProductStateType
-} from "@state/ProductState";
+import { type ListProductsImplements } from "./type";
+import { type ProductStateType } from "@state/ProductState";
 
 class ListProducts implements ListProductsImplements{
   protected $listCards: HTMLElement | null = null;
 
-  eventTypes = [
+  public eventTypes: string[] = [
     ProductState.EVENT_TYPE_UPDATE_PRODUCT,
     ProductState.EVENT_TYPE_PRODUCT_LOADING,
     ProductState.EVENT_TYPE_UPDATE_INIT,
   ];
 
-  displayName = 'ListCards';
+  public displayName: string = 'ListCards';
 
   constructor() {
     this.buildListCards();
@@ -38,7 +37,7 @@ class ListProducts implements ListProductsImplements{
     }
   }
 
-  handleEvent = (
+  public handleEvent = (
     newState: ProductStateType,
     prevState: ProductStateType,
     eventType: string
@@ -57,7 +56,6 @@ class ListProducts implements ListProductsImplements{
       newState.isInitProduct ||
       eventType === ProductState.EVENT_TYPE_UPDATE_INIT
     ) {
-      console.log('ListCards => products', newState.product?.length);
       if (this.$listCards){
         this.$listCards.innerHTML = '';
 
@@ -83,13 +81,11 @@ class ListProducts implements ListProductsImplements{
       flex[`flex-wrap-wrap`],
       flex[`flex-direction-row`],
     ].join(' ');
-    
-    // 'list-products d-flex flex-direction-row just-content-center flex-wrap-wrap';
 
      this.$listCards = $listCards;
 
-    if (this.$listCards) {
-      document.body.appendChild(this.$listCards);
+    if (this.$listCards && $divApp) {
+      $divApp.appendChild(this.$listCards);
     }
   }
 }

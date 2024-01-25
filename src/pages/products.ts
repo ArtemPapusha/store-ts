@@ -1,5 +1,7 @@
 import '@style/pages/products.scss'
 
+import { $divApp } from '@constants/div.app';
+
 import ListProducts from '@modules/ListProducts';
 import ProductAPI from '@services/ProductAPI';
 import ProductState from '@state/ProductState';
@@ -26,8 +28,8 @@ pagination.setPageClick(async (page) => {
 async function init() {
   await productAPI.getProducts(productState.state.pagination.active);
 
-  if (pagination.pagination) {
-    document.body.appendChild(pagination.pagination);
+  if (pagination.pagination && $divApp) {
+    $divApp.appendChild(pagination.pagination);
   }
 }
 

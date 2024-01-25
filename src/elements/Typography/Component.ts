@@ -59,8 +59,6 @@ class Typography implements TypographyInterface {
       fonts[`fw-${this.textWeight}`],
     ].join(' ');
 
-    // `${style.typography} ${} text-${this.color} font-weight--${this.weight}`;
-
     $typography.innerText = this.text;
 
     this.$textCell = $typography;

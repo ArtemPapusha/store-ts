@@ -7,7 +7,6 @@ import space from "@style/utils/space.module.scss"
 import sizes from "@style/utils/sizes.module.scss"
 
 import { type CardProductInterface } from "./type"
-
 import { type Product } from '@state/ProductState';
 
 
