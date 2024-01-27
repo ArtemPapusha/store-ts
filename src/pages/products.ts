@@ -11,15 +11,15 @@ const listCards = new ListProducts();
 const productState = new ProductState();
 const productAPI = new ProductAPI(productState);
 const pagination = new Pagination({
-  elementsAmount: productState.state.pagination.elementsAmount,
   active: productState.state.pagination.active ?? 1,
+  pagesAmount: productState.state.pagination.pagesAmount
 });
 
 productState.addObserver(pagination).addObserver(listCards);
 
 pagination.setPageClick(async (page) => {
   listCards.productLoading();
-
+  pagination.setDisabled();
   if (page) {
   await productAPI.getProducts(page);
   }

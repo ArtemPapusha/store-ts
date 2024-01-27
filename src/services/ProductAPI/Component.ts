@@ -7,9 +7,10 @@ import {
 } from '@constants/api';
 
 import {
-  type ProductStateInstantsType,
   type ProductsResponse
 } from './type';
+
+import { type ProductStateInterface } from '@state/ProductState';
 
 
 class ProductAPI {
@@ -17,9 +18,9 @@ class ProductAPI {
 
   static productIdEndpoint = (id: number) => endpoint(API_METHOD_GET, PRODUCT_ID_ROUTER(id));
 
-  protected productState: ProductStateInstantsType;
+  protected productState: ProductStateInterface;
 
-  constructor(productState: ProductStateInstantsType) {
+  constructor(productState: ProductStateInterface ) {
     this.productState = productState;
   }
 
@@ -36,10 +37,10 @@ class ProductAPI {
     toggleLoaderProduct(true);
 
     try {
-      const response = await fetch(`${API_HOST}${url}?_page=${page}`, { method });
+      const response = await fetch(`${API_HOST}${url}?_page=${page}&_per_page=5`, { method });
 
-      const { data, items }: ProductsResponse = await response.json();
-      updatePagination(page, items)
+      const { data, pages }: ProductsResponse = await response.json();
+      updatePagination(page, pages)
       updateProduct(data)
     } catch (error) {
     
@@ -51,6 +52,34 @@ class ProductAPI {
       }
 
       toggleLoaderProduct(false);
+
+      console.log('getProducts => finally', endpoint);
+    }
+  }
+
+  public getProduct = async (id: number): Promise<void> => {
+    const { endpoint, url, method } = ProductAPI.productIdEndpoint(id);
+    const { 
+      state,
+      updateCart,
+      setInitProduct
+    } = this.productState
+
+    try {
+      const response = await fetch(`${API_HOST}${url}`, { method });
+
+      const { data }: ProductsResponse = await response.json();
+
+      updateCart(data);
+
+    } catch (error) {
+    
+      console.log('getProducts => error', error);
+
+    } finally {
+      if (!state.isInitProduct) {
+        setInitProduct();
+      }
 
       console.log('getProducts => finally', endpoint);
     }

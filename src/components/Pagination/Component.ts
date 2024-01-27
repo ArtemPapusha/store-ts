@@ -19,7 +19,7 @@ import {
 
 class Pagination implements PaginationInterface{
   protected static DEFAULT_PAGE_COUNT = 5;
-  protected static PAGE_LIMIT_ELEMENTS = 10;
+  protected static PAGE_LIMIT_ELEMENTS = 5;
 
   protected static types = {
     first: 'first',
@@ -32,8 +32,8 @@ class Pagination implements PaginationInterface{
   }
 
   protected $paginationContainer: HTMLElement | null = null;
-  protected elementsAmount: number;
   protected activePage: number;
+  protected pagesAmount: number;
   protected variant: string = 'text';
   protected color: Color = 'black';
   protected textColor: Color = 'black';
@@ -41,15 +41,15 @@ class Pagination implements PaginationInterface{
   protected handlePageClick: (page: number | null) => void;
 
   constructor({
-    elementsAmount,
     active,
+    pagesAmount,
     variant = 'text',
     color = 'black',
     textColor = '',
     size = ''
   }: PaginationConstructor) {
-    this.elementsAmount = elementsAmount;
     this.activePage = active;
+    this.pagesAmount = pagesAmount;
     this.variant = variant;
     this.color = color;
     this.textColor = textColor;
@@ -61,50 +61,33 @@ class Pagination implements PaginationInterface{
   public get pagination() {
     return this.$paginationContainer;
   }
-  
-  set currentActivePage(page: number) {
-    this.activePage = page;
-  }
-
-  set elementsAmountPage(elementsAmount: number){
-    this.elementsAmount = elementsAmount;
-  }
 
   public setPageClick = (handlePageClicker: (page: number | null) => void) => {
     this.handlePageClick = handlePageClicker;
+
   }
 
-  protected getPagesElementsAmount = () => {
-    return Math.round(this.elementsAmount / Pagination.PAGE_LIMIT_ELEMENTS)
-  }
-
-  public handleChangeActivePage = (page: number, elementsAmount: number) => {
+  public handleChangeActivePage = (page: number, pagesAmount: number) => {
     this.activePage = page;
-    this.elementsAmountPage = elementsAmount
+    this.pagesAmount = pagesAmount;
 
     this.buildPagination();
   }
 
-  protected setDisabled = () => {
+  public setDisabled = () => {
     if (this.$paginationContainer) {
       const $paginationItems = this.$paginationContainer.querySelectorAll(`.${style['pagination_item']}`);
+      console.log(this.$paginationContainer);
       
       if ($paginationItems.length > 0) {
         $paginationItems.forEach(($paginationItem) => {
-          $paginationItem.setAttribute('disabled', 'disabled');
-          $paginationItem.classList.add(style['pagination_item--disabled'])
+          if ($paginationItem) {
+            $paginationItem.setAttribute('disabled', 'disabled');
+            $paginationItem.classList.add(style['pagination_item--disabled'])
+          }
         });
       }
     }
-  
-  };
-
-  protected handlePageClicker = (page: number | null) => {
-    if (page !== undefined && this.handlePageClick) {
-      this.handlePageClick(page);
-    }
-
-    this.setDisabled();
   };
 
   protected preBuildingPagination = () => {
@@ -119,15 +102,15 @@ class Pagination implements PaginationInterface{
       isDisabled: this.activePage === 1,
     };
 
-    if (this.getPagesElementsAmount() > Pagination.DEFAULT_PAGE_COUNT && this.activePage > Pagination.DEFAULT_PAGE_COUNT) {
+    if (this.pagesAmount > Pagination.DEFAULT_PAGE_COUNT && this.activePage > Pagination.DEFAULT_PAGE_COUNT) {
       items[(items.length - 1) + 1] =  {
           type: Pagination.types.dotsLeft,
           isDisabled: true,
       };
     }
 
-    if (this.getPagesElementsAmount() <= Pagination.DEFAULT_PAGE_COUNT) {
-      for (let i = 1; i < this.getPagesElementsAmount() + 1; i++) {
+    if (this.pagesAmount <= Pagination.DEFAULT_PAGE_COUNT) {
+      for (let i = 1; i < this.pagesAmount + 1; i++) {
           items[(items.length - 1) + 1] =  {
               type: Pagination.types.page,
               value: i,
@@ -136,7 +119,7 @@ class Pagination implements PaginationInterface{
       }
     }
 
-    if (this.getPagesElementsAmount() > Pagination.DEFAULT_PAGE_COUNT && this.activePage <= Pagination.DEFAULT_PAGE_COUNT) {
+    if (this.pagesAmount > Pagination.DEFAULT_PAGE_COUNT && this.activePage <= Pagination.DEFAULT_PAGE_COUNT) {
       for (let i = 1; i < Pagination.DEFAULT_PAGE_COUNT + 1; i++) {
           items[(items.length - 1) + 1] =  {
               type: Pagination.types.page,
@@ -147,13 +130,13 @@ class Pagination implements PaginationInterface{
     }
 
     if (
-      this.getPagesElementsAmount() > Pagination.DEFAULT_PAGE_COUNT
+      this.pagesAmount > Pagination.DEFAULT_PAGE_COUNT
       && this.activePage > Pagination.DEFAULT_PAGE_COUNT
-      && this.activePage >= (this.getPagesElementsAmount() - Pagination.DEFAULT_PAGE_COUNT)
+      && this.activePage >= (this.pagesAmount - Pagination.DEFAULT_PAGE_COUNT)
       ) {
       for (
-          let i = this.getPagesElementsAmount() - Pagination.DEFAULT_PAGE_COUNT;
-          i < this.getPagesElementsAmount() + 1;
+          let i = this.pagesAmount - Pagination.DEFAULT_PAGE_COUNT;
+          i < this.pagesAmount + 1;
           i++
       ) {
           items[(items.length - 1) + 1] =  {
@@ -165,9 +148,9 @@ class Pagination implements PaginationInterface{
     }
 
     if (
-      this.getPagesElementsAmount() > Pagination.DEFAULT_PAGE_COUNT
+      this.pagesAmount > Pagination.DEFAULT_PAGE_COUNT
       && this.activePage > Pagination.DEFAULT_PAGE_COUNT
-      && this.activePage < (this.getPagesElementsAmount() - Pagination.DEFAULT_PAGE_COUNT)
+      && this.activePage < (this.pagesAmount - Pagination.DEFAULT_PAGE_COUNT)
       ) {
       for (
           let i = this.activePage - Math.trunc(Pagination.DEFAULT_PAGE_COUNT / 2);
@@ -182,7 +165,7 @@ class Pagination implements PaginationInterface{
       }
     }
    
-    if (this.getPagesElementsAmount() > Pagination.DEFAULT_PAGE_COUNT && this.activePage < (this.getPagesElementsAmount() - Pagination.DEFAULT_PAGE_COUNT)) {
+    if (this.pagesAmount > Pagination.DEFAULT_PAGE_COUNT && this.activePage < (this.pagesAmount - Pagination.DEFAULT_PAGE_COUNT)) {
       items[(items.length - 1) + 1] = {
           type: Pagination.types.dotsRight,
           isDisabled: true,
@@ -191,12 +174,12 @@ class Pagination implements PaginationInterface{
 
     items[(items.length - 1) + 1] =  {
         type: Pagination.types.arrowRight,
-        isDisabled: this.activePage === this.getPagesElementsAmount(),
+        isDisabled: this.activePage === this.pagesAmount,
     };
 
     items[(items.length - 1) + 1] =  {
       type: Pagination.types.last,
-      isDisabled: this.activePage === this.getPagesElementsAmount(),
+      isDisabled: this.activePage === this.pagesAmount,
     };
     
     return items;
@@ -318,7 +301,7 @@ class Pagination implements PaginationInterface{
     $paginationItemToFirstPage.setAttribute('id', 'pagination_first_page');
 
     $paginationItemToFirstPage.addEventListener('click', () => this.handlePageClick(1))
-
+    
     return $paginationItemToFirstPage;
   }
 
@@ -344,7 +327,7 @@ class Pagination implements PaginationInterface{
 
     $paginationItemToNextPage.addEventListener('click', () => {
 
-      if (this.activePage < this.getPagesElementsAmount()) {
+      if (this.activePage < this.pagesAmount) {
           this.handlePageClick(this.activePage + 1);
       }
   });
@@ -357,7 +340,7 @@ class Pagination implements PaginationInterface{
 
     $paginationItemToLastPage.setAttribute('id', 'pagination_last_page');
 
-    $paginationItemToLastPage.addEventListener('click', () => this.handlePageClick(this.getPagesElementsAmount()));
+    $paginationItemToLastPage.addEventListener('click', () => this.handlePageClick(this.pagesAmount));
 
     return $paginationItemToLastPage
   }

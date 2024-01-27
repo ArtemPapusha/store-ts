@@ -29,12 +29,12 @@ class PaginationProduct extends Pagination {
       const activePage = prevState.pagination?.active !== newState.pagination?.active 
         ? newState.pagination?.active 
         : prevState.pagination?.active;
-      
-      const elementsAmount = prevState.pagination?.elementsAmount !== newState.pagination?.elementsAmount 
-        ? newState.pagination?.elementsAmount 
-        : prevState.pagination?.elementsAmount;
 
-      this.handleChangeActivePage(activePage, elementsAmount);
+      const pagesAmount = prevState.pagination?.pagesAmount !== newState.pagination?.pagesAmount 
+      ? newState.pagination?.pagesAmount 
+      : prevState.pagination?.pagesAmount;
+
+      this.handleChangeActivePage(activePage, pagesAmount);
     }
   }
 }

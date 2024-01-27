@@ -2,7 +2,9 @@ import Skeleton from "@elements/Skeleton";
 import CardProduct from "@components/CardProduct";
 import ProductState from "@state/ProductState";
 
+import style from "./style.module.scss"
 import flex from "@style/utils/flex.module.scss"
+import space from "@style/utils/space.module.scss"
 
 import { $divApp } from '@constants/div.app';
 
@@ -32,7 +34,7 @@ class ListProducts implements ListProductsImplements{
     if (this.$listCards) {
       this.$listCards.innerHTML = '';
       const skeleton = new Skeleton();
-      const skeletonProduct = skeleton.buildSkeletonProduct(10)
+      const skeletonProduct = skeleton.buildSkeletonProduct(5)
       this.$listCards.appendChild(skeletonProduct)
     }
   }
@@ -69,17 +71,21 @@ class ListProducts implements ListProductsImplements{
         })
       }
     }
-
   }
 
   protected buildListCards = () => {
     const $listCards = document.createElement('div');
     
     $listCards.className = [
+      style[`list_products`],
       flex[`d-flex`],
       flex[`just-content-center`],
       flex[`flex-wrap-wrap`],
       flex[`flex-direction-row`],
+      space[`px-2`],
+      space[`py-2`],
+      space[`mx-2`],
+      space[`my-2`],
     ].join(' ');
 
      this.$listCards = $listCards;

@@ -6,8 +6,8 @@ export interface PaginationInterface {
 
 
 export interface PaginationConstructor {
-  elementsAmount: number,
   active: number,
+  pagesAmount: number,
   variant?: 'text' | 'text-circle' | 'contained' | 'contained-circle' | 'outlined' |    'outlined-circle',
   color?: Color,
   textColor?: Color,

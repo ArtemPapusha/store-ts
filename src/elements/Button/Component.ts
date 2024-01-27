@@ -16,7 +16,7 @@ class Button implements ButtonInterface {
   protected $buttonElement: HTMLElement | null = null;
   protected className: string = '';
   protected textContent: Typography;
-  protected variant: string = 'contained';
+  protected variant: string = 'text';
   protected buttonSize: string = '';
   protected color: Color = 'black';
   protected disabled: boolean = false;
@@ -27,7 +27,7 @@ class Button implements ButtonInterface {
   constructor({
     className = '',
     textContent,
-    variant = 'contained',
+    variant = 'text',
     buttonSize = '',
     color = 'black',
     disabled = false,
@@ -61,6 +61,10 @@ class Button implements ButtonInterface {
 
   public get buttonElement() {
     return this.$buttonElement;
+  }
+
+  public addEventListener(eventType: string, callback: () => void) {
+    this.buttonElement?.addEventListener(eventType, callback);
   }
 
   protected buildButton = () => {
