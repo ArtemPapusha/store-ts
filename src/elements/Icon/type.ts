@@ -5,8 +5,8 @@ export interface IconInterface {
 }
 
 export interface IconConstructor {
-  iconName?: IconName
+  iconName?: IconName | null
   size?: 12 | 14 | 16 | 18 | 24 | 26
-  color?: Color
+  color?: Color | null
   className?: string
 }

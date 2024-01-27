@@ -2,9 +2,6 @@ import Button from '@elements/Button';
 import Typography from '@elements/Typography';
 
 import style from "./style.module.scss"
-import flex from "@style/utils/flex.module.scss"
-import space from "@style/utils/space.module.scss"
-import sizes from "@style/utils/sizes.module.scss"
 
 import { type CardProductInterface } from "./type"
 import { type Product } from '@state/ProductState';
@@ -103,17 +100,17 @@ class CardProduct implements CardProductInterface {
     $cardWrapper.className = [
       style['card-wrapper'],
       style[`card-wrapper-${this.name}`],
-      flex[`d-flex`],
-      flex[`just-content-flex-start`],
-      flex[`align-items-center`],
-      flex[`flex-direction-column`],
-      flex[`flex-wrap-wrap`],
-      sizes[`wd-20`],
-      space[`py-3`],
-      space[`px-3`],
-      space[`gap-10`],
-      space[`my-3`],
-      space[`mx-3`],
+      `d-flex`,
+      `just-content-flex-start`,
+      `align-items-center`,
+      `flex-direction-column`,
+      `flex-wrap-wrap`,
+      `wd-20`,
+      `py-3`,
+      `px-3`,
+      `gap-10`,
+      `my-3`,
+      `mx-3`,
     ].join(' ');
     
     $cardWrapper.appendChild(this.buildTitle());
@@ -123,11 +120,11 @@ class CardProduct implements CardProductInterface {
 
     $footerCardProduct.className = [
       style['card-product__footer'],
-      flex[`d-flex`],
-      flex[`just-content-space-between`],
-      flex[`align-items-center`],
-      flex[`flex-direction-row`],
-      space[`gap-10`],
+      `d-flex`,
+      `just-content-space-between`,
+      `align-items-center`,
+      `flex-direction-row`,
+      `gap-10`,
     ].join(' ');
     
     $footerCardProduct.appendChild(this.buildPrice());
@@ -200,8 +197,8 @@ class CardProduct implements CardProductInterface {
     $price.className = [
       style['card-product__price'],
       style[`card-product__price--${this.name}`],
-      space['py-2'],
-      space['px-2'],
+      'py-2',
+      'px-2',
     ].join(' ');
 
     if (this.price && this.price.textElement) {

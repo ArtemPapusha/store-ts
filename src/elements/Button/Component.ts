@@ -2,8 +2,6 @@ import Typography from "@elements/Typography";
 import Icon from "@elements/Icon";
 
 import style from "./style.module.scss";
-import flex from "@style/utils/flex.module.scss"
-import colors from "@style/utils/colors.module.scss"
 
 import { type Color } from "@type/app";
 
@@ -91,12 +89,12 @@ class Button implements ButtonInterface {
       style[`button-${this.className}`],
       style[`button-${this.variant}`],
       style[`button-${this.buttonSize}`],
-      flex[`d-flex`],
-      flex[`just-content-center`],
-      flex[`align-items-center`],
-      flex[`flex-direction-row`],
-      colors[`bgc-${this.color}`],
-      colors[`br-${this.color}`],
+      `d-flex`,
+      `just-content-center`,
+      `align-items-center`,
+      `flex-direction-row`,
+      `bgc-${this.color}`,
+      `br-${this.color}`,
     ].join(' ');
 
     if (this.disabled) {

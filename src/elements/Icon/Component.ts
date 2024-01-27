@@ -1,9 +1,7 @@
-import { type Color, type IconName} from "@type/app"
+import { type Color } from "@type/app"
+import { type IconName } from "@type/icons"
 
 import style from "./style.module.scss"
-import colors from "@style/utils/colors.module.scss"
-import fonts from "@style/utils/fonts.module.scss"
-import space from "@style/utils/space.module.scss"
 
 import {
   type IconInterface,
@@ -11,9 +9,9 @@ import {
 } from "./type"
 
 class Icon implements IconInterface {
-  protected iconName: IconName = 'heart';
+  protected iconName: IconName | null = 'heart';
   protected size: number = 16;
-  protected color: Color = 'primary';
+  protected color: Color | null = 'primary';
   protected className: string = '';
   protected $iconElement: HTMLElement | null = null;
 
@@ -42,12 +40,12 @@ class Icon implements IconInterface {
     $icon.className = [
       style.icon,
       style[`icon-${this.iconName}`],
-      colors[`text-${this.color}`],
-      fonts[`fs-${this.size}`],
+      `text-${this.color}`,
+      `fs-${this.size}`,
     ].join(' ');
 
     if (this.className?.length) {
-      $icon.className = space[`${this.className}`]
+      $icon.className = `${this.className}`
     }
 
     this.$iconElement = $icon;

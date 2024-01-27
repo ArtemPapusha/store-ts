@@ -1,8 +1,6 @@
 import { type Color} from "@type/app"
 
 import style from "./style.module.scss"
-import fonts from "@style/utils/fonts.module.scss"
-import colors from "@style/utils/colors.module.scss"
 
 import {
   type TypographyInterface,
@@ -55,8 +53,8 @@ class Typography implements TypographyInterface {
     $typography.className = [
       style.typography,
       style[`typography-${this.type}`],
-      colors[`text-${this.color}`],
-      fonts[`fw-${this.textWeight}`],
+      `text-${this.color}`,
+      `fw-${this.textWeight}`,
     ].join(' ');
 
     $typography.innerText = this.text;

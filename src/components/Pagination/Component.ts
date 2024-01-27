@@ -2,10 +2,7 @@ import Icon from '@elements/Icon';
 import Skeleton from '@elements/Skeleton';
 
 import style from './style.module.scss'
-import styleSkeleton from "../../elements/Skeleton/style.module.scss"
-import flex from "@style/utils/flex.module.scss"
-import space from "@style/utils/space.module.scss"
-import colors from "@style/utils/colors.module.scss"
+import styleSkeleton from "@elements/Skeleton/style.module.scss"
 
 import {
   type Color,
@@ -19,7 +16,6 @@ import {
 
 class Pagination implements PaginationInterface{
   protected static DEFAULT_PAGE_COUNT = 5;
-  protected static PAGE_LIMIT_ELEMENTS = 5;
 
   protected static types = {
     first: 'first',
@@ -35,8 +31,8 @@ class Pagination implements PaginationInterface{
   protected activePage: number;
   protected pagesAmount: number;
   protected variant: string = 'text';
-  protected color: Color = 'black';
-  protected textColor: Color = 'black';
+  protected color: Color | null= 'black';
+  protected textColor: Color | null= 'black';
   protected size: string = '';
   protected handlePageClick: (page: number | null) => void;
 
@@ -45,7 +41,7 @@ class Pagination implements PaginationInterface{
     pagesAmount,
     variant = 'text',
     color = 'black',
-    textColor = '',
+    textColor = null,
     size = ''
   }: PaginationConstructor) {
     this.activePage = active;
@@ -192,9 +188,9 @@ class Pagination implements PaginationInterface{
       style['pagination_item'],
       style[`pagination_item--${this.variant}`],
       style[`pagination_item--${this.size}`],
-      colors[`bgc-${this.color}`],
-      colors[`br-${this.color}`],
-      colors[`text-${this.textColor}`],
+      `bgc-${this.color}`,
+      `br-${this.color}`,
+      `text-${this.textColor}`,
     ].join(' ');
 
     const $iconPagination = new Icon({
@@ -227,10 +223,10 @@ class Pagination implements PaginationInterface{
 
     $paginationContainer.className = [
       style['pagination_container'],
-      flex[`d-flex`],
-      flex[`just-content-center`],
-      flex[`align-items-center`],
-      space[`gap-1`],
+      `d-flex`,
+      `just-content-center`,
+      `align-items-center`,
+      `gap-1`,
     ].join(' ');
 
     this.preBuildingPagination().forEach(item =>{

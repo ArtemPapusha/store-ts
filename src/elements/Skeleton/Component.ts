@@ -1,7 +1,4 @@
 import style from "./style.module.scss"
-import flex from "@style/utils/flex.module.scss"
-import space from "@style/utils/space.module.scss"
-import sizes from "@style/utils/sizes.module.scss"
 
 import {
   type SkeletonInterface
@@ -14,27 +11,27 @@ class Skeleton implements SkeletonInterface {
   public buildSkeletonProduct = (count: number): HTMLDivElement => {
     const $skeletonContainer = document.createElement('div');
     $skeletonContainer.className = [
-      flex[`d-flex`],
-      flex[`just-content-center`],
-      flex[`flex-direction-row`],
-      flex[`flex-wrap-wrap`],
+      `d-flex`,
+      `just-content-center`,
+      `flex-direction-row`,
+      `flex-wrap-wrap`,
     ].join(' ');
 
     for (let i = 0; i < count; i++) {
       const $cardWrapperSkeleton = document.createElement('div');
       $cardWrapperSkeleton.className = [
         style.card_wrapper_skeleton,
-        flex[`d-flex`],
-        flex[`just-content-flex-start`],
-        flex[`flex-direction-column`],
-        flex[`align-items-center`],
-        flex[`align-self-flex-start`],
-        sizes[`wd-20`],
-        space[`py-3`],
-        space[`px-3`],
-        space[`gap-10`],
-        space[`my-3`],
-        space[`mx-3`],
+        `d-flex`,
+        `just-content-flex-start`,
+        `flex-direction-column`,
+        `align-items-center`,
+        `align-self-flex-start`,
+        `wd-20`,
+        `py-3`,
+        `px-3`,
+        `gap-10`,
+        `my-3`,
+        `mx-3`,
       ].join(' ');
       
       $cardWrapperSkeleton.appendChild(this.buildSkeletonTitle());
@@ -43,10 +40,10 @@ class Skeleton implements SkeletonInterface {
       const $footerCardProductSkeleton = document.createElement('div');
       $footerCardProductSkeleton.className = [
         style.footer_card_product_skeleton,
-        flex[`d-flex`],
-        flex[`just-content-space-between`],
-        flex[`align-items-center`],
-        space[`gap-15`],
+        `d-flex`,
+        `just-content-space-between`,
+        `align-items-center`,
+        `gap-15`,
       ].join(' ');
       
       const $priceSkeleton = document.createElement('div');
@@ -71,7 +68,7 @@ class Skeleton implements SkeletonInterface {
 
     $titleSkeleton.className = [
       style.title_skeleton,
-      sizes['wd-100p'],
+      'wd-100p',
     ].join(' ');
   
     for (let i = 0; i < 3; i++) {
@@ -80,7 +77,7 @@ class Skeleton implements SkeletonInterface {
       $titleSkeletonElement.className = [
         style.title_skeleton_element,
         style.skeleton,
-        sizes['wd-100p'],
+        'wd-100p',
       ].join(' ');
       
       $titleSkeleton.appendChild($titleSkeletonElement);
@@ -95,7 +92,7 @@ class Skeleton implements SkeletonInterface {
     $imageSkeleton.className = [
       style.image_skeleton,
       style.skeleton,
-      sizes['wd-100p'],
+      'wd-100p',
     ].join(' ');
 
     return $imageSkeleton;
@@ -116,10 +113,10 @@ class Skeleton implements SkeletonInterface {
     const $skeletonPagiantionWrapper = document.createElement('ul');
     $skeletonPagiantionWrapper.className = [
       style.pagination_container_skelton,
-      flex[`d-flex`],
-      flex[`just-content-center`],
-      flex[`align-items-center`],
-      space[`gap-2`],
+      `d-flex`,
+      `just-content-center`,
+      `align-items-center`,
+      `gap-2`,
     ].join(' ');
     
     for (let i = 0; i < 8; i++) {
