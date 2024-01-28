@@ -6,20 +6,22 @@ class Observer {
   
   protected prevState: ProductStateType = {
     product: [],
+    cart: [],
     isLoadingProduct: false,
     isInitProduct: false,
     pagination: {
-      elementsAmount: 0,
-      active: 0
+      pagesAmount: 1,
+      active: 1
     }
   };
 
   protected _state: ProductStateType = {
     product: [],
+    cart: [],
     isLoadingProduct: false,
     isInitProduct: false,
     pagination: {
-      elementsAmount: 0,
+      pagesAmount: 0,
       active: 0
     }
   };

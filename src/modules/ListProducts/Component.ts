@@ -9,7 +9,7 @@ import { $divApp } from '@constants/div.app';
 import { type ListProductsImplements } from "./type";
 import { type ProductStateType } from "@state/ProductState";
 
-class ListProducts implements ListProductsImplements{
+class ListProducts implements ListProductsImplements {
   protected $listCards: HTMLElement | null = null;
 
   public eventTypes: string[] = [

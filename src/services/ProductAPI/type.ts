@@ -1,6 +1,4 @@
-  import {
-    type Product
-  } from "@state/ProductState";
+  import { type Product } from "@state/ProductState";
   
 
   export interface ProductsResponse {

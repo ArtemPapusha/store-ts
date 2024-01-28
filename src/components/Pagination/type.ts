@@ -4,7 +4,6 @@ export interface PaginationInterface {
   pagination: HTMLElement | null
 }
 
-
 export interface PaginationConstructor {
   active: number,
   pagesAmount: number,

@@ -1,6 +1,3 @@
 export { default } from "./Component"
 
-export {
-  type ProductStateInstantsType,
-  type ProductsResponse,
-} from "./type"
+export { type ProductsResponse } from "./type"

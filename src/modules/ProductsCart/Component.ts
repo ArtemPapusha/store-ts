@@ -1,4 +1,3 @@
-// import Modal from "@components/Modal";
 import ProductState from "@state/ProductState";
 
 class ProductsCart {

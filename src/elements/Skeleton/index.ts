@@ -1,5 +1,3 @@
 export { default } from "./Component"
 
-export {
-  type SkeletonInterface,
-} from "./type"
+export { type SkeletonInterface } from "./type"

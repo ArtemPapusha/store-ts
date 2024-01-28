@@ -4,10 +4,8 @@ import Skeleton from '@elements/Skeleton';
 import style from './style.module.scss'
 import styleSkeleton from "@elements/Skeleton/style.module.scss"
 
-import {
-  type Color,
-  type IconName
-} from "@type/app"
+import { type Color } from "@type/app"
+import { type IconName } from "@type/icons"
 
 import {
   type PaginationInterface,
@@ -340,7 +338,6 @@ class Pagination implements PaginationInterface{
 
     return $paginationItemToLastPage
   }
-
 }
 
 export default Pagination;

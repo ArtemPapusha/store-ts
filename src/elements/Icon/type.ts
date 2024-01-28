@@ -1,4 +1,5 @@
-import type { Color, IconName } from '@type/app.ts';
+import type { Color } from '@type/app.ts';
+import type { IconName } from '@type/icons'
 
 export interface IconInterface {
   icon: HTMLElement | null

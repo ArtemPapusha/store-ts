@@ -6,12 +6,9 @@ import {
   API_METHOD_GET,
 } from '@constants/api';
 
-import {
-  type ProductsResponse
-} from './type';
+import { type ProductsResponse } from './type';
 
 import { type ProductStateInterface } from '@state/ProductState';
-
 
 class ProductAPI {
   static productsEndpoint = () => endpoint(API_METHOD_GET, PRODUCTS_ROUTER);
