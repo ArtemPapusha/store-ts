@@ -1,4 +1,4 @@
-import type { Color } from '@type/app.ts';
+import type { Color } from '@type/app';
 
 export interface TypographyInterface {
   textElement: HTMLElement | null

@@ -15,6 +15,13 @@ export default () => {
             },
           ],
         },
+        custom: {
+          families: [{
+            name: 'IcoMoon-Free',
+            local: 'IcoMoon-Free',
+            src: './src/assets/fonts/IcoMoon-Free.ttf',
+          }],
+        },
       }),
     ],
     build: {

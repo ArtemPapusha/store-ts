@@ -1,21 +1,18 @@
 import Pagination from "@components/Pagination";
 import ProductState from "@state/ProductState";
 
-import {
-  type ProductStateType
-} from "@state/ProductState";
-
+import { type ProductStateType } from "@state/ProductState";
 
 class PaginationProduct extends Pagination { 
-  eventTypes = [
+  public eventTypes: string[] = [
     ProductState.EVENT_TYPE_UPDATE_PAGINATION,
     ProductState.EVENT_TYPE_PRODUCT_LOADING,
     ProductState.EVENT_TYPE_UPDATE_INIT,
   ];
   
-  displayName = 'PaginationProductDecorator';
+  public displayName: string = 'PaginationProductDecorator';
   
-  handleEvent = (newState: ProductStateType, prevState: ProductStateType, eventType: string) => {
+  public handleEvent = (newState: ProductStateType, prevState: ProductStateType, eventType: string) => {
     if (!newState.isInitProduct && newState.isLoadingProduct && !prevState.isLoadingProduct) {
       this.buildPaginationSkeleton();
     }
@@ -32,16 +29,14 @@ class PaginationProduct extends Pagination {
       const activePage = prevState.pagination?.active !== newState.pagination?.active 
         ? newState.pagination?.active 
         : prevState.pagination?.active;
-      
-      const elementsAmount = prevState.pagination?.elementsAmount !== newState.pagination?.elementsAmount 
-        ? newState.pagination?.elementsAmount 
-        : prevState.pagination?.elementsAmount;
 
-      this.handleChangeActivePage(activePage, elementsAmount);
-  
+      const pagesAmount = prevState.pagination?.pagesAmount !== newState.pagination?.pagesAmount 
+      ? newState.pagination?.pagesAmount 
+      : prevState.pagination?.pagesAmount;
+
+      this.handleChangeActivePage(activePage, pagesAmount);
     }
   }
-
 }
 
 export default PaginationProduct;

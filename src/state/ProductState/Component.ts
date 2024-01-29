@@ -16,13 +16,16 @@ class ProductState extends Observer implements ProductStateInterface{
 
   static EVENT_TYPE_UPDATE_INIT: string = 'EVENT_TYPE_UPDATE_INIT';
 
+  static EVENT_TYPE_UPDATE_CART: string = 'EVENT_TYPE_UPDATE_CART';
+
   static INIT_STATE: ProductStateType = {
     product: [],
+    cart:[],
     isLoadingProduct: false,
     isInitProduct: false,
     pagination: {
       active: 1,
-      elementsAmount: 10,
+      pagesAmount: 1,
     },
   }
 
@@ -44,19 +47,25 @@ class ProductState extends Observer implements ProductStateInterface{
 
   public updateProduct = async (products: Product[]): Promise<this> => {
     this.state.product = products;
-    console.log('products =>', products);
     this.notificationObservers(ProductState.EVENT_TYPE_UPDATE_PRODUCT);
     return this;
   }
 
-  public updatePagination = (active: null | number = null, elementsAmount: null | number = null): this => {
+  public updatePagination = (
+    active: null | number = null,
+    pagesAmount: null | number = null
+    ): this => {
     this.state.pagination = {
       active: active ?? this.state.pagination?.active,
-      elementsAmount: elementsAmount ?? this.state.pagination?.elementsAmount,
+      pagesAmount: pagesAmount ?? this.state.pagination?.pagesAmount,
     };
-    console.log('updatePagination => active =>', active);
-    console.log('updatePagination => elementsAmount =>', elementsAmount);
     this.notificationObservers(ProductState.EVENT_TYPE_UPDATE_PAGINATION);
+    return this;
+  }
+
+  public updateCart = async (products: Product[]): Promise<this> => {
+    this.state.cart = products;
+    this.notificationObservers(ProductState.EVENT_TYPE_UPDATE_CART);
     return this;
   }
 

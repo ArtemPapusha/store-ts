@@ -6,20 +6,22 @@ class Observer {
   
   protected prevState: ProductStateType = {
     product: [],
+    cart: [],
     isLoadingProduct: false,
     isInitProduct: false,
     pagination: {
-      elementsAmount: 0,
-      active: 0
+      pagesAmount: 1,
+      active: 1
     }
   };
 
   protected _state: ProductStateType = {
     product: [],
+    cart: [],
     isLoadingProduct: false,
     isInitProduct: false,
     pagination: {
-      elementsAmount: 0,
+      pagesAmount: 0,
       active: 0
     }
   };
@@ -35,7 +37,7 @@ class Observer {
       this.prevState = JSON.parse(JSON.stringify(state));
     }
   
-    notificationObservers = (eventType: string) => {
+    public notificationObservers = (eventType: string) => {
       this.observers.forEach(observer => {
         if (observer.eventTypes.includes(eventType)) {
           console.log('notificationObservers => displayName, eventType =>', observer.displayName, eventType);
@@ -48,12 +50,12 @@ class Observer {
       this.prevState = JSON.parse(JSON.stringify(this.state));
     }
   
-    addObserver = (observer: ObserverType): this =>  {
+    public addObserver = (observer: ObserverType): this =>  {
       this.observers.push(observer)
       return this;
     }
   
-    removeObserver = (observer: ObserverType): this => {
+    public removeObserver = (observer: ObserverType): this => {
       this.observers = this.observers.filter(obs => obs !== observer)
       return this;
     }

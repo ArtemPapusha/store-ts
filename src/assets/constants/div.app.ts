@@ -1,0 +1,1 @@
+export const $divApp: HTMLDivElement | null = document.querySelector('#app');

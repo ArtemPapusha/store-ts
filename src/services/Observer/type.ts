@@ -1,8 +1,3 @@
-// export interface ObserverType {
-//   handleEvent: (newState: object, prevState: object, eventType: string) => void,
-//   eventTypes: string[]
-//   displayName: string
-// }
 import { type ProductStateType } from "@state/ProductState"
 
 export interface ObserverType {

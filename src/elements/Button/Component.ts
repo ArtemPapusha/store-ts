@@ -2,8 +2,6 @@ import Typography from "@elements/Typography";
 import Icon from "@elements/Icon";
 
 import style from "./style.module.scss";
-import flex from "@style/utils/flex.module.scss"
-import colors from "@style/utils/colors.module.scss"
 
 import { type Color } from "@type/app";
 
@@ -16,7 +14,7 @@ class Button implements ButtonInterface {
   protected $buttonElement: HTMLElement | null = null;
   protected className: string = '';
   protected textContent: Typography;
-  protected variant: string = 'contained';
+  protected variant: string = 'text';
   protected buttonSize: string = '';
   protected color: Color = 'black';
   protected disabled: boolean = false;
@@ -27,7 +25,7 @@ class Button implements ButtonInterface {
   constructor({
     className = '',
     textContent,
-    variant = 'contained',
+    variant = 'text',
     buttonSize = '',
     color = 'black',
     disabled = false,
@@ -42,11 +40,8 @@ class Button implements ButtonInterface {
     }
 
     this.variant = variant;
-
     this.buttonSize = buttonSize;
-
     this.color = color;
-
     this.disabled = disabled;
 
     if(startIcon) {
@@ -64,6 +59,10 @@ class Button implements ButtonInterface {
 
   public get buttonElement() {
     return this.$buttonElement;
+  }
+
+  public addEventListener(eventType: string, callback: () => void) {
+    this.buttonElement?.addEventListener(eventType, callback);
   }
 
   protected buildButton = () => {
@@ -90,17 +89,17 @@ class Button implements ButtonInterface {
       style[`button-${this.className}`],
       style[`button-${this.variant}`],
       style[`button-${this.buttonSize}`],
-      flex[`d-flex`],
-      flex[`just-content-center`],
-      flex[`align-items-center`],
-      flex[`flex-direction-row`],
-      colors[`bgc-${this.color}`],
-      colors[`br-${this.color}`],
+      'd-flex',
+      'just-content-center',
+      'align-items-center',
+      'flex-direction-row',
+      'bgc-${this.color}',
+      'br-${this.color}',
     ].join(' ');
 
     if (this.disabled) {
       $button.setAttribute('disabled', 'disabled');
-      $button.classList.add('button-disabled');
+      $button.classList.add(style.buttonDisabled);
     }
 
     this.$buttonElement = $button;

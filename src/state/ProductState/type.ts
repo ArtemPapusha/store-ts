@@ -1,6 +1,6 @@
 export interface Product {
   id?: number,
-  name?: string,
+  category?: string,
   title?: string,
   image?: string,
   description?: string,
@@ -10,17 +10,19 @@ export interface Product {
 export interface ProductStateInterface  {
   state: ProductStateType,
   toggleLoaderProduct: (loading: boolean) => this,
-  updateProduct: (product: Product[]) => Promise<this>,
-  updatePagination: (active?: number | null, amount?: number | null) => this,
+  updateProduct: (products: Product[]) => Promise<this>,
+  updatePagination: (active?: number | null, pagesAmount?: number | null) => this,
   setInitProduct: () => this,
+  updateCart: (products: Product[]) => Promise<this>,
 }
 
 export interface ProductStateType {
   product: Product[],
+  cart: Product[],
   isLoadingProduct: boolean,
   isInitProduct: boolean,
   pagination: {
-      elementsAmount: number,
       active: number,
+      pagesAmount: number,
   }
 }

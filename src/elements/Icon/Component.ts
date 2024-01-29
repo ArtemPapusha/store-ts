@@ -1,19 +1,17 @@
-import { type Color, type IconName} from "@type/app"
+import { type Color } from "@type/app"
+import { type IconName } from "@type/icons"
 
 import style from "./style.module.scss"
-import colors from "@style/utils/colors.module.scss"
-import fonts from "@style/utils/fonts.module.scss"
 
 import {
   type IconInterface,
   type IconConstructor,
-
 } from "./type"
 
 class Icon implements IconInterface {
-  protected iconName: IconName = 'heart';
+  protected iconName: IconName | null = 'heart';
   protected size: number = 16;
-  protected color: Color = 'primary';
+  protected color: Color | null = 'primary';
   protected className: string = '';
   protected $iconElement: HTMLElement | null = null;
 
@@ -42,11 +40,9 @@ class Icon implements IconInterface {
     $icon.className = [
       style.icon,
       style[`icon-${this.iconName}`],
-      colors[`text-${this.color}`],
-      fonts[`fs-${this.size}`],
+      `text-${this.color}`,
+      `fs-${this.size}`,
     ].join(' ');
-    
-    // `icon icon-${this.iconName} text-${this.color} fs-${this.size}`;
 
     if (this.className?.length) {
       $icon.className = `${this.className}`

@@ -3,8 +3,6 @@ import Typography from '@elements/Typography';
 import Button from '@elements/Button';
 
 import style from './style.module.scss'
-import flex from "@style/utils/flex.module.scss"
-import space from "@style/utils/space.module.scss"
 
 import {
   type SnackbarInterface,
@@ -71,16 +69,14 @@ class Snackbar implements SnackbarInterface{
     if (!Snackbar.$snackbarsContainer) {
       const $snackbarsContainer = document.createElement('div');
       $snackbarsContainer.className = [
-        style['snackbar__container'],
+        style.snackbarContainer,
         style[`snackbar__container--${this.position}`],
-        flex[`d-flex`],
-        flex[`just-content-flex-start`],
-        flex[`align-items-center`],
-        flex[`flex-direction-column`],
-        space[`gap-3`],
+        'd-flex',
+        'just-content-flex-start',
+        'align-items-center',
+        'flex-direction-column',
+        'gap-3',
       ].join(' ');
-      
-      // `snackbar__container d-flex flex-direction-column just-content-flex-start align-items-center snackbar__container--${this.position} gap-3`;
 
       document.body.appendChild($snackbarsContainer);
       Snackbar.$snackbarsContainer = $snackbarsContainer;
@@ -91,12 +87,10 @@ class Snackbar implements SnackbarInterface{
       style.snackbar,
       style[`snackbar--${this.variant}`],
       style[`snackbar--${this.transition}`],
-      flex[`d-flex`],
-      flex[`just-content-flex-start`],
-      flex[`align-items-center`],
+      'd-flex',
+      'just-content-flex-start',
+      'align-items-center',
     ].join(' ');
-    
-    // `snackbar d-flex just-content-flex-start align-items-center snackbar--${this.variant} snackbar--${this.transition}`;
 
     if (this.startIcon.icon) {
       $snackbarBody.appendChild(this.startIcon.icon);

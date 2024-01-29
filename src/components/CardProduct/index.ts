@@ -1,5 +1,3 @@
 export { default } from "./Component"
 
-export {
-  type CardProductInterface,
-} from "./type"
+export { type CardProductInterface } from "./type"

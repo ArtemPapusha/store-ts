@@ -1,15 +1,5 @@
-  import {
-    type ProductStateType,
-    type Product
-  } from "@state/ProductState";
+  import { type Product } from "@state/ProductState";
   
-  export interface ProductStateInstantsType {
-    state: ProductStateType,
-    toggleLoaderProduct: (loading: boolean) => void,
-    updateProduct: (product: Product[]) => void,
-    updatePagination: (active?: number | null, amount?: number | null) => void,
-    setInitProduct: () => void,
-  }
 
   export interface ProductsResponse {
     data: Product[],
@@ -19,4 +9,5 @@
     last: number,
     ages: number,
     items: number,
+    pages: number,
   }

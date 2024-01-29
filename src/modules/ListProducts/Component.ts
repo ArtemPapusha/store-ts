@@ -2,24 +2,23 @@ import Skeleton from "@elements/Skeleton";
 import CardProduct from "@components/CardProduct";
 import ProductState from "@state/ProductState";
 
-import flex from "@style/utils/flex.module.scss"
+import style from "./style.module.scss"
+
+import { $divApp } from '@constants/div.app';
 
 import { type ListProductsImplements } from "./type";
+import { type ProductStateType } from "@state/ProductState";
 
-import {
-  type ProductStateType
-} from "@state/ProductState";
-
-class ListProducts implements ListProductsImplements{
+class ListProducts implements ListProductsImplements {
   protected $listCards: HTMLElement | null = null;
 
-  eventTypes = [
+  public eventTypes: string[] = [
     ProductState.EVENT_TYPE_UPDATE_PRODUCT,
     ProductState.EVENT_TYPE_PRODUCT_LOADING,
     ProductState.EVENT_TYPE_UPDATE_INIT,
   ];
 
-  displayName = 'ListCards';
+  public displayName: string = 'ListCards';
 
   constructor() {
     this.buildListCards();
@@ -33,12 +32,12 @@ class ListProducts implements ListProductsImplements{
     if (this.$listCards) {
       this.$listCards.innerHTML = '';
       const skeleton = new Skeleton();
-      const skeletonProduct = skeleton.buildSkeletonProduct(10)
+      const skeletonProduct = skeleton.buildSkeletonProduct(5)
       this.$listCards.appendChild(skeletonProduct)
     }
   }
 
-  handleEvent = (
+  public handleEvent = (
     newState: ProductStateType,
     prevState: ProductStateType,
     eventType: string
@@ -57,7 +56,6 @@ class ListProducts implements ListProductsImplements{
       newState.isInitProduct ||
       eventType === ProductState.EVENT_TYPE_UPDATE_INIT
     ) {
-      console.log('ListCards => products', newState.product?.length);
       if (this.$listCards){
         this.$listCards.innerHTML = '';
 
@@ -71,25 +69,27 @@ class ListProducts implements ListProductsImplements{
         })
       }
     }
-
   }
 
   protected buildListCards = () => {
     const $listCards = document.createElement('div');
     
     $listCards.className = [
-      flex[`d-flex`],
-      flex[`just-content-center`],
-      flex[`flex-wrap-wrap`],
-      flex[`flex-direction-row`],
+      style.listProducts,
+      'd-flex',
+      'just-content-center',
+      'flex-wrap-wrap',
+      'flex-direction-row',
+      'px-2',
+      'py-2',
+      'mx-2',
+      'my-2',
     ].join(' ');
-    
-    // 'list-products d-flex flex-direction-row just-content-center flex-wrap-wrap';
 
      this.$listCards = $listCards;
 
-    if (this.$listCards) {
-      document.body.appendChild(this.$listCards);
+    if (this.$listCards && $divApp) {
+      $divApp.appendChild(this.$listCards);
     }
   }
 }

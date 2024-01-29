@@ -1,6 +1,6 @@
 $step: 10px;
 
-$widths: 2, 5, 10, 15, 20, 30, 50;
+$widths: 2, 5, 10, 15, 20, 30, 40, 50;
 
 @each $width in $widths {
   .wd-#{$width} {
