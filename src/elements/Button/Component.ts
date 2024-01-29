@@ -89,12 +89,12 @@ class Button implements ButtonInterface {
       style[`button-${this.className}`],
       style[`button-${this.variant}`],
       style[`button-${this.buttonSize}`],
-      `d-flex`,
-      `just-content-center`,
-      `align-items-center`,
-      `flex-direction-row`,
-      `bgc-${this.color}`,
-      `br-${this.color}`,
+      'd-flex',
+      'just-content-center',
+      'align-items-center',
+      'flex-direction-row',
+      'bgc-${this.color}',
+      'br-${this.color}',
     ].join(' ');
 
     if (this.disabled) {

@@ -66,7 +66,7 @@ class CardProduct implements CardProductInterface {
       startIcon: {
         iconName: 'heart',
         size: 14,
-        color: "secondary-light",
+        color: 'secondary-light',
       }
     })
 
@@ -82,7 +82,7 @@ class CardProduct implements CardProductInterface {
       startIcon: {
         iconName: 'cart',
         size: 14,
-        color: "black",
+        color: 'black',
       }
     })
 
@@ -100,17 +100,17 @@ class CardProduct implements CardProductInterface {
     $cardWrapper.className = [
       style['card-wrapper'],
       style[`card-wrapper-${this.name}`],
-      `d-flex`,
-      `just-content-flex-start`,
-      `align-items-center`,
-      `flex-direction-column`,
-      `flex-wrap-wrap`,
-      `wd-20`,
-      `py-3`,
-      `px-3`,
-      `gap-10`,
-      `my-3`,
-      `mx-3`,
+      'd-flex',
+      'just-content-flex-start',
+      'align-items-center',
+      'flex-direction-column',
+      'flex-wrap-wrap',
+      'wd-20',
+      'py-3',
+      'px-3',
+      'gap-10',
+      'my-3',
+      'mx-3',
     ].join(' ');
     
     $cardWrapper.appendChild(this.buildTitle());
@@ -120,11 +120,11 @@ class CardProduct implements CardProductInterface {
 
     $footerCardProduct.className = [
       style['card-product__footer'],
-      `d-flex`,
-      `just-content-space-between`,
-      `align-items-center`,
-      `flex-direction-row`,
-      `gap-10`,
+      'd-flex',
+      'just-content-space-between',
+      'align-items-center',
+      'flex-direction-row',
+      'gap-10',
     ].join(' ');
     
     $footerCardProduct.appendChild(this.buildPrice());

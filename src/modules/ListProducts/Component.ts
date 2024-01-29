@@ -76,14 +76,14 @@ class ListProducts implements ListProductsImplements {
     
     $listCards.className = [
       style[`list_products`],
-      `d-flex`,
-      `just-content-center`,
-      `flex-wrap-wrap`,
-      `flex-direction-row`,
-      `px-2`,
-      `py-2`,
-      `mx-2`,
-      `my-2`,
+      'd-flex',
+      'just-content-center',
+      'flex-wrap-wrap',
+      'flex-direction-row',
+      'px-2',
+      'py-2',
+      'mx-2',
+      'my-2',
     ].join(' ');
 
      this.$listCards = $listCards;

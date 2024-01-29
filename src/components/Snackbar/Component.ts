@@ -3,8 +3,6 @@ import Typography from '@elements/Typography';
 import Button from '@elements/Button';
 
 import style from './style.module.scss'
-import flex from "@style/utils/flex.module.scss"
-import space from "@style/utils/space.module.scss"
 
 import {
   type SnackbarInterface,
@@ -73,11 +71,11 @@ class Snackbar implements SnackbarInterface{
       $snackbarsContainer.className = [
         style['snackbar__container'],
         style[`snackbar__container--${this.position}`],
-        flex[`d-flex`],
-        flex[`just-content-flex-start`],
-        flex[`align-items-center`],
-        flex[`flex-direction-column`],
-        space[`gap-3`],
+        'd-flex',
+        'just-content-flex-start',
+        'align-items-center',
+        'flex-direction-column',
+        'gap-3',
       ].join(' ');
 
       document.body.appendChild($snackbarsContainer);
@@ -89,9 +87,9 @@ class Snackbar implements SnackbarInterface{
       style.snackbar,
       style[`snackbar--${this.variant}`],
       style[`snackbar--${this.transition}`],
-      flex[`d-flex`],
-      flex[`just-content-flex-start`],
-      flex[`align-items-center`],
+      'd-flex',
+      'just-content-flex-start',
+      'align-items-center',
     ].join(' ');
 
     if (this.startIcon.icon) {

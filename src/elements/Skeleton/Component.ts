@@ -21,17 +21,17 @@ class Skeleton implements SkeletonInterface {
       const $cardWrapperSkeleton = document.createElement('div');
       $cardWrapperSkeleton.className = [
         style.card_wrapper_skeleton,
-        `d-flex`,
-        `just-content-flex-start`,
-        `flex-direction-column`,
-        `align-items-center`,
-        `align-self-flex-start`,
-        `wd-20`,
-        `py-3`,
-        `px-3`,
-        `gap-10`,
-        `my-3`,
-        `mx-3`,
+        'd-flex',
+        'just-content-flex-start',
+        'flex-direction-column',
+        'align-items-center',
+        'align-self-flex-start',
+        'wd-20',
+        'py-3',
+        'px-3',
+        'gap-10',
+        'my-3',
+        'mx-3',
       ].join(' ');
       
       $cardWrapperSkeleton.appendChild(this.buildSkeletonTitle());
@@ -40,10 +40,10 @@ class Skeleton implements SkeletonInterface {
       const $footerCardProductSkeleton = document.createElement('div');
       $footerCardProductSkeleton.className = [
         style.footer_card_product_skeleton,
-        `d-flex`,
-        `just-content-space-between`,
-        `align-items-center`,
-        `gap-15`,
+        'd-flex',
+        'just-content-space-between',
+        'align-items-center',
+        'gap-15',
       ].join(' ');
       
       const $priceSkeleton = document.createElement('div');
@@ -113,10 +113,10 @@ class Skeleton implements SkeletonInterface {
     const $skeletonPagiantionWrapper = document.createElement('ul');
     $skeletonPagiantionWrapper.className = [
       style.pagination_container_skelton,
-      `d-flex`,
-      `just-content-center`,
-      `align-items-center`,
-      `gap-2`,
+      'd-flex',
+      'just-content-center',
+      'align-items-center',
+      'gap-2',
     ].join(' ');
     
     for (let i = 0; i < 8; i++) {

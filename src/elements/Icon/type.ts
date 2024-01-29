@@ -1,4 +1,4 @@
-import type { Color } from '@type/app.ts';
+import type { Color } from '@type/app';
 import type { IconName } from '@type/icons'
 
 export interface IconInterface {

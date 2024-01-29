@@ -221,10 +221,10 @@ class Pagination implements PaginationInterface{
 
     $paginationContainer.className = [
       style['pagination_container'],
-      `d-flex`,
-      `just-content-center`,
-      `align-items-center`,
-      `gap-1`,
+      'd-flex',
+      'just-content-center',
+      'align-items-center',
+      'gap-1',
     ].join(' ');
 
     this.preBuildingPagination().forEach(item =>{

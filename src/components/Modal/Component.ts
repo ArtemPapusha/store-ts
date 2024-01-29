@@ -7,9 +7,6 @@ import {
 } from "./type";
 
 import style from './style.module.scss';
-import flex from '../../assets/style/utils/flex.module.scss';
-import sizes from '../../assets/style/utils/sizes.module.scss';
-import space from '../../assets/style/utils/space.module.scss';
 
 class Modal implements ModalImplements{
   protected $modalWrapper: HTMLElement | null = null;
@@ -45,9 +42,9 @@ class Modal implements ModalImplements{
     const $overlay = document.createElement('div');
     $overlay.className = [
       style.overlay,
-      flex['d-flex'],
-      flex['just-content-center'],
-      flex['align-items-center']
+      'd-flex',
+      'just-content-center',
+      'align-items-center'
     ].join(' ')
 
     $overlay?.addEventListener('click', (e) => {
@@ -64,13 +61,13 @@ class Modal implements ModalImplements{
     const $modal = document.createElement('div');
     $modal.className = [
       style.modal,
-      flex['d-flex'],
-      flex['just-content-space-between'],
-      flex['flex-direction-column'],
-      sizes['wd-40'],
-      sizes['hg-30'],
-      space['px-10'],
-      space['py-10']
+      'd-flex',
+      'just-content-space-between',
+      'flex-direction-column',
+      'wd-40',
+      'hg-30',
+      'px-10',
+      'py-10'
     ].join(' ')
 
     $modal.appendChild(this.buildModalTitle());
@@ -85,9 +82,9 @@ class Modal implements ModalImplements{
 
     $title.className = [
       style['modal-title'],
-      flex['d-flex'],
-      flex['just-content-space-between'],
-      flex['align-items-center']
+      'd-flex',
+      'just-content-space-between',
+      'align-items-center'
     ].join(' ')
     ;
     
