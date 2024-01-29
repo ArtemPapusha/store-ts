@@ -3,7 +3,7 @@
   "products": [
     {
       "id": 1,
-      "name": "laptop",
+      "category": "laptop",
       "title": "Ноутбук ASUS ROG Strix G17 2023 G713PI-HX049",
       "image": "https://content.rozetka.com.ua/goods/images/big_tile/347664266.jpg",
       "description": "Екран 17.3\" IPS (1920x1080) Full HD 144 Гц, матовий / AMD Ryzen 9 7845HX (3.0 - 5.2 ГГц) / RAM 16 ГБ / SSD 1 ТБ / nVidia GeForce RTX 4070, 8 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС / 2.8 кг / сірий",
@@ -11,7 +11,7 @@
     },
     {
       "id": 2,
-      "name": "console",
+      "category": "console",
       "title": "Sony PlayStation 5 White 825Gb + DualSense (White) + Charging Station",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/293528624.jpg",
       "description": "AMD Ryzen Zen 2 8х3.5 GHz, 16 ГБ GDDR5, AMD Radeon RDNA 2 2.23 GHz 10.3 TFLOPS, Підтримка технологій 8K та HDR, Прискорення трасування променів",
@@ -19,7 +19,7 @@
     },
     {
       "id": 3,
-      "name": "PC",
+      "category": "PC",
       "title": "Компю'тер Lenovo IdeaCentre G5 Gaming 14IOB6",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/357612001.png",
       "description": "Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 256 ГБ / nVidia GeForce GTX 1650 Super, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС",
@@ -27,7 +27,7 @@
     },
     {
       "id": 4,
-      "name": "PC",
+      "category": "PC",
       "title": "Компю'тер Lenovo IdeaCentre G5 Gaming 14IOB6",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/357612001.png",
       "description": "Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 256 ГБ / nVidia GeForce GTX 1650 Super, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС",
@@ -35,7 +35,7 @@
     },
     {
       "id": 5,
-      "name": "PC",
+      "category": "PC",
       "title": "Компю'тер Lenovo IdeaCentre G5 Gaming 14IOB6",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/357612001.png",
       "description": "Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 256 ГБ / nVidia GeForce GTX 1650 Super, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС",
@@ -44,7 +44,7 @@
     },
     {
       "id": 6,
-      "name": "PC",
+      "category": "PC",
       "title": "Компю'тер Lenovo IdeaCentre G5 Gaming 14IOB6",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/357612001.png",
       "description": "Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 256 ГБ / nVidia GeForce GTX 1650 Super, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС",
@@ -52,7 +52,7 @@
     },
     {
       "id": 7,
-      "name": "laptop",
+      "category": "laptop",
       "title": "Ноутбук ASUS ROG Strix G17 2023 G713PI-HX049",
       "image": "https://content.rozetka.com.ua/goods/images/big_tile/347664266.jpg",
       "description": "Екран 17.3\" IPS (1920x1080) Full HD 144 Гц, матовий / AMD Ryzen 9 7845HX (3.0 - 5.2 ГГц) / RAM 16 ГБ / SSD 1 ТБ / nVidia GeForce RTX 4070, 8 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС / 2.8 кг / сірий",
@@ -60,7 +60,7 @@
     },
     {
       "id": 8,
-      "name": "laptop",
+      "category": "laptop",
       "title": "Ноутбук ASUS ROG Strix G17 2023 G713PI-HX049",
       "image": "https://content.rozetka.com.ua/goods/images/big_tile/347664266.jpg",
       "description": "Екран 17.3\" IPS (1920x1080) Full HD 144 Гц, матовий / AMD Ryzen 9 7845HX (3.0 - 5.2 ГГц) / RAM 16 ГБ / SSD 1 ТБ / nVidia GeForce RTX 4070, 8 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС / 2.8 кг / сірий",
@@ -68,7 +68,7 @@
     },
     {
       "id": 9,
-      "name": "console",
+      "category": "console",
       "title": "Sony PlayStation 5 White 825Gb + DualSense (White) + Charging Station",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/293528624.jpg",
       "description": "AMD Ryzen Zen 2 8х3.5 GHz, 16 ГБ GDDR5, AMD Radeon RDNA 2 2.23 GHz 10.3 TFLOPS, Підтримка технологій 8K та HDR, Прискорення трасування променів",
@@ -76,7 +76,7 @@
     },
     {
       "id": 10,
-      "name": "console",
+      "category": "console",
       "title": "Sony PlayStation 5 White 825Gb + DualSense (White) + Charging Station",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/293528624.jpg",
       "description": "AMD Ryzen Zen 2 8х3.5 GHz, 16 ГБ GDDR5, AMD Radeon RDNA 2 2.23 GHz 10.3 TFLOPS, Підтримка технологій 8K та HDR, Прискорення трасування променів",
@@ -84,7 +84,7 @@
     },
     {
       "id": 11,
-      "name": "laptop",
+      "category": "laptop",
       "title": "Ноутбук ASUS ROG Strix G17 2023 G713PI-HX049",
       "image": "https://content.rozetka.com.ua/goods/images/big_tile/347664266.jpg",
       "description": "Екран 17.3\" IPS (1920x1080) Full HD 144 Гц, матовий / AMD Ryzen 9 7845HX (3.0 - 5.2 ГГц) / RAM 16 ГБ / SSD 1 ТБ / nVidia GeForce RTX 4070, 8 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС / 2.8 кг / сірий",
@@ -92,7 +92,7 @@
     },
     {
       "id": 12,
-      "name": "console",
+      "category": "console",
       "title": "Sony PlayStation 5 White 825Gb + DualSense (White) + Charging Station",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/293528624.jpg",
       "description": "AMD Ryzen Zen 2 8х3.5 GHz, 16 ГБ GDDR5, AMD Radeon RDNA 2 2.23 GHz 10.3 TFLOPS, Підтримка технологій 8K та HDR, Прискорення трасування променів",
@@ -100,7 +100,7 @@
     },
     {
       "id": 13,
-      "name": "PC",
+      "category": "PC",
       "title": "Компю'тер Lenovo IdeaCentre G5 Gaming 14IOB6",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/357612001.png",
       "description": "Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 256 ГБ / nVidia GeForce GTX 1650 Super, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС",
@@ -108,7 +108,7 @@
     },
     {
       "id": 14,
-      "name": "PC",
+      "category": "PC",
       "title": "Компю'тер Lenovo IdeaCentre G5 Gaming 14IOB6",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/357612001.png",
       "description": "Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 256 ГБ / nVidia GeForce GTX 1650 Super, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС",
@@ -116,7 +116,7 @@
     },
     {
       "id": 15,
-      "name": "laptop",
+      "category": "laptop",
       "title": "Ноутбук ASUS ROG Strix G17 2023 G713PI-HX049",
       "image": "https://content.rozetka.com.ua/goods/images/big_tile/347664266.jpg",
       "description": "Екран 17.3\" IPS (1920x1080) Full HD 144 Гц, матовий / AMD Ryzen 9 7845HX (3.0 - 5.2 ГГц) / RAM 16 ГБ / SSD 1 ТБ / nVidia GeForce RTX 4070, 8 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС / 2.8 кг / сірий",
@@ -124,7 +124,7 @@
     },
     {
       "id": 16,
-      "name": "PC",
+      "category": "PC",
       "title": "Компю'тер Lenovo IdeaCentre G5 Gaming 14IOB6",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/357612001.png",
       "description": "Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 256 ГБ / nVidia GeForce GTX 1650 Super, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС",
@@ -133,7 +133,7 @@
     },
     {
       "id": 17,
-      "name": "PC",
+      "category": "PC",
       "title": "Компю'тер Lenovo IdeaCentre G5 Gaming 14IOB6",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/357612001.png",
       "description": "Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 256 ГБ / nVidia GeForce GTX 1650 Super, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС",
@@ -142,7 +142,7 @@
     },
     {
       "id": 18,
-      "name": "PC",
+      "category": "PC",
       "title": "Компю'тер Lenovo IdeaCentre G5 Gaming 14IOB6",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/357612001.png",
       "description": "Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 256 ГБ / nVidia GeForce GTX 1650 Super, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС",
@@ -151,7 +151,7 @@
     },
     {
       "id": 19,
-      "name": "PC",
+      "category": "PC",
       "title": "Компю'тер Lenovo IdeaCentre G5 Gaming 14IOB6",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/357612001.png",
       "description": "Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 256 ГБ / nVidia GeForce GTX 1650 Super, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС",
@@ -160,7 +160,7 @@
     },
     {
       "id": 20,
-      "name": "PC",
+      "category": "PC",
       "title": "Компю'тер Lenovo IdeaCentre G5 Gaming 14IOB6",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/357612001.png",
       "description": "Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 256 ГБ / nVidia GeForce GTX 1650 Super, 4 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / без ОС",
@@ -169,7 +169,7 @@
     },
     {
       "id": 21,
-      "name": "console",
+      "category": "console",
       "title": "Sony PlayStation 5 White 825Gb + DualSense (White) + Charging Station",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/293528624.jpg",
       "description": "AMD Ryzen Zen 2 8х3.5 GHz, 16 ГБ GDDR5, AMD Radeon RDNA 2 2.23 GHz 10.3 TFLOPS, Підтримка технологій 8K та HDR, Прискорення трасування променів",
@@ -177,7 +177,7 @@
     },
     {
       "id": 22,
-      "name": "console",
+      "category": "console",
       "title": "Sony PlayStation 5 White 825Gb + DualSense (White) + Charging Station",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/293528624.jpg",
       "description": "AMD Ryzen Zen 2 8х3.5 GHz, 16 ГБ GDDR5, AMD Radeon RDNA 2 2.23 GHz 10.3 TFLOPS, Підтримка технологій 8K та HDR, Прискорення трасування променів",
@@ -185,7 +185,7 @@
     },
     {
       "id": 23,
-      "name": "console",
+      "category": "console",
       "title": "Sony PlayStation 5 White 825Gb + DualSense (White) + Charging Station",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/293528624.jpg",
       "description": "AMD Ryzen Zen 2 8х3.5 GHz, 16 ГБ GDDR5, AMD Radeon RDNA 2 2.23 GHz 10.3 TFLOPS, Підтримка технологій 8K та HDR, Прискорення трасування променів",
@@ -193,7 +193,7 @@
     },
     {
       "id": 24,
-      "name": "console",
+      "category": "console",
       "title": "Sony PlayStation 5 White 825Gb + DualSense (White) + Charging Station",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/293528624.jpg",
       "description": "AMD Ryzen Zen 2 8х3.5 GHz, 16 ГБ GDDR5, AMD Radeon RDNA 2 2.23 GHz 10.3 TFLOPS, Підтримка технологій 8K та HDR, Прискорення трасування променів",
@@ -201,7 +201,7 @@
     },
     {
       "id": 25,
-      "name": "console",
+      "category": "console",
       "title": "Sony PlayStation 5 White 825Gb + DualSense (White) + Charging Station",
       "image": "https://content1.rozetka.com.ua/goods/images/big_tile/293528624.jpg",
       "description": "AMD Ryzen Zen 2 8х3.5 GHz, 16 ГБ GDDR5, AMD Radeon RDNA 2 2.23 GHz 10.3 TFLOPS, Підтримка технологій 8K та HDR, Прискорення трасування променів",

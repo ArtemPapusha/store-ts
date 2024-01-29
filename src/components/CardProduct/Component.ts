@@ -8,7 +8,7 @@ import { type Product } from '@state/ProductState';
 
 
 class CardProduct implements CardProductInterface {
-  protected name: string = '';
+  protected category: string = '';
   protected title: Typography;
   protected image: string = '';
   protected description: Typography;
@@ -18,13 +18,13 @@ class CardProduct implements CardProductInterface {
   protected $cardWrapper: HTMLElement | null = null;
   
   constructor({
-      name = '',
+      category = '',
       title,
       image = '',
       description,
       price,
     }: Product) {
-    this.name = name;
+    this.category = category;
 
     if(title) {
       this.title = new Typography({
@@ -55,7 +55,7 @@ class CardProduct implements CardProductInterface {
     this.buildPrice();
 
     this.buttonFavorite = new Button({
-      className: name,
+      className: category,
       textContent: {
         type: 'button'
       },
@@ -71,7 +71,7 @@ class CardProduct implements CardProductInterface {
     })
 
     this.buttonCart = new Button({
-      className: name,
+      className: category,
       textContent: {
         type: 'button'
       },
@@ -96,10 +96,9 @@ class CardProduct implements CardProductInterface {
 
   protected buildCardWrapper = () => {
     const $cardWrapper = document.createElement('div');
-
+    
     $cardWrapper.className = [
-      style['card-wrapper'],
-      style[`card-wrapper-${this.name}`],
+      style.cardWrapper,
       'd-flex',
       'just-content-flex-start',
       'align-items-center',
@@ -119,7 +118,7 @@ class CardProduct implements CardProductInterface {
     const $footerCardProduct = document.createElement('div');
 
     $footerCardProduct.className = [
-      style['card-product__footer'],
+      style.cardProductFooter,
       'd-flex',
       'just-content-space-between',
       'align-items-center',
@@ -147,8 +146,7 @@ class CardProduct implements CardProductInterface {
     const $title = document.createElement('div');
 
     $title.className = [
-      style['card-product__title'],
-      style[`card-product__title--${this.name}`],
+      style.cardProductTitle
     ].join(' ');
 
     if (this.title && this.title.textElement) {
@@ -160,17 +158,14 @@ class CardProduct implements CardProductInterface {
 
   protected buildImage = () => {
     const $imgWrapper = document.createElement('div');
-    $imgWrapper.className = style['card-product__img'];
+    $imgWrapper.className = style.cardProductImg;
 
     const $image = document.createElement('img');
 
-    $image.className = [
-      style['card-product__img'],
-      style[`card-product__img--${this.name}`],
-    ].join(' ');
-
+    $image.className = style.cardProductImg;
+  
     $image.setAttribute('src', `${this.image}`);
-    $image.setAttribute('alt', `${this.name}`);
+    $image.setAttribute('alt', `${this.category}`);
     $imgWrapper.appendChild($image);
 
     return $imgWrapper;
@@ -179,10 +174,7 @@ class CardProduct implements CardProductInterface {
   protected buildDescription = () => {
     const $description = document.createElement('div');
 
-    $description.className = [
-      style['card-product__description'],
-      style[`card-product__description--${this.name}`],
-    ].join(' ');
+    $description.className = style.cardProductDescription;
 
     if (this.description && this.description.textElement) {
       $description.appendChild(this.description.textElement);
@@ -195,8 +187,7 @@ class CardProduct implements CardProductInterface {
     const $price = document.createElement('div');
 
     $price.className = [
-      style['card-product__price'],
-      style[`card-product__price--${this.name}`],
+      style.cardProductPrice,
       'py-2',
       'px-2',
     ].join(' ');

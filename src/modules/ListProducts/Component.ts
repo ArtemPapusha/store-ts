@@ -75,7 +75,7 @@ class ListProducts implements ListProductsImplements {
     const $listCards = document.createElement('div');
     
     $listCards.className = [
-      style[`list_products`],
+      style.listProducts,
       'd-flex',
       'just-content-center',
       'flex-wrap-wrap',

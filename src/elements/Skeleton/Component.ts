@@ -16,11 +16,11 @@ class Skeleton implements SkeletonInterface {
       `flex-direction-row`,
       `flex-wrap-wrap`,
     ].join(' ');
-
+    
     for (let i = 0; i < count; i++) {
       const $cardWrapperSkeleton = document.createElement('div');
       $cardWrapperSkeleton.className = [
-        style.card_wrapper_skeleton,
+        style.cardWrapperSkeleton,
         'd-flex',
         'just-content-flex-start',
         'flex-direction-column',
@@ -39,7 +39,7 @@ class Skeleton implements SkeletonInterface {
   
       const $footerCardProductSkeleton = document.createElement('div');
       $footerCardProductSkeleton.className = [
-        style.footer_card_product_skeleton,
+        style.footerCardProductSkeleton,
         'd-flex',
         'just-content-space-between',
         'align-items-center',
@@ -48,7 +48,7 @@ class Skeleton implements SkeletonInterface {
       
       const $priceSkeleton = document.createElement('div');
       $priceSkeleton.className = [
-        style.price_skeleton,
+        style.priceSkeleton,
         style.skeleton,
       ].join(' ');
      
@@ -67,7 +67,7 @@ class Skeleton implements SkeletonInterface {
     const $titleSkeleton = document.createElement('div');
 
     $titleSkeleton.className = [
-      style.title_skeleton,
+      style.titleSkeleton,
       'wd-100p',
     ].join(' ');
   
@@ -75,7 +75,7 @@ class Skeleton implements SkeletonInterface {
       const $titleSkeletonElement = document.createElement('div');
 
       $titleSkeletonElement.className = [
-        style.title_skeleton_element,
+        style.titleSkeletonElement,
         style.skeleton,
         'wd-100p',
       ].join(' ');
@@ -90,7 +90,7 @@ class Skeleton implements SkeletonInterface {
     const $imageSkeleton = document.createElement('div');
 
     $imageSkeleton.className = [
-      style.image_skeleton,
+      style.imageSkeleton,
       style.skeleton,
       'wd-100p',
     ].join(' ');
@@ -102,7 +102,7 @@ class Skeleton implements SkeletonInterface {
     const $buttonSkeleton = document.createElement('div');
 
     $buttonSkeleton.className = [
-      style.button_skeleton,
+      style.buttonSkeleton,
       style.skeleton,
     ].join(' ');
     
@@ -112,7 +112,7 @@ class Skeleton implements SkeletonInterface {
   public buildSkeletonPagination = (): this =>{
     const $skeletonPagiantionWrapper = document.createElement('ul');
     $skeletonPagiantionWrapper.className = [
-      style.pagination_container_skelton,
+      style.paginationContainerSkelton,
       'd-flex',
       'just-content-center',
       'align-items-center',
@@ -122,7 +122,7 @@ class Skeleton implements SkeletonInterface {
     for (let i = 0; i < 8; i++) {
       const $skeletonPagiantionElement = document.createElement('li');
       $skeletonPagiantionElement.className = [
-        style.pagination_skeleton,
+        style.paginationSkeleton,
         style.skeleton,
       ].join(' ');
  

@@ -81,7 +81,7 @@ class Modal implements ModalImplements{
     const $title = document.createElement('div');
 
     $title.className = [
-      style['modal-title'],
+      style.modalTitle,
       'd-flex',
       'just-content-space-between',
       'align-items-center'
@@ -110,7 +110,7 @@ class Modal implements ModalImplements{
 
   buildModalBody = () => {
     const $body = document.createElement('div');
-    $body.className = style['modal-body'];
+    $body.className = style.modalBody;
     $body.innerHTML = `${this.body}`;
 
     return $body;
@@ -118,7 +118,7 @@ class Modal implements ModalImplements{
 
   buildModalFooter = () => {
     const $footer = document.createElement('div');
-    $footer.className = style['modal-footer'];
+    $footer.className = style.modalFooter;
     $footer.innerHTML = `${this.footer}`;
 
     return $footer;

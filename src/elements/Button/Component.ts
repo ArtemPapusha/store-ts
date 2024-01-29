@@ -99,7 +99,7 @@ class Button implements ButtonInterface {
 
     if (this.disabled) {
       $button.setAttribute('disabled', 'disabled');
-      $button.classList.add(style['button-disabled']);
+      $button.classList.add(style.buttonDisabled);
     }
 
     this.$buttonElement = $button;

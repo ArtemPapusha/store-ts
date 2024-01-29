@@ -69,7 +69,7 @@ class Snackbar implements SnackbarInterface{
     if (!Snackbar.$snackbarsContainer) {
       const $snackbarsContainer = document.createElement('div');
       $snackbarsContainer.className = [
-        style['snackbar__container'],
+        style.snackbarContainer,
         style[`snackbar__container--${this.position}`],
         'd-flex',
         'just-content-flex-start',

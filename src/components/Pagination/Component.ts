@@ -70,14 +70,14 @@ class Pagination implements PaginationInterface{
 
   public setDisabled = () => {
     if (this.$paginationContainer) {
-      const $paginationItems = this.$paginationContainer.querySelectorAll(`.${style['pagination_item']}`);
+      const $paginationItems = this.$paginationContainer.querySelectorAll(`.${style.paginationItem}`);
       console.log(this.$paginationContainer);
       
       if ($paginationItems.length > 0) {
         $paginationItems.forEach(($paginationItem) => {
           if ($paginationItem) {
             $paginationItem.setAttribute('disabled', 'disabled');
-            $paginationItem.classList.add(style['pagination_item--disabled'])
+            $paginationItem.classList.add(style.paginationItemDisabled)
           }
         });
       }
@@ -183,7 +183,7 @@ class Pagination implements PaginationInterface{
     const $buttonElement = document.createElement('button');
 
     $buttonElement.className = [
-      style['pagination_item'],
+      style.paginationItem,
       style[`pagination_item--${this.variant}`],
       style[`pagination_item--${this.size}`],
       `bgc-${this.color}`,
@@ -209,7 +209,7 @@ class Pagination implements PaginationInterface{
   }
 
   public removePaginationSkeleton = () =>{
-    const $skeletonPagination = document.querySelector(`.${styleSkeleton.pagination_container_skelton}`)
+    const $skeletonPagination = document.querySelector(`.${styleSkeleton.paginationContainerSkelton}`)
     if ($skeletonPagination) {
       $skeletonPagination.remove()
     }
@@ -220,7 +220,7 @@ class Pagination implements PaginationInterface{
     $paginationContainer.innerHTML = '';
 
     $paginationContainer.className = [
-      style['pagination_container'],
+      style.paginationContainer,
       'd-flex',
       'just-content-center',
       'align-items-center',
@@ -268,18 +268,18 @@ class Pagination implements PaginationInterface{
         $item.appendChild($paginationItem);
       }
 
-      const $paginationItem = $item.querySelector(`.${style['pagination_item']}`)
+      const $paginationItem = $item.querySelector(`.${style.paginationItem}`)
       if (item.type === 'page' && item.isActive) {
         if ($paginationItem) {
           $paginationItem.setAttribute('active', 'active')
-          $paginationItem.classList.add(style['pagination_item--active']);
+          $paginationItem.classList.add(style.paginationItemActive);
         }
       }
 
       if (item.type !== 'page' && item.isDisabled) {
         if ($paginationItem) {
           $paginationItem.setAttribute('disabled', 'disabled');
-          $paginationItem.classList.add(style['pagination_item--disabled'])
+          $paginationItem.classList.add(style.paginationItemDisabled)
         }
       }
 
