@@ -24,4 +24,5 @@ export interface TypographyConstructor {
   type?: TypographyType
   textColor?: Color
   textWeight?: 100 | 300 | 400 | 500 | 700 | 900
+  extraClassName?: string
 }

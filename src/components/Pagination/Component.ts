@@ -58,7 +58,6 @@ class Pagination implements PaginationInterface{
 
   public setPageClick = (handlePageClicker: (page: number | null) => void) => {
     this.handlePageClick = handlePageClicker;
-
   }
 
   public handleChangeActivePage = (page: number, pagesAmount: number) => {
@@ -71,7 +70,6 @@ class Pagination implements PaginationInterface{
   public setDisabled = () => {
     if (this.$paginationContainer) {
       const $paginationItems = this.$paginationContainer.querySelectorAll(`.${style.paginationItem}`);
-      console.log(this.$paginationContainer);
       
       if ($paginationItems.length > 0) {
         $paginationItems.forEach(($paginationItem) => {
@@ -193,7 +191,7 @@ class Pagination implements PaginationInterface{
 
     const $iconPagination = new Icon({
       iconName: icon,
-      size: 14,
+      size: 7,
       color: this.textColor,
     })
 

@@ -35,6 +35,7 @@ class Snackbar implements SnackbarInterface{
     if(message) {
       this.message = new Typography({
         text: message,
+        type: 'body2',
       });
     };
     
@@ -54,7 +55,7 @@ class Snackbar implements SnackbarInterface{
       this.button = new Button(button);
     }
 
-    this.buildSnackbar();
+    this.buildSnackbarContainer();
   }
 
   public get snackbar() {
@@ -65,7 +66,7 @@ class Snackbar implements SnackbarInterface{
     return Snackbar.$snackbarsContainer;
   }
 
-  protected buildSnackbar = () => {
+  public buildSnackbarContainer = () => {
     if (!Snackbar.$snackbarsContainer) {
       const $snackbarsContainer = document.createElement('div');
       $snackbarsContainer.className = [
@@ -78,10 +79,17 @@ class Snackbar implements SnackbarInterface{
         'gap-3',
       ].join(' ');
 
-      document.body.appendChild($snackbarsContainer);
       Snackbar.$snackbarsContainer = $snackbarsContainer;
+
+      document.body.appendChild($snackbarsContainer);
     }
-  
+
+    setTimeout(() => {
+      this.removeSnackbar()
+    }, 3000);
+  }
+
+  public buildSnackbar = () => {
     const $snackbarBody = document.createElement('div');
     $snackbarBody.className = [
       style.snackbar,
@@ -92,34 +100,33 @@ class Snackbar implements SnackbarInterface{
       'align-items-center',
     ].join(' ');
 
-    if (this.startIcon.icon) {
+    if (this.startIcon?.icon) {
       $snackbarBody.appendChild(this.startIcon.icon);
     }
 
-    if (this.message.textElement) {
+    if (this.message?.textElement) {
       $snackbarBody.appendChild(this.message.textElement);
     }
 
-    if (this.endIcon.icon) {
+    if (this.endIcon?.icon) {
       $snackbarBody.appendChild(this.endIcon.icon);
     }
 
-    if (this.button.buttonElement) {
+    if (this.button?.buttonElement) {
       $snackbarBody.appendChild(this.button.buttonElement);
     }
 
     this.$snackbar = $snackbarBody;
-
+    
+    Snackbar.$snackbarsContainer?.appendChild(this.$snackbar);
   }
 
-  public removeSnackbar = () => {
+  protected removeSnackbar = () => {
     if (Snackbar.$snackbarsContainer &&  this.$snackbar) {
       if (Snackbar.$snackbarsContainer.contains(this.$snackbar)) {
         this.$snackbar.remove();
       }
     }
-   
-    return this;
   }
 
 }

@@ -12,20 +12,20 @@ class Icon implements IconInterface {
   protected iconName: IconName | null = 'heart';
   protected size: number = 16;
   protected color: Color | null = 'primary';
-  protected className: string = '';
+  protected extraClassName: string = '';
   protected $iconElement: HTMLElement | null = null;
 
   constructor({
     iconName = 'heart',
-    size = 16,
+    size = 8,
     color = 'primary',
-    className = ''
+    extraClassName = ''
   }: IconConstructor) {
 
     this.iconName = iconName;
     this.size = size;
     this.color = color;
-    this.className = className;
+    this.extraClassName = extraClassName;
 
     this.buildIcon();
   }
@@ -42,12 +42,9 @@ class Icon implements IconInterface {
       style[`icon-${this.iconName}`],
       `text-${this.color}`,
       `fs-${this.size}`,
+      `${this.extraClassName}`
     ].join(' ');
-
-    if (this.className?.length) {
-      $icon.className = `${this.className}`
-    }
-
+    
     this.$iconElement = $icon;
   };
 

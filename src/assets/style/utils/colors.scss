@@ -15,6 +15,8 @@ $info-light: rgb(172, 253, 253);
 $info-dark: rgb(17, 189, 189);
 $white: #FFFFFF;
 $black: rgb(0, 0, 0);
+$success-light: #03d10d;
+$success-dark: #1c4a1e;
 $success: #2e7d32;
 
 $colors: (
@@ -34,7 +36,10 @@ $colors: (
   "info-light": $info-light,
   "info-dark": $info-dark,
   "white": $white,
-  "black": $black
+  "black": $black,
+  "success-light": $success-light,
+  "success-dark": $success-dark,
+  "success": $success
 );
 
 @each $color-name, $color-value in $colors {

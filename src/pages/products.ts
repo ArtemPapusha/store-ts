@@ -6,7 +6,9 @@ import ListProducts from '@modules/ListProducts';
 import ProductAPI from '@services/ProductAPI';
 import ProductState from '@state/ProductState';
 import Pagination from '@modules/PaginationProduct';
+import AddProductForm from '@modules/AddProductForm';
 
+const addProduct = new AddProductForm();
 const listCards = new ListProducts();
 const productState = new ProductState();
 const productAPI = new ProductAPI(productState);
@@ -18,10 +20,9 @@ const pagination = new Pagination({
 productState.addObserver(pagination).addObserver(listCards);
 
 pagination.setPageClick(async (page) => {
-  listCards.productLoading();
   pagination.setDisabled();
   if (page) {
-  await productAPI.getProducts(page);
+    await productAPI.getProducts(page);
   }
 })
 
@@ -32,5 +33,6 @@ async function init() {
     $divApp.appendChild(pagination.pagination);
   }
 }
+
 
 await init();

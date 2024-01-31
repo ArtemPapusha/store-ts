@@ -60,14 +60,12 @@ class CardProduct implements CardProductInterface {
         type: 'button'
       },
       variant: 'outlined',
-      buttonSize: '',
       color: 'secondary-light',
-      disabled: false,
       startIcon: {
         iconName: 'heart',
-        size: 14,
         color: 'secondary-light',
-      }
+      },
+      extraClassName: 'px-2 py-2',
     })
 
     this.buttonCart = new Button({
@@ -76,14 +74,12 @@ class CardProduct implements CardProductInterface {
         type: 'button'
       },
       variant: 'outlined',
-      buttonSize: '',
       color: 'secondary-light',
-      disabled: false,
       startIcon: {
         iconName: 'cart',
-        size: 14,
         color: 'black',
-      }
+      },
+      extraClassName: 'px-2 py-2',
     })
 
     this.buildCardWrapper();

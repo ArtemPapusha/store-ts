@@ -32,7 +32,7 @@ class ListProducts implements ListProductsImplements {
     if (this.$listCards) {
       this.$listCards.innerHTML = '';
       const skeleton = new Skeleton();
-      const skeletonProduct = skeleton.buildSkeletonProduct(5)
+      const skeletonProduct = skeleton.buildSkeletonProduct(6)
       this.$listCards.appendChild(skeletonProduct)
     }
   }

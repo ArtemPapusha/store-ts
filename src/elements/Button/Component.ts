@@ -3,8 +3,6 @@ import Icon from "@elements/Icon";
 
 import style from "./style.module.scss";
 
-import { type Color } from "@type/app";
-
 import {
   type ButtonInterface,
   type ButtonConstructor,
@@ -16,22 +14,24 @@ class Button implements ButtonInterface {
   protected textContent: Typography;
   protected variant: string = 'text';
   protected buttonSize: string = '';
-  protected color: Color = 'black';
+  protected color: string = '';
   protected disabled: boolean = false;
   protected startIcon: Icon;
   protected endIcon: Icon;
   protected handleClick: void;
+  protected extraClassName: string = '';
 
   constructor({
     className = '',
     textContent,
     variant = 'text',
     buttonSize = '',
-    color = 'black',
+    color = 'info',
     disabled = false,
     startIcon,
     endIcon,
-    handleClick
+    handleClick,
+    extraClassName = ''
   }: ButtonConstructor) {
     this.className = className;
 
@@ -53,6 +53,7 @@ class Button implements ButtonInterface {
     }
 
     this.handleClick = handleClick;
+    this.extraClassName = extraClassName;
 
     this.buildButton();
   }
@@ -63,6 +64,10 @@ class Button implements ButtonInterface {
 
   public addEventListener(eventType: string, callback: () => void) {
     this.buttonElement?.addEventListener(eventType, callback);
+  }
+
+  public setAttribute(type: string, value: string) {
+    this.buttonElement?.setAttribute(type, value)
   }
 
   protected buildButton = () => {
@@ -92,9 +97,9 @@ class Button implements ButtonInterface {
       'd-flex',
       'just-content-center',
       'align-items-center',
-      'flex-direction-row',
-      'bgc-${this.color}',
-      'br-${this.color}',
+      `bgc-${this.color}`,
+      `br-${this.color}`,
+      `${this.extraClassName}`
     ].join(' ');
 
     if (this.disabled) {

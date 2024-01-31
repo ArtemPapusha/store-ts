@@ -1,5 +1,6 @@
 import Button from "@elements/Button";
 import { $divApp } from "@constants/div.app";
+import Typography from "@elements/Typography";
 
 import {
   type ModalImplements,
@@ -8,24 +9,35 @@ import {
 
 import style from './style.module.scss';
 
-class Modal implements ModalImplements{
+class Modal implements ModalImplements {
   protected $modalWrapper: HTMLElement | null = null;
-  protected title: string = '';
-  protected body: object = {};
-  protected footer: string = ''
+  protected $modalBody: HTMLElement | null = null;
+  protected $modalFooter: HTMLElement | null = null;
+  protected title: Typography | null = null;
 
   constructor({
     title = '',
-    body = {},
-    footer = ''
   }: ModalConstructor) {
-    this.title = title;
-    this.body = body;
-    this.footer = footer;
+    if (title) {
+      this.title = new Typography({
+        text: title,
+        type: 'h6',
+        textColor: 'black',
+        textWeight: 500
+      });
+    }
   }
 
   public get modal() {
     return this.$modalWrapper;
+  }
+
+  public get modalBody() {
+    return this.$modalWrapper;
+  }
+
+  public get modalFooter() {
+    return this.$modalFooter;
   }
 
   protected buildModalWrapper = () => {
@@ -64,8 +76,8 @@ class Modal implements ModalImplements{
       'd-flex',
       'just-content-space-between',
       'flex-direction-column',
-      'wd-40',
-      'hg-30',
+      'minwd-40',
+      'minhg-30',
       'px-10',
       'py-10'
     ].join(' ')
@@ -73,7 +85,7 @@ class Modal implements ModalImplements{
     $modal.appendChild(this.buildModalTitle());
     $modal.appendChild(this.buildModalBody());
     $modal.appendChild(this.buildModalFooter());
-
+    
     return $modal;
   }
 
@@ -87,8 +99,9 @@ class Modal implements ModalImplements{
       'align-items-center'
     ].join(' ')
     ;
-    
-    $title.innerHTML = `${this.title}`;
+    if (this.title?.textElement) {
+    $title.appendChild(this.title?.textElement);
+    }
 
     const $modalCross = new Button({
       startIcon: {
@@ -110,16 +123,20 @@ class Modal implements ModalImplements{
 
   buildModalBody = () => {
     const $body = document.createElement('div');
+
     $body.className = style.modalBody;
-    $body.innerHTML = `${this.body}`;
+
+    this.$modalBody = $body
 
     return $body;
   }
 
   buildModalFooter = () => {
     const $footer = document.createElement('div');
+
     $footer.className = style.modalFooter;
-    $footer.innerHTML = `${this.footer}`;
+
+    this.$modalFooter = $footer;
 
     return $footer;
   }
@@ -132,10 +149,11 @@ class Modal implements ModalImplements{
     }
   }
 
-  public openModal = () => {
+  public openModal = ($node: HTMLElement) => {
     this.toggleBodyHide();
 
     this.buildModalWrapper();
+    this.$modalBody?.appendChild($node);
   }
 
   protected destroy = () => {

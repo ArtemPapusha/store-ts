@@ -1,0 +1,55 @@
+@import '@style/utils/colors.scss';
+
+.field-error-message {
+  border: 2px dashed $danger;
+  color: $black;
+  background: $secondary-light;
+  border-radius: 5px;
+  position: relative;
+  max-width: 60%;
+}
+
+@-webkit-keyframes scale-up-ver-top {
+  0% {
+    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.4);
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+  }
+}
+@keyframes scale-up-ver-top {
+  0% {
+    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.4);
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+  }
+}
+
+.field-error-message {
+  animation: scale-up-ver-top 0.3s both;
+}
+
+.field-error-message::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  bottom: 100%;
+  width: 0px;
+  height: 0px;
+  border-left: 5px dashed transparent;
+  border-right: 5px dashed transparent;
+  border-bottom: 9px dashed $danger;
+}
