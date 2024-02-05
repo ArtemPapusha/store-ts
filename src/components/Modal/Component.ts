@@ -124,7 +124,10 @@ class Modal implements ModalImplements {
   buildModalBody = () => {
     const $body = document.createElement('div');
 
-    $body.className = style.modalBody;
+    $body.className = [
+      'd-flex',
+      'just-content-center',
+    ].join(' ')
 
     this.$modalBody = $body
 
@@ -134,7 +137,10 @@ class Modal implements ModalImplements {
   buildModalFooter = () => {
     const $footer = document.createElement('div');
 
-    $footer.className = style.modalFooter;
+    $footer.className = [
+      'd-flex',
+      'just-content-center',
+    ].join(' ')
 
     this.$modalFooter = $footer;
 
@@ -149,11 +155,17 @@ class Modal implements ModalImplements {
     }
   }
 
-  public openModal = ($node: HTMLElement) => {
+  public openModal = ($body: HTMLElement | null, $footer: HTMLElement | null) => {
     this.toggleBodyHide();
 
     this.buildModalWrapper();
-    this.$modalBody?.appendChild($node);
+    if ($body) {
+    this.$modalBody?.appendChild($body);
+    }
+
+    if ($footer) {
+      this.$modalBody?.appendChild($footer);
+      }
   }
 
   protected destroy = () => {

@@ -17,10 +17,10 @@ export interface ProductStateInterface  {
 }
 
 export interface ProductStateType {
-  product: Product[],
-  cart: Product[],
-  isLoadingProduct: boolean,
-  isInitProduct: boolean,
+  product: Product[]
+  cart: Product[]
+  isLoadingProduct: boolean
+  isInitProduct: boolean
   pagination: {
       active: number,
       pagesAmount: number,

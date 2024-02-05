@@ -12,7 +12,11 @@ class PaginationProduct extends Pagination {
   
   public displayName: string = 'PaginationProductDecorator';
   
-  public handleEvent = (newState: ProductStateType, prevState: ProductStateType, eventType: string) => {
+  public handleEvent = (
+    newState: ProductStateType,
+    prevState: ProductStateType,
+    eventType: string
+    ) => {
     if (!newState.isInitProduct && newState.isLoadingProduct && !prevState.isLoadingProduct) {
       this.buildPaginationSkeleton();
     }

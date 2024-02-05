@@ -7,8 +7,16 @@ class Validations {
 
   public static url = () => (value: string) => {
     const URLRegExp =
-      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+      /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
     return URLRegExp.exec(value) ? '' : 'Its not look like url-link';
+  };
+
+  public static notZero = () => (value: string) => value <= '0' ? `Can't be zero or less` : '';
+
+  public static onlyNumbers = () => (value: string) => {
+    const onlyNumbersRegex = /^\d+$/; 
+
+    return !onlyNumbersRegex.test(value) ? 'You should enter only numbers' : '';
   };
 
 }

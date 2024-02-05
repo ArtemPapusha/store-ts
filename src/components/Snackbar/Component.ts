@@ -9,7 +9,6 @@ import {
   type SnackbarConstructor,
 } from "./type"
 
-
 class Snackbar implements SnackbarInterface{
   protected $snackbar: HTMLElement | null = null;
   protected message: Typography;

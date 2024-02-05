@@ -1,4 +1,5 @@
 import endpoint from '@utils/endpoint';
+
 import {
   PRODUCTS_ROUTER,
   PRODUCT_ID_ROUTER,
@@ -19,10 +20,10 @@ class ProductAPI {
   protected static createProductEndpoint = endpoint(API_METHOD_POST, PRODUCTS_ROUTER);
 
   public static async createProduct(category: string, title: string, image: string, description: string, price: number): Promise<any> {
-    const { url, method } = ProductAPI.createProductEndpoint;
+    const { currentUrl, method } = ProductAPI.createProductEndpoint;
 
     try {
-      const response = await fetch(`${API_HOST}${url}`, {
+      const response = await fetch(`${API_HOST}${currentUrl}`, {
         method,
         headers: {
           'Content-Type': 'application/json'
@@ -52,28 +53,30 @@ class ProductAPI {
   }
 
   public getProducts = async (page: number): Promise<void> => {
-    const { endpoint, url, method } = ProductAPI.productsEndpoint;
+    const { endpoint, currentUrl, method } = ProductAPI.productsEndpoint;
     const { 
       state,
       toggleLoaderProduct,
       updateProduct,
       updatePagination,
-      setInitProduct
+      setInitProduct,
     } = this.productState
 
     toggleLoaderProduct(true);
 
     try {
-      const response = await fetch(`${API_HOST}${url}?_page=${page}&_per_page=6`, { method });
-
+      const response = await fetch(`${API_HOST}${currentUrl}?_page=${page}&_per_page=6`, { method });
+      
       const { data, pages }: ProductsResponse = await response.json();
-      updatePagination(page, pages)
+
+      updatePagination(page, pages)  
       updateProduct(data)
     } catch (error) {
     
       console.log('getProducts => error', error);
 
     } finally {
+      
       if (!state.isInitProduct) {
         setInitProduct();
       }
@@ -85,7 +88,7 @@ class ProductAPI {
   }
 
   public getProduct = async (id: number): Promise<void> => {
-    const { endpoint, url, method } = ProductAPI.productIdEndpoint(id);
+    const { endpoint, currentUrl, method } = ProductAPI.productIdEndpoint(id);
     const { 
       state,
       updateCart,
@@ -93,7 +96,7 @@ class ProductAPI {
     } = this.productState
 
     try {
-      const response = await fetch(`${API_HOST}${url}`, { method });
+      const response = await fetch(`${API_HOST}${currentUrl}`, { method });
 
       const { data }: ProductsResponse = await response.json();
 

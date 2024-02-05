@@ -1,12 +1,12 @@
 import FieldValidation from "@elements/FieldValidation";
 import Icon from "@elements/Icon";
 
+import style from './style.module.scss'
+
 import {
   type FieldInputImplements,
   type FieldInputConstructor
 } from './type'
-
-// import style from './style.module.scss'
 
 class FieldInput extends FieldValidation implements FieldInputImplements {
   protected $inputWrapper: HTMLElement | null = null;
@@ -32,8 +32,8 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     super();
     this.name = name;
     this.label = label;
-    this.value = value;
     this.type = type;
+    this.value = value;
     this.placeholder = placeholder;
     this.id = id;
 
@@ -56,6 +56,7 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     const $wrapper = document.createElement('div');
 
     $wrapper.className = [
+      style.fieldWrapper,
       'mb-5',
       'd-flex',
       'flex-direction-column',
@@ -72,9 +73,6 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
 
     $wrapper.appendChild(this.buildInput());
 
-    if (this.$errorMessage) {
-      $wrapper.appendChild(this.$errorMessage);
-    }
     if (this.endIcon && this.endIcon.icon) {
       $wrapper.appendChild(this.endIcon.icon);
     }
@@ -84,15 +82,13 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
 
   buildLabel = () => {
     const $label = document.createElement('label');
-
-    // $label.className = [
-    //   'mr-5',
-    //   'd-flex',
-    //   'flex-direction-column'
-    // ].join(' ');
-    // `field-label field-${this.name}-label`;
     
     $label.setAttribute('for', this.id);
+
+    $label.className = [
+      'mb-4',
+      'ml-4',
+    ].join(' ');
 
     $label.innerText = this.label;
 
@@ -107,7 +103,12 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     $input.setAttribute('placeholder', this.placeholder);
     $input.setAttribute('id', `${this.id}`);
     $input.setAttribute('value', this.value);
-    $input.setAttribute('size', '50');
+    $input.setAttribute('size', '60');
+
+    $input.className = [
+      'py-2',
+      'px-2',
+    ].join(' ');
 
     $input.addEventListener('input', this.handleChange);
 
