@@ -7,8 +7,11 @@ import ProductAPI from '@services/ProductAPI';
 import ProductState from '@state/ProductState';
 import Pagination from '@modules/PaginationProduct';
 import AddProductForm from '@modules/AddProductForm';
+import QueryParamService from '@services/QueryParamService';
 
-const addProduct = new AddProductForm();
+
+const queryParams = new QueryParamService()
+new AddProductForm();
 const listCards = new ListProducts();
 const productState = new ProductState();
 const productAPI = new ProductAPI(productState);
@@ -21,9 +24,12 @@ productState.addObserver(pagination).addObserver(listCards);
 
 pagination.setPageClick(async (page) => {
   pagination.setDisabled();
+  
   if (page) {
     await productAPI.getProducts(page);
   }
+  
+  queryParams.updatePageUrl(Number(page))
 })
 
 async function init() {
@@ -33,6 +39,5 @@ async function init() {
     $divApp.appendChild(pagination.pagination);
   }
 }
-
 
 await init();

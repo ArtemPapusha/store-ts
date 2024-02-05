@@ -42,7 +42,6 @@ class ListProducts implements ListProductsImplements {
     prevState: ProductStateType,
     eventType: string
     ) => {
-   
     if (
       !newState.isInitProduct
       && newState.isLoadingProduct

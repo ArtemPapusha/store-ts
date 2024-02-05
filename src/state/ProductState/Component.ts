@@ -1,4 +1,7 @@
 import Observer from "@services/Observer";
+import QueryParamService from "@services/QueryParamService";
+
+const queryParams = new QueryParamService();
 
 import {
   type ProductStateType,
@@ -6,7 +9,7 @@ import {
   type Product
 } from "./type";
   
-class ProductState extends Observer implements ProductStateInterface{
+class ProductState extends Observer<ProductStateType> implements ProductStateInterface{
 
   static EVENT_TYPE_PRODUCT_LOADING: string = 'EVENT_TYPE_PRODUCT_LOADING';
 
@@ -20,23 +23,23 @@ class ProductState extends Observer implements ProductStateInterface{
 
   static INIT_STATE: ProductStateType = {
     product: [],
-    cart:[],
+    cart: [],
     isLoadingProduct: false,
     isInitProduct: false,
     pagination: {
-      active: 1,
+      active: queryParams.getPageNumber() || 1,
       pagesAmount: 1,
     },
   }
-
-  protected productState: ProductStateType = ProductState.INIT_STATE;
 
   constructor() {
     super(ProductState.INIT_STATE)
   }
 
+  protected _state: ProductStateType = ProductState.INIT_STATE;
+
   public get state() {
-    return this.productState;
+    return this._state;
   }
 
   public toggleLoaderProduct = (loading: boolean): this => {

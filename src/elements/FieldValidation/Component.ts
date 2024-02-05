@@ -6,6 +6,7 @@ class FieldValidation implements FieldValidationImplements {
   protected $errorMessage: HTMLElement | null = null;
   protected errors: string = '';
   protected validations: ((value: string) => string | '')[] = [];
+  protected $inputWrapper: HTMLElement | null = null;
 
   constructor() {
     this.validations = [];
@@ -20,12 +21,13 @@ class FieldValidation implements FieldValidationImplements {
 
     $message.className = [
       style.fieldErrorMessage,
-      'px-2',
-      'py-2',
-      'mt-3'
+      'px-1',
+      'py-1',
     ].join(' ');
 
     $message.innerText = this.errors;
+
+    this.$inputWrapper?.appendChild($message)
 
     this.$errorMessage = $message;
   };
@@ -42,6 +44,9 @@ class FieldValidation implements FieldValidationImplements {
       this.$errorMessage.innerText = this.errors;
     } else if (this.errors && !this.$errorMessage) {
       this.buildErrorMessage();
+      setTimeout(() => {
+        this.removeErrorMessage();
+      }, 5000);
     } else if (!this.errors && this.$errorMessage) {
       this.removeErrorMessage();
     }
@@ -66,6 +71,7 @@ class FieldValidation implements FieldValidationImplements {
       }
     }
     this.handleErrorMessage();
+  
   };
 }
 

@@ -7,7 +7,6 @@
     prev: number,
     next: number,
     last: number,
-    ages: number,
     items: number,
     pages: number,
   }

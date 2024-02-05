@@ -10,9 +10,7 @@ import styleSkeleton from "@elements/Skeleton/style.module.scss"
 
 import { $divApp } from "@constants/div.app";
 
-import {
-  type AddProductFormImplements
-} from "./type";
+import { type AddProductFormImplements } from "./type";
 
 class AddProductForm extends Modal implements AddProductFormImplements{
   protected $formBody: HTMLElement | null = null;
@@ -53,10 +51,12 @@ class AddProductForm extends Modal implements AddProductFormImplements{
     const $image = new InputText({
       name: 'image',
       label: 'Image url*',
-      type: 'url',
+      type: 'text',
       placeholder: 'Image url',
       id: 'imageInput'
-    }).addValidation(Validations.required()).addValidation(Validations.url());
+    })
+    .addValidation(Validations.required())
+    .addValidation(Validations.url());
 
     const $description = new InputText({
       name: 'description',
@@ -69,11 +69,13 @@ class AddProductForm extends Modal implements AddProductFormImplements{
     const $price = new InputText({
       name: 'price',
       label: 'Price*',
-      type: 'number',
+      type: 'text',
       placeholder: '1000',
       id: 'priceInput'
     })
-    .addValidation(Validations.required());
+    .addValidation(Validations.required())
+    .addValidation(Validations.notZero())
+    .addValidation(Validations.onlyNumbers());
 
     const $submit = new Button({
       textContent: {
@@ -175,7 +177,7 @@ class AddProductForm extends Modal implements AddProductFormImplements{
     }
 
     $button.addEventListener('click', () => {
-      this.openModal(this.buildProductForm());
+      this.openModal(this.buildProductForm(), null);
     })
 
     $divApp?.appendChild($buttonWrapper)
@@ -183,7 +185,9 @@ class AddProductForm extends Modal implements AddProductFormImplements{
 
   protected buttonLoader = () => {
     const $buttonSubmit = this.$formBody?.querySelector('button[type=submit]');
+
     const $buttonLodaer = new Skeleton().buildLoadingButton();
+
     $buttonSubmit?.appendChild($buttonLodaer)
   }
 
@@ -217,6 +221,8 @@ class AddProductForm extends Modal implements AddProductFormImplements{
       const description = descriptionInput.value;
       const price = parseFloat(priceInput.value);
 
+      const onlyNumbersRegex = /^\d+$/;
+      
       if (
         category
         && title
@@ -234,17 +240,27 @@ class AddProductForm extends Modal implements AddProductFormImplements{
           this.removeButtonLoader();
 
           this.closeModal();
+
           const notification = new Snackbar({
             message: `Product was added with id ${res?.id}`,
             variant: 'info'
           });
 
           notification.buildSnackbar();
+      } else if (!onlyNumbersRegex.test(String(price))) {
+
+        const notification = new Snackbar({
+          message: 'Price value is not correct',
+          variant: 'info'
+        });
+
+        notification.buildSnackbar();
       } else {
         const notification = new Snackbar({
           message: "All fields are required",
           variant: 'info'
         });
+
         notification.buildSnackbar();
       }
     }

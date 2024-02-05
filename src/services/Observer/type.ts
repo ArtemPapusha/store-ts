@@ -1,7 +1,5 @@
-import { type ProductStateType } from "@state/ProductState"
-
-export interface ObserverType {
-  handleEvent: (newState: ProductStateType, prevState: ProductStateType, eventType: string) => void,
+export interface ObserverType<State> {
+  handleEvent: (newState: State, prevState: State, eventType: string) => void,
   eventTypes: string[]
   displayName: string
 }
