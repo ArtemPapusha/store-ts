@@ -4,7 +4,7 @@ import ProductState from "@state/ProductState";
 
 import style from "./style.module.scss"
 
-import { $divApp } from '@constants/div.app';
+import { $app } from '@constants/div.app';
 
 import { type ListProductsImplements } from "./type";
 import { type ProductStateType } from "@state/ProductState";
@@ -87,8 +87,8 @@ class ListProducts implements ListProductsImplements {
 
      this.$listCards = $listCards;
 
-    if (this.$listCards && $divApp) {
-      $divApp.appendChild(this.$listCards);
+    if (this.$listCards && $app) {
+      $app.appendChild(this.$listCards);
     }
   }
 }

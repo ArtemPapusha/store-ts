@@ -1,19 +1,35 @@
 class QueryParamService {
+  protected static instance: QueryParamService;
 
-  getPageNumber = () => Number(window.location.search.split('page=')[1]);
+  protected params: String[] = []; 
+
+  public static getInstance(): QueryParamService {
+    if (!QueryParamService.instance) {
+      QueryParamService.instance = new QueryParamService();
+    }
+    return QueryParamService.instance;
+  }
+
+  public getPageNumber = () => Number(window.location.search.split('page=')[1]);
   
-  public updatePageUrl = (page: number) => {
-    if (page === 1) {
-      const newUrl = window.location.pathname
+  public updateUrl = (key: string, value: string) => {
+    this.params = this.params.filter(param => !param.startsWith(`${key}`));
+
+    if (key === 'page=' && value === '1') {
+      const newUrl = window.location.pathname;
       window.history.replaceState({}, document.title, newUrl);
     } else {
-      const newUrl = window.location.pathname + '?' + `page=${page}`;
+      this.params.push(`${key}${value}`);
+
+      const newUrl = window.location.pathname + '?' + this.params.join('&');
       window.history.replaceState({}, document.title, newUrl);
     }
   }
 
-  public removeQueryParam = () => {
-    const newUrl = window.location.pathname
+  public removeQueryParam = (key: string) => {
+    this.params = this.params.filter(param => !param.startsWith(`${key}`));
+
+    const newUrl = window.location.pathname + '?' + this.params.join('&');
     window.history.replaceState({}, document.title, newUrl);
   }
 
