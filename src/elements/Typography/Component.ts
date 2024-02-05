@@ -14,6 +14,7 @@ class Typography implements TypographyInterface {
   protected text: string = "";
   protected color: Color = "black";
   protected textWeight: number =  400;
+  protected extraClassName: string = '';
   protected $textCell: null | HTMLElement = null;
 
   protected static types = {
@@ -36,13 +37,15 @@ class Typography implements TypographyInterface {
     text = '',
     type = 'body1',
     textColor = 'black',
-    textWeight = 400
+    textWeight = 400,
+    extraClassName = ''
   }: TypographyConstructor) {
 
     this.text = text;
     this.type = type;
     this.color = textColor;
     this.textWeight = textWeight;
+    this.extraClassName = extraClassName;
 
     this.buildTypographyElement();
   }
@@ -55,6 +58,7 @@ class Typography implements TypographyInterface {
       style[`typography-${this.type}`],
       `text-${this.color}`,
       `fw-${this.textWeight}`,
+      `${this.extraClassName}`
     ].join(' ');
 
     $typography.innerText = this.text;

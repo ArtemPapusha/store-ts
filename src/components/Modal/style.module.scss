@@ -8,22 +8,9 @@
 }
 
 .modal-title {
-  color: $danger;
-}
-
-.modal-body {
-  text-align: center;
-  margin: 0 auto;
-}
-
-.modal-body {
-  font-size: 24px;
-  color: $danger;
-}
-
-.modal-footer {
-display: flex;
-justify-content: center;
+  & h6 {
+    margin: 0 auto;
+  }
 }
 
 .overlay {

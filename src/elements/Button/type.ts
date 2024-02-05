@@ -16,4 +16,5 @@ export interface ButtonConstructor {
   startIcon?: IconConstructor
   endIcon?: IconConstructor
   handleClick?: void
+  extraClassName?: string
 }

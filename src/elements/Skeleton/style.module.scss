@@ -1,3 +1,5 @@
+@import '@style/utils/colors.scss';
+
 .skeleton {
   animation: skeleton-loading 1s linear infinite alternate;
 }
@@ -53,5 +55,15 @@ border-radius: 4px;
   list-style-type: none;
   padding: 0;
 }
+
+.spin_loader {
+  width: 10px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 4px solid;
+  border-color: $white #0000;
+  animation: l1 1s infinite;
+}
+@keyframes l1 {to{transform: rotate(.5turn)}}
 
 

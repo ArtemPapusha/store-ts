@@ -133,6 +133,14 @@ class Skeleton implements SkeletonInterface {
 
     return this;
   }
+
+  public buildLoadingButton = () => {
+    const $loadButton = document.createElement('i')
+
+    $loadButton.className = style.spinLoader;
+
+    return $loadButton;
+  }
 }
   
   export default Skeleton;

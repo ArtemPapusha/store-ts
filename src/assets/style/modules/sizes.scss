@@ -1,19 +1,47 @@
 $step: 10px;
 
-$widths: 2, 5, 10, 15, 20, 30, 40, 50;
+$sizes: 2, 5, 10, 15, 20, 30, 40, 50;
 
-@each $width in $widths {
-  .wd-#{$width} {
-    width: $step * $width;
+@each $size in $sizes {
+  .wd-#{$size} {
+    width: $step * $size;
   }
 }
 
-@each $width in $widths {
-  .hg-#{$width} {
-    height: $step * $width;
+@each $size in $sizes {
+  .minwd-#{$size} {
+    min-width: $step * $size;
+  }
+}
+
+@each $size in $sizes {
+  .maxwd-#{$size} {
+    max-width: $step * $size;
+  }
+}
+
+@each $size in $sizes {
+  .hg-#{$size} {
+    height: $step * $size;
+  }
+}
+
+@each $size in $sizes {
+  .minhg-#{$size} {
+    min-height: $step * $size;
+  }
+}
+
+@each $size in $sizes {
+  .maxhg-#{$size} {
+    max-height: $step * $size;
   }
 }
 
 .wd-100p {
   width: 100%;
+}
+
+.hg-100p {
+  height: 100%;
 }
