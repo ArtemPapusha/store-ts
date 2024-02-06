@@ -11,9 +11,6 @@ class Modal implements ModalImplements {
   protected $modalBody: HTMLElement | null = null;
   protected $modalFooter: HTMLElement | null = null;
 
-  constructor() {
-  }
-
   public get modal() {
     return this.$modalWrapper;
   }
@@ -47,7 +44,7 @@ class Modal implements ModalImplements {
       'd-flex',
       'just-content-center',
       'align-items-center'
-    ].join(' ')
+    ].join(' ');
 
     $overlay?.addEventListener('click', (e) => {
       if (e.target === $overlay) {
@@ -70,7 +67,7 @@ class Modal implements ModalImplements {
       'minhg-30',
       'px-10',
       'py-10'
-    ].join(' ')
+    ].join(' ');
 
     $modal.appendChild(this.buildModalTitle());
     $modal.appendChild(this.buildModalBody());
@@ -128,7 +125,7 @@ class Modal implements ModalImplements {
     $footer.className = [
       'd-flex',
       'just-content-center',
-    ].join(' ')
+    ].join(' ');
 
     this.$modalFooter = $footer;
 
@@ -152,10 +149,10 @@ class Modal implements ModalImplements {
 
     if ($title  && $btnCross) {
       this.$modalTitle?.insertBefore($title, $btnCross);
-      }
+    }
 
     if ($body) {
-    this.$modalBody?.appendChild($body);
+      this.$modalBody?.appendChild($body);
     }
 
     if ($footer) {

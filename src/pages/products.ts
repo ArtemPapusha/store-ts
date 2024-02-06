@@ -6,12 +6,12 @@ import ListProducts from '@modules/ListProducts';
 import ProductAPI from '@services/ProductAPI';
 import ProductState from '@state/ProductState';
 import Pagination from '@modules/PaginationProduct';
-import AddProductForm from '@modules/AddProduct';
+import AddProductController from '@modules/AddProductController';
 import QueryParamService from '@services/QueryParamService';
 
 
 const queryParams = QueryParamService.getInstance()
-new AddProductForm();
+new AddProductController();
 const listCards = new ListProducts();
 const productState = new ProductState();
 const productAPI = new ProductAPI(productState);
@@ -30,6 +30,10 @@ pagination.setPageClick(async (page) => {
   }
 
   queryParams.updateUrl('page=', String(page))
+
+  if (page === 1) {
+    queryParams.removeQueryParam(['page=']);
+  }
 })
 
 async function init() {

@@ -5,26 +5,26 @@ import Typography from "@elements/Typography";
 
 import { $app } from "@constants/div.app";
 
-const modal = new Modal();
-const productForm = new ProductForm();
-
-class AddProductForm{
-protected $addProductButton: HTMLElement | null = null;
+class AddProductController{
+  protected productForm: ProductForm;
+  protected modal: Modal;
+  protected $addProductButton: HTMLElement | null = null;
 
   constructor() {
+    this.modal = new Modal()
+    this.productForm = new ProductForm();
+
     this.addProductButton()
   }
 
   protected titleProductForm = () => {
-    const $title = new Typography({
+    return new Typography({
       text: 'Add a new product',
       type: 'h6',
       textColor: 'black',
       textWeight: 700,
       extraClassName: 'ml-5'
     }).textElement
-
-    return $title;
   }
 
   protected addProductButton = () => {
@@ -50,11 +50,11 @@ protected $addProductButton: HTMLElement | null = null;
     }
 
     $button.addEventListener('click', () => {
-      modal.openModal(this.titleProductForm(), productForm.buildProductForm(), null);
+      this.modal.openModal(this.titleProductForm(), this.productForm.buildProductForm(), null);
     })
 
     $app?.appendChild($buttonWrapper)
   }
 }
 
-export default AddProductForm;
+export default AddProductController;
