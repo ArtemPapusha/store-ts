@@ -1,6 +1,5 @@
 import InputText from "@components/InputText";
 import Validations from "@services/Validations";
-import Modal from "@components/Modal";
 import Button from "@elements/Button";
 import ProductAPI from "@services/ProductAPI";
 import Snackbar from "@components/Snackbar";
@@ -9,8 +8,7 @@ import Skeleton from "@elements/Skeleton";
 import styleSkeleton from "@elements/Skeleton/style.module.scss"
 
 import { type ProductFormImplements } from "./type";
-
-const modal = new Modal()
+import { type ValidationFunction } from "@services/Validations";
 
 class ProductForm implements ProductFormImplements{
   protected $formBody: HTMLElement | null = null;
@@ -24,76 +22,37 @@ class ProductForm implements ProductFormImplements{
 
     $formBody.addEventListener('submit', (event) => this.submitForm(event));
 
-    const $category = new InputText({
-      name: 'category',
-      label: 'Category*',
-      type: 'text',
-      placeholder: 'Category',
-      id: 'categoryInput'
-    }).addValidation(Validations.required());
+    this.addFormInput($formBody, 'category', 'Category*', 'text', 'Category', 'categoryInput', [Validations.required()]);
 
-    const $title = new InputText({
-      name: 'title',
-      label: 'Title*',
-      type: 'text',
-      placeholder: 'Title',
-      id: 'titleInput'
-    }).addValidation(Validations.required());
+    this.addFormInput($formBody, 'title', 'Title*', 'text', 'Title', 'titleInput', [Validations.required()]);
 
-    const $image = new InputText({
-      name: 'image',
-      label: 'Image url*',
-      type: 'text',
-      placeholder: 'Image url',
-      id: 'imageInput'
-    })
-    .addValidation(Validations.required())
-    .addValidation(Validations.url());
+    this.addFormInput($formBody, 'image', 'Image url*', 'text', 'Image url', 'imageInput', [Validations.required(), Validations.url()]);
 
-    const $description = new InputText({
-      name: 'description',
-      label: 'Description*',
-      type: 'text',
-      placeholder: 'Description',
-      id: 'descriptionInput'
-    }).addValidation(Validations.required());
+    this.addFormInput($formBody, 'description', 'Description*', 'text', 'Description', 'descriptionInput', [Validations.required()]);
 
-    const $price = new InputText({
-      name: 'price',
-      label: 'Price*',
-      type: 'text',
-      placeholder: '1000',
-      id: 'priceInput'
-    })
-    .addValidation(Validations.required())
-    .addValidation(Validations.notZero())
-    .addValidation(Validations.onlyNumbers());
-  
-    if ($category.inputWrapper) {
-      $formBody.appendChild($category.inputWrapper)
-    }
-
-    if ($title.inputWrapper) {
-      $formBody.appendChild($title.inputWrapper)
-    }
-
-    if ($image.inputWrapper) {
-      $formBody.appendChild($image.inputWrapper)
-    }
-
-    if ($description.inputWrapper) {
-      $formBody.appendChild($description.inputWrapper)
-    }
-
-    if ($price.inputWrapper) {
-      $formBody.appendChild($price.inputWrapper)
-    }
+    this.addFormInput($formBody, 'price', 'Price*', 'text', '1000', 'priceInput', [Validations.required(), Validations.notZero(), Validations.onlyNumbers()]);
 
     $formBody.appendChild(this.buildFormButtons());
    
     this.$formBody = $formBody;
 
     return $formBody;
+  }
+
+  private addFormInput = ($formBody: HTMLFormElement, name: string, label: string, type: string, placeholder: string, id: string, validations: ValidationFunction[]): void => {
+      const $input = new InputText({
+          name: name,
+          label: label,
+          type: type,
+          placeholder: placeholder,
+          id: id
+      });
+
+      validations.forEach(validation => $input.addValidation(validation));
+
+      if ($input.inputWrapper) {
+          $formBody.appendChild($input.inputWrapper);
+      }
   }
 
   protected buildFormButtons = () => {
@@ -167,15 +126,13 @@ class ProductForm implements ProductFormImplements{
     }
   }
 
-  protected submitForm = async (event: Event): Promise<void> => {
-    event.preventDefault(); 
-
+  protected getFormData = () => {
     const categoryInput = document.getElementById('categoryInput') as HTMLInputElement | null;
     const titleInput = document.getElementById('titleInput') as HTMLInputElement | null;
     const imageInput = document.getElementById('imageInput') as HTMLInputElement | null;
     const descriptionInput = document.getElementById('descriptionInput') as HTMLInputElement | null;
     const priceInput = document.getElementById('priceInput') as HTMLInputElement | null;
-  
+
     if (
       categoryInput
       && titleInput
@@ -189,8 +146,22 @@ class ProductForm implements ProductFormImplements{
       const description = descriptionInput.value;
       const price = parseFloat(priceInput.value);
 
-      const onlyNumbersRegex = /^\d+$/;
-      
+      return { category, title, image, description, price };
+    } else {
+      return null;
+    }
+  }
+
+  protected submitForm = async (event: Event): Promise<void> => {
+    event.preventDefault(); 
+
+    const formData = this.getFormData();
+
+    const onlyNumbersRegex = /^\d+$/;
+
+    if (formData) {
+      const { category, title, image, description, price } = formData;
+
       if (
         category
         && title
@@ -207,14 +178,15 @@ class ProductForm implements ProductFormImplements{
           const res = await ProductAPI.createProduct(category, title, image, description, price);
           
           this.removeButtonLoader();
-
-          modal.closeModal();
-
+  
+          const $modal = document.getElementById('modal_wrapper');
+          $modal?.remove();
+  
           const notification = new Snackbar({
             message: `Product was added with id ${res?.id}`,
             variant: 'info'
           });
-
+  
           notification.buildSnackbar();
       } else if(
         !category
@@ -227,7 +199,7 @@ class ProductForm implements ProductFormImplements{
           message: "All fields are required",
           variant: 'info'
         });
-
+  
         notification.buildSnackbar();
       } else if (!onlyNumbersRegex.test(String(price)) || price <= 0) {
         
@@ -235,7 +207,7 @@ class ProductForm implements ProductFormImplements{
           message: 'Price value is not correct',
           variant: 'info'
         });
-
+  
         notification.buildSnackbar();
       } 
     }

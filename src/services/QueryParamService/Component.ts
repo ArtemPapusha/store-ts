@@ -5,7 +5,7 @@ class QueryParamService {
 
   public static getInstance(): QueryParamService {
     if (!QueryParamService.instance) {
-      QueryParamService.instance = new QueryParamService();
+      QueryParamService.instance = new this;
     }
     return QueryParamService.instance;
   }
@@ -15,18 +15,13 @@ class QueryParamService {
   public updateUrl = (key: string, value: string) => {
     this.params = this.params.filter(param => !param.startsWith(`${key}`));
 
-    if (key === 'page=' && value === '1') {
-      const newUrl = window.location.pathname;
-      window.history.replaceState({}, document.title, newUrl);
-    } else {
-      this.params.push(`${key}${value}`);
+    this.params.push(`${key}${value}`);
 
-      const newUrl = window.location.pathname + '?' + this.params.join('&');
-      window.history.replaceState({}, document.title, newUrl);
-    }
+    const newUrl = window.location.pathname + '?' + this.params.join('&');
+    window.history.replaceState({}, document.title, newUrl);
   }
 
-  public removeQueryParam = (key: string) => {
+  public removeQueryParam = (key: String[]) => {
     this.params = this.params.filter(param => !param.startsWith(`${key}`));
 
     const newUrl = window.location.pathname + '?' + this.params.join('&');
