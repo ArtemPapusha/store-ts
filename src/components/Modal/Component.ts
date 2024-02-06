@@ -87,8 +87,7 @@ class Modal implements ModalImplements {
       'd-flex',
       'just-content-space-between',
       'align-items-center'
-    ].join(' ')
-    ;
+    ].join(' ');
 
     const $modalCross = new Button({
       startIcon: {
@@ -116,7 +115,7 @@ class Modal implements ModalImplements {
     $body.className = [
       'd-flex',
       'just-content-center',
-    ].join(' ')
+    ].join(' ');
 
     this.$modalBody = $body
 

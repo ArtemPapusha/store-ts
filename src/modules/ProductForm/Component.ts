@@ -1,6 +1,5 @@
 import InputText from "@components/InputText";
 import Validations from "@services/Validations";
-import Modal from "@components/Modal";
 import Button from "@elements/Button";
 import ProductAPI from "@services/ProductAPI";
 import Snackbar from "@components/Snackbar";
@@ -9,8 +8,6 @@ import Skeleton from "@elements/Skeleton";
 import styleSkeleton from "@elements/Skeleton/style.module.scss"
 
 import { type ProductFormImplements } from "./type";
-
-const modal = new Modal()
 
 class ProductForm implements ProductFormImplements{
   protected $formBody: HTMLElement | null = null;
@@ -208,11 +205,12 @@ class ProductForm implements ProductFormImplements{
           
           this.removeButtonLoader();
 
-          modal.closeModal();
+         const $modal = document.getElementById('modal_wrapper')
+         $modal?.remove()
 
           const notification = new Snackbar({
             message: `Product was added with id ${res?.id}`,
-            variant: 'info'
+            variant: 'success'
           });
 
           notification.buildSnackbar();
@@ -225,7 +223,7 @@ class ProductForm implements ProductFormImplements{
       ){
         const notification = new Snackbar({
           message: "All fields are required",
-          variant: 'info'
+          variant: 'warning'
         });
 
         notification.buildSnackbar();
@@ -233,7 +231,7 @@ class ProductForm implements ProductFormImplements{
         
         const notification = new Snackbar({
           message: 'Price value is not correct',
-          variant: 'info'
+          variant: 'error'
         });
 
         notification.buildSnackbar();

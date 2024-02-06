@@ -59,7 +59,7 @@ class ListProducts implements ListProductsImplements {
         this.$listCards.innerHTML = '';
 
         const productData = newState.product;
-  
+        
         productData?.forEach(product => {
           const cardProduct = new CardProduct(product);
           if (this.$listCards && cardProduct.cardWrapper) {

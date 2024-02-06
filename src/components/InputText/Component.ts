@@ -48,11 +48,11 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     this.buildFieldWrapper();
   }
 
-  get inputWrapper() {
+  public get inputWrapper() {
     return this.$inputWrapper;
   }
 
-  buildFieldWrapper = () => {
+  protected buildFieldWrapper = () => {
     const $wrapper = document.createElement('div');
 
     $wrapper.className = [
@@ -80,7 +80,7 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     this.$inputWrapper = $wrapper;
   };
 
-  buildLabel = () => {
+  protected buildLabel = () => {
     const $label = document.createElement('label');
     
     $label.setAttribute('for', this.id);
@@ -95,7 +95,7 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     return $label;
   };
 
-  buildInput = () => {
+  protected buildInput = () => {
     const $input = document.createElement('input');
 
     $input.setAttribute('type', this.type);
@@ -117,11 +117,11 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     return $input;
   };
 
-  handleBlur = (event: Event) => {
+  protected handleBlur = (event: Event) => {
     this.handleError((event.target as HTMLInputElement).value);
   };
   
-  handleChange = (event: Event) => {
+  protected handleChange = (event: Event) => {
     this.value = (event.target as HTMLInputElement).value;
   
     this.handleError(this.value);

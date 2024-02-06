@@ -16,7 +16,7 @@ class FieldValidation implements FieldValidationImplements {
     return this.$errorMessage;
   }
 
-  buildErrorMessage = () => {
+  protected buildErrorMessage = () => {
     const $message = document.createElement('div');
 
     $message.className = [
@@ -32,14 +32,14 @@ class FieldValidation implements FieldValidationImplements {
     this.$errorMessage = $message;
   };
 
-  removeErrorMessage = () => {
+  protected removeErrorMessage = () => {
     if (this.$errorMessage) {
       this.$errorMessage.remove();
     }
     this.$errorMessage = null;
   };
 
-  handleErrorMessage = () => {
+  protected handleErrorMessage = () => {
     if (this.errors && this.$errorMessage) {
       this.$errorMessage.innerText = this.errors;
     } else if (this.errors && !this.$errorMessage) {
@@ -52,12 +52,12 @@ class FieldValidation implements FieldValidationImplements {
     }
   };
 
-  addValidation = (validation: (value: string) => string | '') => {
+  public addValidation = (validation: (value: string) => string | '') => {
     this.validations.push(validation);
     return this;
   };
 
-  handleError = (value: string) => {
+  protected handleError = (value: string) => {
     for (let key of this.validations.keys()) {
       const result = this.validations[key](value);
 

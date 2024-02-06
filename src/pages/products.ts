@@ -6,7 +6,7 @@ import ListProducts from '@modules/ListProducts';
 import ProductAPI from '@services/ProductAPI';
 import ProductState from '@state/ProductState';
 import Pagination from '@modules/PaginationProduct';
-import AddProductForm from '@modules/AddProductForm';
+import AddProductForm from '@modules/AddProduct';
 import QueryParamService from '@services/QueryParamService';
 
 
