@@ -1,8 +1,2 @@
-export const currentUrl = new URL(window.location.href);
+export const getPageNumber = () => Number(window.location.search.split('page=')[1]);
 
-export const updatePageNumber = (pageNumber: string) => {
-
-  currentUrl.searchParams.set('_page', pageNumber);
-
-  window.history.replaceState({}, '', currentUrl);
-}

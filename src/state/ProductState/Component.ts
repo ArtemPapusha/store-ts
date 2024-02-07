@@ -1,7 +1,6 @@
 import Observer from "@services/Observer";
-import QueryParamService from "@services/QueryParamService";
 
-const queryParams = new QueryParamService();
+import { getPageNumber } from "@utils/urls";
 
 import {
   type ProductStateType,
@@ -27,7 +26,7 @@ class ProductState extends Observer<ProductStateType> implements ProductStateInt
     isLoadingProduct: false,
     isInitProduct: false,
     pagination: {
-      active: queryParams.getPageNumber() || 1,
+      active: getPageNumber() || 1,
       pagesAmount: 1,
     },
   }
