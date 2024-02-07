@@ -99,7 +99,7 @@ class ProductAPI {
       const response = await fetch(`${API_HOST}${currentUrl}`, { method });
 
       const { data }: ProductsResponse = await response.json();
-
+      
       updateCart(data);
 
     } catch (error) {

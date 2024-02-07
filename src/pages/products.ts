@@ -6,7 +6,7 @@ import ListProducts from '@modules/ListProducts';
 import ProductAPI from '@services/ProductAPI';
 import ProductState from '@state/ProductState';
 import Pagination from '@modules/PaginationProduct';
-import AddProductControler from '@modules/AddProductControler';
+import AddProductControler from '@modules/AddProductController';
 import QueryParamService from '@services/QueryParamService';
 
 
@@ -24,7 +24,6 @@ productState.addObserver(pagination).addObserver(listCards);
 
 pagination.setPageClick(async (page) => {
   pagination.setDisabled();
-  
   if (page) {
     await productAPI.getProducts(page);
   }
@@ -43,5 +42,6 @@ async function init() {
     $app.appendChild(pagination.pagination);
   }
 }
+
 
 await init();

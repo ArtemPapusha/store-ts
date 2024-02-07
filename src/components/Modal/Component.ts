@@ -112,7 +112,7 @@ class Modal implements ModalImplements {
     $body.className = [
       'd-flex',
       'just-content-center',
-    ].join(' ')
+    ].join(' ');
 
     this.$modalBody = $body
 
@@ -125,7 +125,7 @@ class Modal implements ModalImplements {
     $footer.className = [
       'd-flex',
       'just-content-center',
-    ].join(' ')
+    ].join(' ');
 
     this.$modalFooter = $footer;
 

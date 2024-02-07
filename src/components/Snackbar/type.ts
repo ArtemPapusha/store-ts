@@ -6,12 +6,12 @@ export interface SnackbarInterface {
 }
 
 export interface SnackbarConstructor {
-  message: string,
-  variant?: 'default' | 'error' | 'warning' | 'info' | 'succsess',
+  message: string
+  variant?: 'default' | 'error' | 'warning' | 'info' | 'success'
   position?: 'top-center' | 'top-right' | 'bottom-right' |
-            'bottom-center' | 'bottom-left' | 'top-left',
-  transition?: 'left' | 'up' | 'right' | 'down',
-  startIcon?: IconConstructor | null,
-  endIcon?: IconConstructor | null,
-  button?: ButtonConstructor | null,
+            'bottom-center' | 'bottom-left' | 'top-left'
+  transition?: 'left' | 'up' | 'right' | 'down'
+  startIcon?: IconConstructor | null
+  endIcon?: IconConstructor | null
+  button?: ButtonConstructor | null
 }

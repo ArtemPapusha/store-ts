@@ -5,7 +5,7 @@ import Typography from "@elements/Typography";
 
 import { $app } from "@constants/div.app";
 
-class AddProductControler{
+class AddProductController{
   protected productForm: ProductForm;
   protected modal: Modal;
   protected $addProductButton: HTMLElement | null = null;
@@ -57,4 +57,5 @@ class AddProductControler{
   }
 }
 
-export default AddProductControler;
+export default AddProductController;
+

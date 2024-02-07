@@ -34,7 +34,8 @@ class Snackbar implements SnackbarInterface{
     if(message) {
       this.message = new Typography({
         text: message,
-        type: 'body2',
+        type: 'body1',
+        textColor: 'white',
       });
     };
     
