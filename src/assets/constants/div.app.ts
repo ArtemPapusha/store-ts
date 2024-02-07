@@ -1,1 +1,1 @@
-export const $divApp: HTMLDivElement | null = document.querySelector('#app');
+export const $app: HTMLDivElement | null = document.querySelector('#app');

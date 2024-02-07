@@ -1,39 +1,26 @@
 import Button from "@elements/Button";
-import { $divApp } from "@constants/div.app";
-import Typography from "@elements/Typography";
+import { $app } from "@constants/div.app";
 
-import {
-  type ModalImplements,
-  type ModalConstructor
-} from "./type";
+import { type ModalImplements } from "./type";
 
 import style from './style.module.scss';
 
 class Modal implements ModalImplements {
   protected $modalWrapper: HTMLElement | null = null;
+  protected $modalTitle: HTMLElement | null = null;
   protected $modalBody: HTMLElement | null = null;
   protected $modalFooter: HTMLElement | null = null;
-  protected title: Typography | null = null;
-
-  constructor({
-    title = '',
-  }: ModalConstructor) {
-    if (title) {
-      this.title = new Typography({
-        text: title,
-        type: 'h6',
-        textColor: 'black',
-        textWeight: 500
-      });
-    }
-  }
 
   public get modal() {
     return this.$modalWrapper;
   }
 
+  public get modalTitle() {
+    return this.$modalTitle;
+  }
+
   public get modalBody() {
-    return this.$modalWrapper;
+    return this.$modalBody;
   }
 
   public get modalFooter() {
@@ -47,7 +34,7 @@ class Modal implements ModalImplements {
     this.$modalWrapper = $modalWrapper;
 
     $modalWrapper.appendChild(this.buildModalOverlay());
-    $divApp?.appendChild(this.$modalWrapper);
+    $app?.appendChild(this.$modalWrapper);
   }
 
   protected buildModalOverlay = () => {
@@ -57,7 +44,7 @@ class Modal implements ModalImplements {
       'd-flex',
       'just-content-center',
       'align-items-center'
-    ].join(' ')
+    ].join(' ');
 
     $overlay?.addEventListener('click', (e) => {
       if (e.target === $overlay) {
@@ -80,7 +67,7 @@ class Modal implements ModalImplements {
       'minhg-30',
       'px-10',
       'py-10'
-    ].join(' ')
+    ].join(' ');
 
     $modal.appendChild(this.buildModalTitle());
     $modal.appendChild(this.buildModalBody());
@@ -97,11 +84,7 @@ class Modal implements ModalImplements {
       'd-flex',
       'just-content-space-between',
       'align-items-center'
-    ].join(' ')
-    ;
-    if (this.title?.textElement) {
-    $title.appendChild(this.title?.textElement);
-    }
+    ].join(' ');
 
     const $modalCross = new Button({
       startIcon: {
@@ -117,6 +100,8 @@ class Modal implements ModalImplements {
     if ($modalCross.buttonElement) {
     $title.appendChild($modalCross.buttonElement)
     }
+
+    this.$modalTitle = $title
 
     return $title;
   }
@@ -155,17 +140,24 @@ class Modal implements ModalImplements {
     }
   }
 
-  public openModal = ($body: HTMLElement | null, $footer: HTMLElement | null) => {
+  public openModal = ($title: HTMLElement | null, $body: HTMLElement | null, $footer: HTMLElement | null) => {
     this.toggleBodyHide();
 
     this.buildModalWrapper();
+
+    const $btnCross = this.$modalTitle?.querySelector('button')
+
+    if ($title  && $btnCross) {
+      this.$modalTitle?.insertBefore($title, $btnCross);
+    }
+
     if ($body) {
-    this.$modalBody?.appendChild($body);
+      this.$modalBody?.appendChild($body);
     }
 
     if ($footer) {
-      this.$modalBody?.appendChild($footer);
-      }
+      this.$modalFooter?.appendChild($footer);
+    }
   }
 
   protected destroy = () => {

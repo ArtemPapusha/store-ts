@@ -1,17 +1,17 @@
 import '@style/pages/products.scss'
 
-import { $divApp } from '@constants/div.app';
+import { $app } from '@constants/div.app';
 
 import ListProducts from '@modules/ListProducts';
 import ProductAPI from '@services/ProductAPI';
 import ProductState from '@state/ProductState';
 import Pagination from '@modules/PaginationProduct';
-import AddProductForm from '@modules/AddProductForm';
+import AddProductControler from '@modules/AddProductControler';
 import QueryParamService from '@services/QueryParamService';
 
 
-const queryParams = new QueryParamService()
-new AddProductForm();
+const queryParams = QueryParamService.getInstance()
+new AddProductControler();
 const listCards = new ListProducts();
 const productState = new ProductState();
 const productAPI = new ProductAPI(productState);
@@ -29,14 +29,18 @@ pagination.setPageClick(async (page) => {
     await productAPI.getProducts(page);
   }
   
-  queryParams.updatePageUrl(Number(page))
+  queryParams.updateUrl('page=', String(page));
+
+  if (page === 1) {
+    queryParams.removeQueryParam(['page=']);
+  }
 })
 
 async function init() {
   await productAPI.getProducts(productState.state.pagination.active);
 
-  if (pagination.pagination && $divApp) {
-    $divApp.appendChild(pagination.pagination);
+  if (pagination.pagination && $app) {
+    $app.appendChild(pagination.pagination);
   }
 }
 

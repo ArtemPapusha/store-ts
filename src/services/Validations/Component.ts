@@ -1,3 +1,4 @@
+
 class Validations {
 
   public static maxLength = (max: number) => (value: string) =>

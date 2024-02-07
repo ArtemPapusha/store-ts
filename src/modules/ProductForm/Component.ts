@@ -1,6 +1,5 @@
 import InputText from "@components/InputText";
 import Validations from "@services/Validations";
-import Modal from "@components/Modal";
 import Button from "@elements/Button";
 import ProductAPI from "@services/ProductAPI";
 import Snackbar from "@components/Snackbar";
@@ -8,75 +7,55 @@ import Skeleton from "@elements/Skeleton";
 
 import styleSkeleton from "@elements/Skeleton/style.module.scss"
 
-import { $divApp } from "@constants/div.app";
+import { type ProductFormImplements } from "./type";
+import { type ValidationFunction } from "@services/Validations";
 
-import { type AddProductFormImplements } from "./type";
-
-class AddProductForm extends Modal implements AddProductFormImplements{
+class ProductForm implements ProductFormImplements{
   protected $formBody: HTMLElement | null = null;
-
-  constructor() {
-    super({
-      title: 'Add new product to the store',
-    });
-
-    this.addProductButton()
-  }
 
   public get formProduct() {
     return this.$formBody;
   }
 
-  protected buildProductForm = (): HTMLFormElement => {
+  public buildProductForm = (): HTMLFormElement => {
     const $formBody = document.createElement('form');
 
     $formBody.addEventListener('submit', (event) => this.submitForm(event));
 
-    const $category = new InputText({
-      name: 'category',
-      label: 'Category*',
-      type: 'text',
-      placeholder: 'Category',
-      id: 'categoryInput'
-    }).addValidation(Validations.required());
+    this.addFormInput($formBody, 'category', 'Category*', 'text', 'Category', 'categoryInput', [Validations.required()]);
 
-    const $title = new InputText({
-      name: 'title',
-      label: 'Title*',
-      type: 'text',
-      placeholder: 'Title',
-      id: 'titleInput'
-    }).addValidation(Validations.required());
+    this.addFormInput($formBody, 'title', 'Title*', 'text', 'Title', 'titleInput', [Validations.required()]);
 
-    const $image = new InputText({
-      name: 'image',
-      label: 'Image url*',
-      type: 'text',
-      placeholder: 'Image url',
-      id: 'imageInput'
-    })
-    .addValidation(Validations.required())
-    .addValidation(Validations.url());
+    this.addFormInput($formBody, 'image', 'Image url*', 'text', 'Image url', 'imageInput', [Validations.required(), Validations.url()]);
 
-    const $description = new InputText({
-      name: 'description',
-      label: 'Description*',
-      type: 'text',
-      placeholder: 'Description',
-      id: 'descriptionInput'
-    }).addValidation(Validations.required());
+    this.addFormInput($formBody, 'description', 'Description*', 'text', 'Description', 'descriptionInput', [Validations.required()]);
 
-    const $price = new InputText({
-      name: 'price',
-      label: 'Price*',
-      type: 'text',
-      placeholder: '1000',
-      id: 'priceInput'
-    })
-    .addValidation(Validations.required())
-    .addValidation(Validations.notZero())
-    .addValidation(Validations.onlyNumbers());
+    this.addFormInput($formBody, 'price', 'Price*', 'text', '1000', 'priceInput', [Validations.required(), Validations.notZero(), Validations.onlyNumbers()]);
 
+    $formBody.appendChild(this.buildFormButtons());
+   
+    this.$formBody = $formBody;
+
+    return $formBody;
+  }
+
+  private addFormInput = ($formBody: HTMLFormElement, name: string, label: string, type: string, placeholder: string, id: string, validations: ValidationFunction[]): void => {
+      const $input = new InputText({
+          name: name,
+          label: label,
+          type: type,
+          placeholder: placeholder,
+          id: id
+      });
+
+      validations.forEach(validation => $input.addValidation(validation));
+
+      if ($input.inputWrapper) {
+          $formBody.appendChild($input.inputWrapper);
+      }
+  }
+
+  protected buildFormButtons = () => {
     const $submit = new Button({
       textContent: {
         text: 'Send',
@@ -116,6 +95,7 @@ class AddProductForm extends Modal implements AddProductFormImplements{
 
     $buttonsWrapper.className = [
       'd-flex',
+      'just-content-center',
       'gap-5'
     ].join(' ')
 
@@ -126,61 +106,8 @@ class AddProductForm extends Modal implements AddProductFormImplements{
     if ($submit.buttonElement) {
       $buttonsWrapper.appendChild($submit.buttonElement)
     }
-  
-    if ($category.inputWrapper) {
-      $formBody.appendChild($category.inputWrapper)
-    }
 
-    if ($title.inputWrapper) {
-      $formBody.appendChild($title.inputWrapper)
-    }
-
-    if ($image.inputWrapper) {
-      $formBody.appendChild($image.inputWrapper)
-    }
-
-    if ($description.inputWrapper) {
-      $formBody.appendChild($description.inputWrapper)
-    }
-
-    if ($price.inputWrapper) {
-      $formBody.appendChild($price.inputWrapper)
-    }
-
-    $formBody.appendChild($buttonsWrapper);
-   
-    this.$formBody = $formBody;
-
-    return $formBody;
-  }
-
-  protected addProductButton = () => {
-    const $buttonWrapper = document.createElement('div')
-
-    const $button = new Button({
-      textContent: {
-        text: 'Add product',
-        type: 'body2'
-      },
-      variant: 'outlined',
-      buttonSize: 'small',
-      startIcon: {
-        iconName: 'plus',
-        color: 'black',
-        extraClassName: 'mr-2'
-      },
-      extraClassName: 'px-2 py-2'
-    });
-
-    if ($button.buttonElement) {
-    $buttonWrapper.appendChild($button.buttonElement)
-    }
-
-    $button.addEventListener('click', () => {
-      this.openModal(this.buildProductForm(), null);
-    })
-
-    $divApp?.appendChild($buttonWrapper)
+    return $buttonsWrapper;
   }
 
   protected buttonLoader = () => {
@@ -199,21 +126,19 @@ class AddProductForm extends Modal implements AddProductFormImplements{
     }
   }
 
-  protected submitForm = async (event: Event): Promise<void> => {
-    event.preventDefault(); 
-
+  protected getFormData = () => {
     const categoryInput = document.getElementById('categoryInput') as HTMLInputElement | null;
     const titleInput = document.getElementById('titleInput') as HTMLInputElement | null;
     const imageInput = document.getElementById('imageInput') as HTMLInputElement | null;
     const descriptionInput = document.getElementById('descriptionInput') as HTMLInputElement | null;
     const priceInput = document.getElementById('priceInput') as HTMLInputElement | null;
-  
+
     if (
-      categoryInput &&
-      titleInput &&
-      imageInput &&
-      descriptionInput &&
-      priceInput
+      categoryInput
+      && titleInput
+      && imageInput
+      && descriptionInput
+      && priceInput
     ) {
       const category = categoryInput.value;
       const title = titleInput.value;
@@ -221,14 +146,29 @@ class AddProductForm extends Modal implements AddProductFormImplements{
       const description = descriptionInput.value;
       const price = parseFloat(priceInput.value);
 
-      const onlyNumbersRegex = /^\d+$/;
-      
+      return { category, title, image, description, price };
+    } else {
+      return null;
+    }
+  }
+
+  protected submitForm = async (event: Event): Promise<void> => {
+    event.preventDefault(); 
+
+    const formData = this.getFormData();
+
+    const onlyNumbersRegex = /^\d+$/;
+
+    if (formData) {
+      const { category, title, image, description, price } = formData;
+
       if (
         category
         && title
         && image
         && description
         && price
+        && price > 0
         ) {
           const $iconSend = this.$formBody?.querySelector('._icon-compass_1s6ri_315');
           $iconSend?.remove();
@@ -238,32 +178,40 @@ class AddProductForm extends Modal implements AddProductFormImplements{
           const res = await ProductAPI.createProduct(category, title, image, description, price);
           
           this.removeButtonLoader();
-
-          this.closeModal();
-
+  
+          const $modal = document.getElementById('modal_wrapper');
+          $modal?.remove();
+  
           const notification = new Snackbar({
             message: `Product was added with id ${res?.id}`,
             variant: 'info'
           });
-
+  
           notification.buildSnackbar();
-      } else if (!onlyNumbersRegex.test(String(price))) {
-
-        const notification = new Snackbar({
-          message: 'Price value is not correct',
-          variant: 'info'
-        });
-
-        notification.buildSnackbar();
-      } else {
+      } else if(
+        !category
+        && !title
+        && !image
+        && !description
+        && !price
+      ){
         const notification = new Snackbar({
           message: "All fields are required",
           variant: 'info'
         });
-
+  
         notification.buildSnackbar();
-      }
+      } else if (!onlyNumbersRegex.test(String(price)) || price <= 0) {
+        
+        const notification = new Snackbar({
+          message: 'Price value is not correct',
+          variant: 'info'
+        });
+  
+        notification.buildSnackbar();
+      } 
     }
   }
 }
-export default AddProductForm;
+
+export default ProductForm;

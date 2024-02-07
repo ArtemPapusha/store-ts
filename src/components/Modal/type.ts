@@ -3,7 +3,3 @@ export interface ModalImplements {
   modalBody: HTMLElement | null
   modalFooter: HTMLElement | null
 }
-
-export interface ModalConstructor {
-  title?: string,
-}
