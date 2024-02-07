@@ -9,8 +9,6 @@ class QueryParamService {
     }
     return QueryParamService.instance;
   }
-
-  public getPageNumber = () => Number(window.location.search.split('page=')[1]);
   
   public updateUrl = (key: string, value: string) => {
     this.params = this.params.filter(param => !param.startsWith(`${key}`));
