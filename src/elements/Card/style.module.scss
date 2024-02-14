@@ -1,7 +1,7 @@
 @import '@style/utils/typography.scss';
 @import '@style/utils/colors.scss';
 
-.card-wrapper {
+.card-wrapper_grid {
   border: 1px solid $black;
   border-radius: 5px;
   align-self: flex-start;
@@ -23,7 +23,7 @@
   @include textStyle(center, none, $secondary 1px 0 10px);
 }
 
-.card-product__description{
+.card-product__description_grid{
   @include textStyle(center, none, none);
   max-height: 0;
   opacity: 0;
@@ -33,7 +33,7 @@
   position: absolute;
   z-index: 3;
 
-  .card-wrapper:hover & {
+  .card-wrapper_grid:hover & {
     max-height: 500px;
     opacity: 1;
     width: 200px;
@@ -50,7 +50,7 @@
   }
 }
 
-.card-product__img {
+.card-product__img_grid {
   width: 130px;
   height: 150px;
   flex: 1 1 auto;
@@ -62,6 +62,15 @@
   font-style: italic;
   border: 1px solid $secondary-dark;
   color: $secondary-dark;
+}
+
+.productLogo {
+  width: 65px;
+  height: 75px;
+}
+
+.cardWrapperList {
+  border-bottom: 1px solid;
 }
 
 

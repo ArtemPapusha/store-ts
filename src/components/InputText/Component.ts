@@ -14,6 +14,8 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
   protected label: string = '';
   protected value: string = '';
   protected type: string = '';
+  protected textAlign: string = 'left';
+  protected size: string = '';
   protected placeholder: string = '';
   protected id: string = '';
   protected startIcon: Icon;
@@ -24,6 +26,8 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     label = '',
     value = '',
     type = 'text',
+    textAlign = 'left',
+    size = '',
     placeholder = '',
     id = '',
     startIcon,
@@ -33,6 +37,8 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     this.name = name;
     this.label = label;
     this.type = type;
+    this.textAlign = textAlign;
+    this.size = size
     this.value = value;
     this.placeholder = placeholder;
     this.id = id;
@@ -99,13 +105,14 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     const $input = document.createElement('input');
 
     $input.setAttribute('type', this.type);
+    $input.setAttribute('size', this.size);
     $input.setAttribute('name', this.name);
     $input.setAttribute('placeholder', this.placeholder);
     $input.setAttribute('id', `${this.id}`);
     $input.setAttribute('value', this.value);
-    $input.setAttribute('size', '60');
 
     $input.className = [
+      style[`inputText-${this.textAlign}`],
       'py-2',
       'px-2',
     ].join(' ');

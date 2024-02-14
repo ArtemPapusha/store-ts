@@ -3,5 +3,6 @@ export { default } from "./Component"
 export {
   type ProductStateInterface,
   type ProductStateType,
-  type Product,
+  type ProductType,
+  type CartType,
 } from "./type"

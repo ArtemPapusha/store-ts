@@ -5,10 +5,12 @@ import { getPageNumber } from "@utils/urls";
 import {
   type ProductStateType,
   type ProductStateInterface,
-  type Product
+  type ProductType,
+  type CartType
 } from "./type";
   
 class ProductState extends Observer<ProductStateType> implements ProductStateInterface{
+  protected static instance: ProductState | null = null;
 
   static EVENT_TYPE_PRODUCT_LOADING: string = 'EVENT_TYPE_PRODUCT_LOADING';
 
@@ -23,6 +25,7 @@ class ProductState extends Observer<ProductStateType> implements ProductStateInt
   static INIT_STATE: ProductStateType = {
     product: [],
     cart: [],
+    cartCounter: undefined,
     isLoadingProduct: false,
     isInitProduct: false,
     pagination: {
@@ -33,6 +36,12 @@ class ProductState extends Observer<ProductStateType> implements ProductStateInt
 
   constructor() {
     super(ProductState.INIT_STATE)
+    if (ProductState.instance && typeof ProductState.instance === "object") {
+      return ProductState.instance
+    }
+
+    ProductState.instance = this
+    return this
   }
 
   protected _state: ProductStateType = ProductState.INIT_STATE;
@@ -47,7 +56,7 @@ class ProductState extends Observer<ProductStateType> implements ProductStateInt
     return this;
   }
 
-  public updateProduct = async (products: Product[]): Promise<this> => {
+  public updateProduct = async (products: ProductType[]): Promise<this> => {    
     this.state.product = products;
     this.notificationObservers(ProductState.EVENT_TYPE_UPDATE_PRODUCT);
     return this;
@@ -65,8 +74,9 @@ class ProductState extends Observer<ProductStateType> implements ProductStateInt
     return this;
   }
 
-  public updateCart = async (products: Product[]): Promise<this> => {
+  public updateCart = async (products: CartType[], amount: string): Promise<this> => {
     this.state.cart = products;
+    this.state.cartCounter = amount;
     this.notificationObservers(ProductState.EVENT_TYPE_UPDATE_CART);
     return this;
   }

@@ -11,14 +11,14 @@ import {
 class Icon implements IconInterface {
   protected iconName: IconName | null = 'heart';
   protected size: number = 16;
-  protected color: Color | null = 'primary';
+  protected color: Color | null = null;
   protected extraClassName: string = '';
   protected $iconElement: HTMLElement | null = null;
 
   constructor({
     iconName = 'heart',
     size = 8,
-    color = 'primary',
+    color = null,
     extraClassName = ''
   }: IconConstructor) {
 

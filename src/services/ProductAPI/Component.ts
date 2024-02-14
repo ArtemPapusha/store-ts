@@ -10,16 +10,56 @@ import {
 
 import { type ProductsResponse } from './type';
 
-import { type ProductStateInterface } from '@state/ProductState';
+import ProductState, { type ProductStateInterface } from '@state/ProductState';
 
 class ProductAPI {
   protected static productsEndpoint = endpoint(API_METHOD_GET, PRODUCTS_ROUTER);
 
-  protected static productIdEndpoint = (id: number) => endpoint(API_METHOD_GET, PRODUCT_ID_ROUTER(id));
+  protected static productIdEndpoint = (id: string) => endpoint(API_METHOD_GET, PRODUCT_ID_ROUTER(id));
 
   protected static createProductEndpoint = endpoint(API_METHOD_POST, PRODUCTS_ROUTER);
 
-  public static async createProduct(category: string, title: string, image: string, description: string, price: number): Promise<any> {
+  protected productState: ProductStateInterface;
+
+  constructor() {
+    this.productState = new ProductState();
+  }
+
+  public getProducts = async (page: number): Promise<void> => {
+    const { endpoint, currentUrl, method } = ProductAPI.productsEndpoint;
+    const { 
+      state,
+      toggleLoaderProduct,
+      updateProduct,
+      updatePagination,
+      setInitProduct,
+    } = this.productState
+
+    toggleLoaderProduct(true);
+
+    try {
+      const response = await fetch(`${API_HOST}${currentUrl}?_page=${page}&_per_page=6`, { method });
+      const { data, pages }: ProductsResponse = await response.json();
+      
+      updatePagination(page, pages)
+      updateProduct(data)
+    } catch (error) {
+    
+      console.log('getProducts => error', error);
+
+    } finally {
+      
+      if (!state.isInitProduct) {
+        setInitProduct();
+      }
+
+      toggleLoaderProduct(false);
+
+      console.log('getProducts => finally', endpoint);
+    }
+  }
+
+  public createProduct = async (category: string, title: string, image: string, description: string, price: string): Promise<any> => {
     const { currentUrl, method } = ProductAPI.createProductEndpoint;
 
     try {
@@ -45,76 +85,6 @@ class ProductAPI {
       throw error;
     }
   }
-
-  protected productState: ProductStateInterface;
-
-  constructor(productState: ProductStateInterface ) {
-    this.productState = productState;
-  }
-
-  public getProducts = async (page: number): Promise<void> => {
-    const { endpoint, currentUrl, method } = ProductAPI.productsEndpoint;
-    const { 
-      state,
-      toggleLoaderProduct,
-      updateProduct,
-      updatePagination,
-      setInitProduct,
-    } = this.productState
-
-    toggleLoaderProduct(true);
-
-    try {
-      const response = await fetch(`${API_HOST}${currentUrl}?_page=${page}&_per_page=6`, { method });
-      
-      const { data, pages }: ProductsResponse = await response.json();
-
-      updatePagination(page, pages)  
-      updateProduct(data)
-    } catch (error) {
-    
-      console.log('getProducts => error', error);
-
-    } finally {
-      
-      if (!state.isInitProduct) {
-        setInitProduct();
-      }
-
-      toggleLoaderProduct(false);
-
-      console.log('getProducts => finally', endpoint);
-    }
-  }
-
-  public getProduct = async (id: number): Promise<void> => {
-    const { endpoint, currentUrl, method } = ProductAPI.productIdEndpoint(id);
-    const { 
-      state,
-      updateCart,
-      setInitProduct
-    } = this.productState
-
-    try {
-      const response = await fetch(`${API_HOST}${currentUrl}`, { method });
-
-      const { data }: ProductsResponse = await response.json();
-      
-      updateCart(data);
-
-    } catch (error) {
-    
-      console.log('getProducts => error', error);
-
-    } finally {
-      if (!state.isInitProduct) {
-        setInitProduct();
-      }
-
-      console.log('getProducts => finally', endpoint);
-    }
-  }
-
 }
 
 export default ProductAPI;

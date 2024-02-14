@@ -9,6 +9,8 @@ export interface FieldInputConstructor {
   label?: string
   value?: string
   type?: string
+  textAlign?: 'left' | 'center' | 'right' | ''
+  size?: string
   placeholder?: string
   id?: string
   startIcon?: IconConstructor

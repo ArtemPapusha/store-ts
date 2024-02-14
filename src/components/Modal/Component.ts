@@ -1,8 +1,6 @@
 import Button from "@elements/Button";
 import { $app } from "@constants/div.app";
-
 import { type ModalImplements } from "./type";
-
 import style from './style.module.scss';
 
 class Modal implements ModalImplements {
@@ -63,7 +61,7 @@ class Modal implements ModalImplements {
       'd-flex',
       'just-content-space-between',
       'flex-direction-column',
-      'minwd-40',
+      'minwd-50',
       'minhg-30',
       'px-10',
       'py-10'
@@ -83,7 +81,8 @@ class Modal implements ModalImplements {
       style.modalTitle,
       'd-flex',
       'just-content-space-between',
-      'align-items-center'
+      'align-items-center',
+      'mb-5'
     ].join(' ');
 
     const $modalCross = new Button({
@@ -123,8 +122,10 @@ class Modal implements ModalImplements {
     const $footer = document.createElement('div');
 
     $footer.className = [
+      style.modalFooter,
       'd-flex',
       'just-content-center',
+      'py-3'
     ].join(' ');
 
     this.$modalFooter = $footer;
