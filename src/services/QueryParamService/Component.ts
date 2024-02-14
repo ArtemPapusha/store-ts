@@ -26,6 +26,7 @@ class QueryParamService {
     this.params = this.params.filter(param => !param.startsWith(`${key}`));
 
     const newUrl = window.location.pathname + this.params.join('&');
+ 
     window.history.replaceState({}, document.title, newUrl);
   }
 
