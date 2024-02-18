@@ -62,12 +62,22 @@ class Button implements ButtonInterface {
     return this.$buttonElement;
   }
 
-  public addEventListener(eventType: string, callback: () => void) {
+  public addEventListener = (eventType: string, callback: () => void) => {
     this.buttonElement?.addEventListener(eventType, callback);
   }
 
-  public setAttribute(type: string, value: string) {
+  public setAttribute = (type: string, value: string) => {
     this.buttonElement?.setAttribute(type, value)
+  }
+
+  public setDisabled = () => {
+    this.buttonElement?.setAttribute('disabled', 'disabled');
+    this.buttonElement?.classList.add(style.buttonDisabled);
+  }
+
+  public removeDisabled = () => {
+    this.buttonElement?.removeAttribute('disabled');
+    this.buttonElement?.classList.remove(style.buttonDisabled);
   }
 
   protected buildButton = () => {
@@ -105,6 +115,9 @@ class Button implements ButtonInterface {
     if (this.disabled) {
       $button.setAttribute('disabled', 'disabled');
       $button.classList.add(style.buttonDisabled);
+    } else {
+      $button.removeAttribute('disabled');
+      $button.classList.remove(style.buttonDisabled);
     }
 
     this.$buttonElement = $button;

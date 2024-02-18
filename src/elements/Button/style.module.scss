@@ -6,7 +6,6 @@ button {
 }
 .button {
   cursor: pointer;
-  min-width: 20px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
@@ -16,24 +15,19 @@ button {
 
   &:hover {
     color: $secondary;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
   }
 
   &:active {
-    background-color: $secondary;
     color: $black;
     transform: translateY(0);
-    box-shadow: $secondary 1px 0 10px;
   }
 
   &-text {
     outline: 0;
     border: 0;
     background-color: $white;
-  
-    &:hover {
-      background-color: $secondary-light;
-    }
+
     &:focus {
       border: 0;
     }
@@ -95,7 +89,6 @@ button {
 
   &-disabled {
     color: $secondary-light;
-    border: 1px solid $secondary-light;
     background-color: $white;
     cursor: none;
     box-shadow: none;
@@ -104,7 +97,6 @@ button {
     &:active,
     &:focus{
       color: $secondary-light;
-      border: 1px solid $secondary-light;
       background-color: $white;
       cursor: not-allowed;;
       box-shadow: none;

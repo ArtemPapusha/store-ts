@@ -22,6 +22,7 @@ export type TypographyType =
 export interface TypographyConstructor {
   text?: string
   type?: TypographyType
+  position?: 'up' | 'down' | ''
   textColor?: Color
   textWeight?: 100 | 300 | 400 | 500 | 700 | 900
   extraClassName?: string

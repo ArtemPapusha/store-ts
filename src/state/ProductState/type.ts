@@ -1,24 +1,35 @@
-export interface Product {
-  id?: number,
+export interface ProductType {
+  id?: string,
   category?: string,
   title?: string,
   image?: string,
   description?: string,
-  price?: number,
+  pricePerUnit?: string,
+}
+
+export interface CartType {
+  id?: string,
+  category?: string,
+  title?: string,
+  image?: string,
+  description?: string,
+  price?: string,
+  quantity?: string
 }
 
 export interface ProductStateInterface  {
   state: ProductStateType,
   toggleLoaderProduct: (loading: boolean) => this,
-  updateProduct: (products: Product[]) => Promise<this>,
+  updateProduct: (products: ProductType[]) => Promise<this>,
   updatePagination: (active?: number | null, pagesAmount?: number | null) => this,
   setInitProduct: () => this,
-  updateCart: (products: Product[]) => Promise<this>,
+  updateCart: (products: CartType[], amount: string) => Promise<this>,
 }
 
 export interface ProductStateType {
-  product: Product[]
-  cart: Product[]
+  product: ProductType[]
+  cart: CartType[],
+  cartCounter: string | undefined
   isLoadingProduct: boolean
   isInitProduct: boolean
   pagination: {

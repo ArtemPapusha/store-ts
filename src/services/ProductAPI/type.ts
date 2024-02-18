@@ -1,8 +1,7 @@
-  import { type Product } from "@state/ProductState";
-  
+  import { type ProductType, type CartType } from "@state/ProductState";
 
   export interface ProductsResponse {
-    data: Product[],
+    data: ProductType[] | CartType[],
     first: number,
     prev: number,
     next: number,

@@ -141,6 +141,33 @@ class Skeleton implements SkeletonInterface {
 
     return $loadButton;
   }
+
+  public cartLoader = () => {
+    const $overlay = document.createElement('div');
+
+    $overlay.className = [
+      style.cartOverlay,
+      'cart_overlay',
+      'd-flex',
+      'just-content-center',
+      'align-items-center'
+    ].join(' ');
+
+    const $loader = document.createElement('div');
+
+    $loader.className = style.cartLoader;
+
+    $overlay.appendChild($loader)
+
+    const $productCart = document.getElementById('product_cart')
+
+    $productCart?.appendChild($overlay)
+  }
+
+  public removeCartLoader = () => {
+    const $cartLoader = document.querySelector('.cart_overlay')
+    $cartLoader?.remove()
+  }
 }
   
   export default Skeleton;

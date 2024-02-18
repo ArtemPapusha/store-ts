@@ -12,6 +12,7 @@ import {
 class Typography implements TypographyInterface {
   protected type: TypographyType = "body1";
   protected text: string = "";
+  protected position: string = '';
   protected color: Color = "black";
   protected textWeight: number =  400;
   protected extraClassName: string = '';
@@ -36,6 +37,7 @@ class Typography implements TypographyInterface {
   constructor({
     text = '',
     type = 'body1',
+    position = '',
     textColor = 'black',
     textWeight = 400,
     extraClassName = ''
@@ -43,6 +45,7 @@ class Typography implements TypographyInterface {
 
     this.text = text;
     this.type = type;
+    this.position = position;
     this.color = textColor;
     this.textWeight = textWeight;
     this.extraClassName = extraClassName;
@@ -56,6 +59,7 @@ class Typography implements TypographyInterface {
     $typography.className = [
       style.typography,
       style[`typography-${this.type}`],
+      style[`typography-${this.position}`],
       `text-${this.color}`,
       `fw-${this.textWeight}`,
       `${this.extraClassName}`
@@ -71,6 +75,10 @@ class Typography implements TypographyInterface {
   public get textElement() {
     return this.$textCell;
   };
+
+  public getText = () => {
+    return this.text;
+  }
 }
 
 export default Typography;

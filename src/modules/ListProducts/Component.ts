@@ -1,11 +1,9 @@
 import Skeleton from "@elements/Skeleton";
-import CardProduct from "@components/CardProduct";
+import Product from "@modules/Product";
 import ProductState from "@state/ProductState";
-
+import { TypeCard } from "@elements/Card";
 import style from "./style.module.scss"
-
 import { $app } from '@constants/div.app';
-
 import { type ListProductsImplements } from "./type";
 import { type ProductStateType } from "@state/ProductState";
 
@@ -59,11 +57,11 @@ class ListProducts implements ListProductsImplements {
         this.$listCards.innerHTML = '';
 
         const productData = newState.product;
-  
+        
         productData?.forEach(product => {
-          const cardProduct = new CardProduct(product);
-          if (this.$listCards && cardProduct.cardWrapper) {
-            this.$listCards.appendChild(cardProduct.cardWrapper);
+          const products = new Product(TypeCard.grid, product);
+          if (this.$listCards && products.cardWrapper) {
+            this.$listCards.appendChild(products.cardWrapper);
           }
         })
       }

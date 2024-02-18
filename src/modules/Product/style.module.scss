@@ -1,0 +1,24 @@
+@import '@style/utils/colors.scss';
+
+.button-disabled {
+  color: $secondary-light;
+  background-color: $white;
+  cursor: none;
+  box-shadow: none;
+
+  &:hover,
+  &:active,
+  &:focus{
+    color: $secondary-light;
+    background-color: $white;
+    cursor: not-allowed;;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .icon{
+    color: $secondary-light
+  }
+}
+
+
