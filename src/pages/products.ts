@@ -40,7 +40,8 @@ pagination.setPageClick(async (page) => {
 
 async function init() {
   await productAPI.getProducts(productState.state.pagination.active);
-  cartAPI.getProductForCart()
+  
+  cartAPI.getProductForCart();
 
   if (pagination.pagination && $app) {
     $app.appendChild(pagination.pagination);

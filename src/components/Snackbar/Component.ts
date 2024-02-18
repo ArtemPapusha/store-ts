@@ -69,6 +69,7 @@ class Snackbar implements SnackbarInterface{
   public buildSnackbarContainer = () => {
     if (!Snackbar.$snackbarsContainer) {
       const $snackbarsContainer = document.createElement('div');
+
       $snackbarsContainer.className = [
         style.snackbarContainer,
         style[`snackbar__container--${this.position}`],
@@ -91,6 +92,7 @@ class Snackbar implements SnackbarInterface{
 
   public buildSnackbar = () => {
     const $snackbarBody = document.createElement('div');
+    
     $snackbarBody.className = [
       style.snackbar,
       style[`snackbar--${this.variant}`],

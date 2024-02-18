@@ -66,7 +66,7 @@ class AddCartController {
     $button.setAttribute('id', 'cartController')
 
     if ($button.buttonElement) {
-    $buttonWrapper.appendChild($button.buttonElement)
+      $buttonWrapper.appendChild($button.buttonElement)
     }
 
     $button.addEventListener('click', () => {
@@ -81,23 +81,22 @@ class AddCartController {
     prevState: ProductStateType,
     eventType: string
     ) => {
+    if (eventType === ProductState.EVENT_TYPE_UPDATE_CART) {
+      this.amount = newState.cartCounter;
 
-      if (eventType === ProductState.EVENT_TYPE_UPDATE_CART) {
-
-        this.amount = newState.cartCounter;
-        if (this.amount) {
+      if (this.amount) {
         this.updateCartCounter(this.amount)
-        }
-        
-        if (this.productCart.productCart) {
-          this.productCart.productCart.innerHTML = ''
-          const products = newState.cart
-
-          this.updateCartContent(products);
-          
-          this.updateTotalPrice(products);
-        }
       }
+      
+      if (this.productCart.productCart) {
+        this.productCart.productCart.innerHTML = ''
+        const products = newState.cart
+
+        this.updateCartContent(products);
+        
+        this.updateTotalPrice(products);
+      }
+    }
   }
 
   protected updateCartContent = (products: any[]) => {
@@ -135,6 +134,7 @@ class AddCartController {
     }, 0);
 
     const totalPriceElement = document.getElementById('total_price');
+    
     if (totalPriceElement) {
       totalPriceElement.innerText = `Total price: ${this.totalPrice} грн`;
     }

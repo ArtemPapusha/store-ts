@@ -122,7 +122,6 @@ class Card implements CardInterface{
     }
 
     if (this.variant === 'list' || this.variant === TypeCard.listCart) {
-
       $cardWrapper.className = [
         'product_wrapper',
         style.cardWrapperList,
@@ -243,10 +242,12 @@ class Card implements CardInterface{
 
     if (this.variant === 'grid') {
       $imgWrapper.className = style.cardProductImgGrid;
+
       $image.className = style.cardProductImgGrid;
   
       $image.setAttribute('src', `${this.image}`);
       $image.setAttribute('alt', `${this.category}`);
+
       $imgWrapper.appendChild($image);
     }
   
@@ -271,6 +272,7 @@ class Card implements CardInterface{
         $description.appendChild(this.description.textElement);
       }
     }
+
     if (this.variant === 'list' || this.variant === TypeCard.listCart) {
       if (this.description && this.description.textElement) {
         $description.appendChild(this.description.textElement);
@@ -312,12 +314,10 @@ class Card implements CardInterface{
           $priceWrapper.appendChild($price.textElement);
         }
       }
-
     }
 
     return $priceWrapper;
   }
-
 }
 
 export default Card;

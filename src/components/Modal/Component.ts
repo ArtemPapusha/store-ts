@@ -27,6 +27,7 @@ class Modal implements ModalImplements {
 
   protected buildModalWrapper = () => {
     const $modalWrapper = document.createElement('div');
+
     $modalWrapper.setAttribute('id', 'modal_wrapper');
 
     this.$modalWrapper = $modalWrapper;
@@ -37,6 +38,7 @@ class Modal implements ModalImplements {
 
   protected buildModalOverlay = () => {
     const $overlay = document.createElement('div');
+
     $overlay.className = [
       style.overlay,
       'd-flex',
@@ -51,11 +53,13 @@ class Modal implements ModalImplements {
     })
 
     $overlay.appendChild(this.buildModal());
+
     return $overlay;
   }
 
   protected buildModal = () => {
     const $modal = document.createElement('div');
+
     $modal.className = [
       style.modal,
       'd-flex',

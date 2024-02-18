@@ -1,13 +1,9 @@
 import Skeleton from "@elements/Skeleton";
 import Product from "@modules/Product";
 import ProductState from "@state/ProductState";
-
 import { TypeCard } from "@elements/Card";
-
 import style from "./style.module.scss"
-
 import { $app } from '@constants/div.app';
-
 import { type ListProductsImplements } from "./type";
 import { type ProductStateType } from "@state/ProductState";
 

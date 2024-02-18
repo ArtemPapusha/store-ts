@@ -24,7 +24,8 @@ class Product extends Card implements CardInterface {
   protected productApi: ProductAPI;
   protected cartApi: CartAPI;
   
-  constructor(variant: TypeCard,
+  constructor(
+    variant: TypeCard,
     {
     id,
     category = '',
@@ -108,7 +109,8 @@ class Product extends Card implements CardInterface {
 
   protected buildButtonsWrapper = () => {
     if (this.variant === TypeCard.grid) {
-      const $footer = super.footerCardGrid
+      const $footer = super.footerCardGrid;
+
       if (this.buttonFavorite && this.buttonFavorite.buttonElement && $footer) {
         $footer.appendChild(this.buttonFavorite.buttonElement);
       }
@@ -125,7 +127,8 @@ class Product extends Card implements CardInterface {
     }
 
     if (this.variant === TypeCard.list) {
-      const $footer = super.footerCardList
+      const $footer = super.footerCardList;
+
       if (this.buttonFavorite && this.buttonFavorite.buttonElement && $footer) {
         $footer.appendChild(this.buttonFavorite.buttonElement);
       }
@@ -142,8 +145,8 @@ class Product extends Card implements CardInterface {
     }
 
     if (this.variant === TypeCard.listCart) {
-      const $body = super.cardBodyList
-      const $amountList = super.amountCardWrapList
+      const $body = super.cardBodyList;
+      const $amountList = super.amountCardWrapList;
 
       if (this.deleteBtn && this.deleteBtn.buttonElement && $body) {
         $body.appendChild(this.deleteBtn.buttonElement);
@@ -162,8 +165,9 @@ class Product extends Card implements CardInterface {
               this.updateTextAmount();
             }
           }
-          this.updateQuantity()
-          this.updatePriceListCart()
+
+          this.updateQuantity();
+          this.updatePriceListCart();
         })
       }
 
@@ -184,6 +188,7 @@ class Product extends Card implements CardInterface {
               this.updateTextAmount();
             }
           }
+
           this.updateQuantity();
           this.updatePriceListCart();
         })
@@ -194,6 +199,7 @@ class Product extends Card implements CardInterface {
   protected updateTextAmount() {
     if (this.textAmount && this.textAmount.textElement) {
       this.textAmount.textElement.textContent = this.value;
+
       if (this.value === '1') {
         this.minusBtn.buttonElement?.setAttribute('disabled', 'disabled')
         this.minusBtn.buttonElement?.classList.add(style.buttonDisabled)
@@ -213,25 +219,35 @@ class Product extends Card implements CardInterface {
   }
 
   protected updateQuantity = () => {
-    const productJson = localStorage.getItem(this.id)
-    localStorage.removeItem(this.id)
+    const productJson = localStorage.getItem(this.id);
+
+    localStorage.removeItem(this.id);
+
     if (productJson) {
-      const product = JSON.parse(productJson)
+      const product = JSON.parse(productJson);
+
       product.quantity = this.value;
-      const newProductJson = JSON.stringify(product)
-      localStorage.setItem(`${this.id}`, newProductJson)
+
+      const newProductJson = JSON.stringify(product);
+
+      localStorage.setItem(`${this.id}`, newProductJson);
+
       this.cartApi.updateQuantity(this.id, product.quantity)
     }
   }
 
   protected updatePriceListCart = () => {
     const productJson = localStorage.getItem(this.id);
+
     localStorage.removeItem(this.id);
+
     if (productJson) {
       const product = JSON.parse(productJson);
+
       product.totalPrice = String(product.quantity * parseInt(product.pricePerUnit)) + ` грн`;
 
       const newProductJson = JSON.stringify(product);
+
       localStorage.setItem(`${this.id}`, newProductJson);
 
       this.cartApi.updatePrice(this.id, product.totalPrice)
@@ -240,6 +256,7 @@ class Product extends Card implements CardInterface {
 
   protected handleAddToCart = () => {
     this.cartApi.addProductToCart(this.id, this.image, this.title.getText(), this.description.getText(), this.price || '0');
+
     const addedSuccess = new Snackbar({
       message: `Added successfully to cart`,
       variant: 'success'
@@ -249,6 +266,7 @@ class Product extends Card implements CardInterface {
 
   protected handleDeleteProduct = () => {
     this.cartApi.deleteProductFromCart(this.id);
+    
     const deletedSuccess = new Snackbar({
       message: `${this.title.getText()} deleted from cart`,
       variant: 'default'
