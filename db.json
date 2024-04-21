@@ -119,6 +119,14 @@
       "image": "https://img.telemart.ua/504208-642596-category_page/2e-8bit-hdmi-2e8bhdws288.jpg",
       "description": "Ігрова консоль 2E 8bit HDMI (2E8BHDWS288)",
       "pricePerUnit": "2000 грн"
+    },
+    {
+      "id": "7833",
+      "category": "Monitor",
+      "title": "Монітор Samsung 27\" ",
+      "image": "https://img.telemart.ua/430236-576248-category_page/samsung-27-odyssey-g5-s27ag500ni-ls27ag500nixci-black.jpg",
+      "description": "Монітор Samsung 27\" Odyssey G5 S27AG500NI (LS27AG500NIXCI/LS27AG500PIXCI) Black",
+      "price": "11000"
     }
   ]
 }
