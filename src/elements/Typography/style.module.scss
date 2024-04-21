@@ -2,84 +2,93 @@
   margin: 0;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-}
 
-.typography-subtitle1 {
-  font-size: 1rem;
-  line-height: 1.75;
-  letter-spacing: 0.00938em;
-}
+  &-up {
+    position: relative;
+    bottom: 6px;
+  }
 
-.typography-subtitle2 {
-  font-size: 0.875rem;
-  line-height: 1.57;
-  letter-spacing: 0.00714em;
-}
+  &-down {
+    position: relative;
+    top: 6px
+  }
 
-.typography-body1 {
-  font-size: 1rem;
-  line-height: 1.5;
-  letter-spacing: 0.00938em;
-}
+  &-subtitle1 {
+    font-size: 1rem;
+    line-height: 1.75;
+    letter-spacing: 0.00938em;
+  }
 
-.typography-body2 {
-  font-size: 0.875rem;
-  line-height: 1.43;
-  letter-spacing: 0.01071em;
-}
+  &-subtitle2 {
+    font-size: 0.875rem;
+    line-height: 1.57;
+    letter-spacing: 0.00714em;
+  }
 
-.typography-button {
-  line-height: 1;
-  letter-spacing: 0.02857em;
-  text-transform: uppercase;
-}
+  &-body1 {
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+  }
 
-.typography-caption {
-  font-size: 0.75rem;
-  line-height: 1.66;
-  letter-spacing: 0.03333em;
-}
+  &-body2 {
+    font-size: 0.875rem;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+  }
 
-.typography-overline {
-  font-size: 0.75rem;
-  line-height: 2.66;
-  letter-spacing: 0.08333em;
-  text-transform: uppercase;
-}
+  &-button {
+    line-height: 1;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+  }
 
-.typography-h1 {
-  font-size: 6rem;
-  line-height: 1.167;
-  letter-spacing: -0.01562em;
-}
+  &-caption {
+    font-size: 0.75rem;
+    line-height: 1.66;
+    letter-spacing: 0.03333em;
+  }
 
-.typography-h2 {
-  font-size: 3.75rem;
-  line-height: 1.2;
-  letter-spacing: -0.00833em;
-}
+  &-overline {
+    font-size: 0.75rem;
+    line-height: 2.66;
+    letter-spacing: 0.08333em;
+    text-transform: uppercase;
+  }
 
-.typography-h3 {
-  font-size: 3rem;
-  line-height: 1.167;
-  letter-spacing: 0;
-}
+  &-h1 {
+    font-size: 6rem;
+    line-height: 1.167;
+    letter-spacing: -0.01562em;
+  }
 
-.typography-h4 {
-  font-size: 2.125rem;
-  line-height: 1.235;
-  letter-spacing: 0.00735em;
-}
+  &-h2 {
+    font-size: 3.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.00833em;
+  }
 
-.typography-h5 {
-  font-size: 1.5rem;
-  line-height: 1.334;
-  letter-spacing: 0;
-}
+  &-h3 {
+    font-size: 3rem;
+    line-height: 1.167;
+    letter-spacing: 0;
+  }
 
-.typography-h6 {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  letter-spacing: 0.0075em;
-}
+  &-h4 {
+    font-size: 2.125rem;
+    line-height: 1.235;
+    letter-spacing: 0.00735em;
+  }
 
+  &-h5 {
+    font-size: 1.5rem;
+    line-height: 1.334;
+    letter-spacing: 0;
+  }
+
+  &-h6 {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    letter-spacing: 0.0075em;
+  }
+}

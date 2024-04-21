@@ -1,10 +1,5 @@
 export const API_METHOD_GET: string = 'get';
 export const API_METHOD_POST: string = 'post';
-export const API_METHOD_PUT: string = 'put';
-export const API_METHOD_PATCH: string = 'patch';
-export const API_METHOD_DELETE: string = 'delete';
 export const API_HOST: string = 'http://localhost:3000';
 export const PRODUCTS_ROUTER: string = '/products';
-export const PRODUCT_ID_ROUTER = (id: number) => `/products?id=${id}`;
-export const CART_ROUTER: string = '/cart';
-export const CART_PRODUCT_ID_ROUTER = (id: number) => `/cart?id=${id}`;
+export const PRODUCT_ID_ROUTER = (id: string) => `/products?id=${id}`;

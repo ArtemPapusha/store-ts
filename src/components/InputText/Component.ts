@@ -14,6 +14,8 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
   protected label: string = '';
   protected value: string = '';
   protected type: string = '';
+  protected textAlign: string = 'left';
+  protected size: string = '';
   protected placeholder: string = '';
   protected id: string = '';
   protected startIcon: Icon;
@@ -24,6 +26,8 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     label = '',
     value = '',
     type = 'text',
+    textAlign = 'left',
+    size = '',
     placeholder = '',
     id = '',
     startIcon,
@@ -33,6 +37,8 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     this.name = name;
     this.label = label;
     this.type = type;
+    this.textAlign = textAlign;
+    this.size = size
     this.value = value;
     this.placeholder = placeholder;
     this.id = id;
@@ -48,11 +54,11 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     this.buildFieldWrapper();
   }
 
-  get inputWrapper() {
+  public get inputWrapper() {
     return this.$inputWrapper;
   }
 
-  buildFieldWrapper = () => {
+  protected buildFieldWrapper = () => {
     const $wrapper = document.createElement('div');
 
     $wrapper.className = [
@@ -80,7 +86,7 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     this.$inputWrapper = $wrapper;
   };
 
-  buildLabel = () => {
+  protected buildLabel = () => {
     const $label = document.createElement('label');
     
     $label.setAttribute('for', this.id);
@@ -95,17 +101,18 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     return $label;
   };
 
-  buildInput = () => {
+  protected buildInput = () => {
     const $input = document.createElement('input');
 
     $input.setAttribute('type', this.type);
+    $input.setAttribute('size', this.size);
     $input.setAttribute('name', this.name);
     $input.setAttribute('placeholder', this.placeholder);
     $input.setAttribute('id', `${this.id}`);
     $input.setAttribute('value', this.value);
-    $input.setAttribute('size', '60');
 
     $input.className = [
+      style[`inputText-${this.textAlign}`],
       'py-2',
       'px-2',
     ].join(' ');
@@ -117,11 +124,11 @@ class FieldInput extends FieldValidation implements FieldInputImplements {
     return $input;
   };
 
-  handleBlur = (event: Event) => {
+  protected handleBlur = (event: Event) => {
     this.handleError((event.target as HTMLInputElement).value);
   };
   
-  handleChange = (event: Event) => {
+  protected handleChange = (event: Event) => {
     this.value = (event.target as HTMLInputElement).value;
   
     this.handleError(this.value);

@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://artempapusha.github.io/store-ts/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "db": "json-server --watch db.json"
+    "db": "json-server --watch db.json -p 3001"
   },
   "devDependencies": {
     "@types/node": "^20.11.5",

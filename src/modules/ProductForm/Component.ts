@@ -12,6 +12,11 @@ import { type ValidationFunction } from "@services/Validations";
 
 class ProductForm implements ProductFormImplements{
   protected $formBody: HTMLElement | null = null;
+  protected productApi: ProductAPI;
+
+  constructor() {
+    this.productApi = new ProductAPI()
+  }
 
   public get formProduct() {
     return this.$formBody;
@@ -22,15 +27,15 @@ class ProductForm implements ProductFormImplements{
 
     $formBody.addEventListener('submit', (event) => this.submitForm(event));
 
-    this.addFormInput($formBody, 'category', 'Category*', 'text', 'Category', 'categoryInput', [Validations.required()]);
+    this.addFormInput($formBody, 'category', 'Category*', 'text', 'left', '60', 'Category', 'categoryInput', [Validations.required()]);
 
-    this.addFormInput($formBody, 'title', 'Title*', 'text', 'Title', 'titleInput', [Validations.required()]);
+    this.addFormInput($formBody, 'title', 'Title*', 'text', 'left', '60', 'Title', 'titleInput', [Validations.required()]);
 
-    this.addFormInput($formBody, 'image', 'Image url*', 'text', 'Image url', 'imageInput', [Validations.required(), Validations.url()]);
+    this.addFormInput($formBody, 'image', 'Image url*', 'text', 'left', '60', 'Image url', 'imageInput', [Validations.required(), Validations.url()]);
 
-    this.addFormInput($formBody, 'description', 'Description*', 'text', 'Description', 'descriptionInput', [Validations.required()]);
+    this.addFormInput($formBody, 'description', 'Description*', 'text', 'left', '60', 'Description', 'descriptionInput', [Validations.required()]);
 
-    this.addFormInput($formBody, 'price', 'Price*', 'text', '1000', 'priceInput', [Validations.required(), Validations.notZero(), Validations.onlyNumbers()]);
+    this.addFormInput($formBody, 'price', 'Price*', 'text', 'left', '60', '1000', 'priceInput', [Validations.required(), Validations.notZero(), Validations.onlyNumbers()]);
 
     $formBody.appendChild(this.buildFormButtons());
    
@@ -39,11 +44,13 @@ class ProductForm implements ProductFormImplements{
     return $formBody;
   }
 
-  private addFormInput = ($formBody: HTMLFormElement, name: string, label: string, type: string, placeholder: string, id: string, validations: ValidationFunction[]): void => {
+  private addFormInput = ($formBody: HTMLFormElement, name: string, label: string, type: string, textAlign: 'left', size: string, placeholder: string, id: string, validations: ValidationFunction[]): void => {
       const $input = new InputText({
           name: name,
           label: label,
           type: type,
+          textAlign: textAlign,
+          size: size,
           placeholder: placeholder,
           id: id
       });
@@ -55,7 +62,7 @@ class ProductForm implements ProductFormImplements{
       }
   }
 
-  protected buildFormButtons = () => {
+  private buildFormButtons = () => {
     const $submit = new Button({
       textContent: {
         text: 'Send',
@@ -110,7 +117,7 @@ class ProductForm implements ProductFormImplements{
     return $buttonsWrapper;
   }
 
-  protected buttonLoader = () => {
+  private buttonLoader = () => {
     const $buttonSubmit = this.$formBody?.querySelector('button[type=submit]');
 
     const $buttonLodaer = new Skeleton().buildLoadingButton();
@@ -118,7 +125,7 @@ class ProductForm implements ProductFormImplements{
     $buttonSubmit?.appendChild($buttonLodaer)
   }
 
-  protected removeButtonLoader = () => {
+  private removeButtonLoader = () => {
     const $buttonLoader = document.querySelector(`.${styleSkeleton.spinLoader}`)
     
     if ($buttonLoader) {
@@ -175,7 +182,7 @@ class ProductForm implements ProductFormImplements{
           
           this.buttonLoader();
           
-          const res = await ProductAPI.createProduct(category, title, image, description, price);
+          const res = await  this.productApi.createProduct(category, title, image, description, String(price));
           
           this.removeButtonLoader();
   
@@ -184,7 +191,7 @@ class ProductForm implements ProductFormImplements{
   
           const notification = new Snackbar({
             message: `Product was added with id ${res?.id}`,
-            variant: 'info'
+            variant: 'success'
           });
   
           notification.buildSnackbar();
@@ -197,7 +204,7 @@ class ProductForm implements ProductFormImplements{
       ){
         const notification = new Snackbar({
           message: "All fields are required",
-          variant: 'info'
+          variant: 'warning'
         });
   
         notification.buildSnackbar();
@@ -205,7 +212,7 @@ class ProductForm implements ProductFormImplements{
         
         const notification = new Snackbar({
           message: 'Price value is not correct',
-          variant: 'info'
+          variant: 'error'
         });
   
         notification.buildSnackbar();

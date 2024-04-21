@@ -34,7 +34,8 @@ class Snackbar implements SnackbarInterface{
     if(message) {
       this.message = new Typography({
         text: message,
-        type: 'body2',
+        type: 'body1',
+        textColor: 'white',
       });
     };
     
@@ -68,6 +69,7 @@ class Snackbar implements SnackbarInterface{
   public buildSnackbarContainer = () => {
     if (!Snackbar.$snackbarsContainer) {
       const $snackbarsContainer = document.createElement('div');
+
       $snackbarsContainer.className = [
         style.snackbarContainer,
         style[`snackbar__container--${this.position}`],
@@ -90,6 +92,7 @@ class Snackbar implements SnackbarInterface{
 
   public buildSnackbar = () => {
     const $snackbarBody = document.createElement('div');
+    
     $snackbarBody.className = [
       style.snackbar,
       style[`snackbar--${this.variant}`],

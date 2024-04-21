@@ -1,15 +1,18 @@
 class QueryParamService {
-  protected static instance: QueryParamService;
+
+  protected static instance: QueryParamService | null = null;
 
   protected params: String[] = []; 
 
-  public static getInstance(): QueryParamService {
-    if (!QueryParamService.instance) {
-      QueryParamService.instance = new this;
+  constructor() {
+    if (QueryParamService.instance && typeof QueryParamService.instance === "object") {
+      return QueryParamService.instance
     }
-    return QueryParamService.instance;
+
+    QueryParamService.instance = this
+    return this
   }
-  
+
   public updateUrl = (key: string, value: string) => {
     this.params = this.params.filter(param => !param.startsWith(`${key}`));
 
@@ -22,7 +25,8 @@ class QueryParamService {
   public removeQueryParam = (key: String[]) => {
     this.params = this.params.filter(param => !param.startsWith(`${key}`));
 
-    const newUrl = window.location.pathname + '?' + this.params.join('&');
+    const newUrl = window.location.pathname + this.params.join('&');
+ 
     window.history.replaceState({}, document.title, newUrl);
   }
 

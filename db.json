@@ -1,5 +1,4 @@
 {
-  "cart": [],
   "products": [
     {
       "id": "3e3f",
@@ -7,7 +6,7 @@
       "title": "Ноутбук Acer Predator Helios 300",
       "image": "https://img.telemart.ua/432709-577905-category_page/acer-predator-helios-300-ph317-56-nhqgveu007-abyssal-black.png",
       "description": "Ноутбук Acer Predator Helios 300 PH317-56 (NH.QGVEU.007) Abyssal Black",
-      "price": 50000
+      "pricePerUnit": "50000 грн"
     },
     {
       "id": "0e8e",
@@ -15,7 +14,7 @@
       "title": "Ноутбук Asus TUF Gaming F15",
       "image": "https://img.telemart.ua/567869-715010-category_page/asus-tuf-gaming-f15-fx507zc4-hn081-90nr0gw1-m00bs0-mecha-gray.png",
       "description": "Ноутбук Asus TUF Gaming F15 FX507ZC4-HN081 (90NR0GW1-M00BS0) Mecha Gray",
-      "price": 32000
+      "pricePerUnit": "32000 грн"
     },
     {
       "id": "492e",
@@ -23,7 +22,7 @@
       "title": "Ноутбук Asus Vivobook Go",
       "image": "https://img.telemart.ua/521546-669006-category_page/asus-vivobook-go-15-e1504fa-bq211-90nb0zr1-m00960-cool-silver.jpg",
       "description": "Ноутбук Asus Vivobook Go 15 E1504FA-BQ211 (90NB0ZR1-M00960) Cool Silver",
-      "price": 16000
+      "pricePerUnit": "16000 грн"
     },
     {
       "id": "c26d",
@@ -31,7 +30,7 @@
       "title": "Ноутбук Asus ROG Strix G16",
       "image": "https://img.telemart.ua/522894-670483-category_page/asus-rog-strix-g16-g614jv-n3143-90nr0c61-m00cc0-eclipse-gray.jpg",
       "description": "Ноутбук Asus ROG Strix G16 G614JV-N3143 (90NR0C61-M00CC0) Eclipse Gray",
-      "price": 64000
+      "pricePerUnit": "64000 грн"
     },
     {
       "id": "34e1",
@@ -39,7 +38,7 @@
       "title": "Ноутбук Acer Nitro",
       "image": "https://img.telemart.ua/555486-704452-category_page/acer-nitro-an515-58-nhqmzeu001-obsidian-black.png",
       "description": "Ноутбук Acer Nitro AN515-58 (NH.QMZEU.001) Obsidian Black",
-      "price": 30000
+      "pricePerUnit": "30000 грн"
     },
     {
       "id": "23d1",
@@ -47,7 +46,7 @@
       "title": "Ноутбук Acer Nitro V 15",
       "image": "https://img.telemart.ua/552820-702566-category_page/acer-nitro-v-15-anv15-51-nhqnbeu001-obsidian-black.png",
       "description": "Ноутбук Acer Nitro V 15 ANV15-51 (NH.QNBEU.001) Obsidian Black",
-      "price": 42000
+      "pricePerUnit": "42000 грн"
     },
     {
       "id": "64d5",
@@ -55,7 +54,7 @@
       "title": "Комп'ютер Boxed Gaming RTX3060 Pro",
       "image": "https://img.telemart.ua/451014-681755-category_page/boxed-gaming-rtx3060-pro-bgp-10400n3060-16s500-black.png",
       "description": "Комп'ютер Boxed Gaming RTX3060 Pro (BGP-10400N3060-16S500) Black",
-      "price": 25000
+      "pricePerUnit": "25000 грн"
     },
     {
       "id": "5ccc",
@@ -63,7 +62,7 @@
       "title": "Ігровий ПК EVOLVE OptiPart Silver 3H+ ",
       "image": "https://img.telemart.ua/531681-680925-category_page/evolve-optipart-silver-3h-evop-s3hr560n406-d432s1tbk-black.png",
       "description": "Ігровий ПК EVOLVE OptiPart Silver 3H+ (EVOP-S3HR560N406-D432S1TBK) Black",
-      "price": 38000
+      "pricePerUnit": "38000 грн"
     },
     {
       "id": "6879",
@@ -71,7 +70,7 @@
       "title": "Комп'ютер HEXO Gaming RTX4060 Base",
       "image": "https://img.telemart.ua/531689-725024-category_page/hexo-gaming-rtx4060-base-hgb-5600n4060-16s500bk-black.jpg",
       "description": "Комп'ютер HEXO Gaming RTX4060 Base (HGB-5600N4060-16S500BK) Black",
-      "price": 32000
+      "pricePerUnit": "32000 грн"
     },
     {
       "id": "00ef",
@@ -79,7 +78,7 @@
       "title": "Портативна ігрова приставка Valve Steam Deck",
       "image": "https://img.telemart.ua/489978-629416-category_page/valve-steam-deck-64gb.jpg",
       "description": "Портативна ігрова приставка Valve Steam Deck 64GB",
-      "price": 23000
+      "pricePerUnit": "23000 грн"
     },
     {
       "id": "5b4d",
@@ -87,7 +86,7 @@
       "title": "Ігрова консоль Sony PlayStation 5 Ultra",
       "image": "https://img.telemart.ua/550622-698791-category_page/sony-playstation-5-ultra-hd-blu-ray-ea-sports-fc-24.jpg",
       "description": "Ігрова консоль Sony PlayStation 5 Ultra HD Blu-ray (EA SPORTS FC 24)",
-      "price": 25000
+      "pricePerUnit": "25000 грн"
     },
     {
       "id": "0b3a",
@@ -95,7 +94,7 @@
       "title": "Ігрова консоль Asus ROG Ally",
       "image": "https://img.telemart.ua/549490-697795-category_page/asus-rog-ally-2023-rc71l-nh022w-90nv0gy1-m00560-white.png",
       "description": "Ігрова консоль Asus ROG Ally 2023 RC71L-NH022W (90NV0GY1-M00560) White",
-      "price": 29000
+      "pricePerUnit": "29000 грн"
     },
     {
       "id": "8314",
@@ -103,7 +102,7 @@
       "title": "Ігрова консоль Xbox Series X",
       "image": "https://img.telemart.ua/488561-626904-category_page/xbox-series-x-889842640809.jpg",
       "description": "Ігрова консоль Xbox Series X (889842640809)",
-      "price": 24000
+      "pricePerUnit": "24000 грн"
     },
     {
       "id": "250b",
@@ -111,7 +110,7 @@
       "title": "Ігрова консоль Nintendo Switch",
       "image": "https://img.telemart.ua/488530-626846-category_page/nintendo-switch-oled-45496453435-white.jpg",
       "description": "Ігрова консоль Nintendo Switch OLED (45496453435) White",
-      "price": 18000
+      "pricePerUnit": "18000 грн"
     },
     {
       "id": "ea3a",
@@ -119,7 +118,15 @@
       "title": "Ігрова консоль 2E 8bit",
       "image": "https://img.telemart.ua/504208-642596-category_page/2e-8bit-hdmi-2e8bhdws288.jpg",
       "description": "Ігрова консоль 2E 8bit HDMI (2E8BHDWS288)",
-      "price": 2000
+      "pricePerUnit": "2000 грн"
+    },
+    {
+      "id": "7833",
+      "category": "Monitor",
+      "title": "Монітор Samsung 27\" ",
+      "image": "https://img.telemart.ua/430236-576248-category_page/samsung-27-odyssey-g5-s27ag500ni-ls27ag500nixci-black.jpg",
+      "description": "Монітор Samsung 27\" Odyssey G5 S27AG500NI (LS27AG500NIXCI/LS27AG500PIXCI) Black",
+      "price": "11000"
     }
   ]
 }
